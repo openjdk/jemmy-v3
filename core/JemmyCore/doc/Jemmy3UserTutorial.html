@@ -1,0 +1,143 @@
+<!--
+ * Copyright (c) 2007, 2017 Oracle and/or its affiliates. All rights reserved.
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * This code is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 only, as
+ * published by the Free Software Foundation.
+ *
+ * This code is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ * version 2 for more details (a copy is included in the LICENSE file that
+ * accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version
+ * 2 along with this work; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+ *
+ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
+ * or visit www.oracle.com if you need additional information or have any
+ * questions.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title>Jemmy 3 user tutorial</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+
+        <h1>Jemmy 3 user tutorial</h1>
+
+        <b>Note</b> This tutorial is complementary to <a href="../index.html">javadoc</a> - it only describes principles of Jemmy API usage - not the API itself.<br/><br/>
+
+        Jemmy 3 have several fundamental principles which everybody should get himself familiar with before starting test implementation.<br/><br/>
+
+        <b>Relations to Jemmy2</b>. If you are familiar with the Jemmy 2 API (TBD link), you would find this totally different. Everything is implemented in a different way and there is a good reason for that (below). During the tutorial, I will sometimes compare Jemmy 3 & 2 design principles. If you are not familiar with Jemmy2, just ignore those paragraphs.<br/><br/>
+
+        Jemmy3, firstly, consist of Jemmy Core module which provide functionality not dependent on any particular UI library weather AWT or Swing or anything else. The Jemmy Core uses a couple of classes from AWT, such as java.awt.Robot to perform operations with components and org.jemmy.Point, java.awt.Rectangle to mention screen coordinates. Even Robot, however, in the future could be abstracted from the core so that mobile testing is possible.<br/><br/>
+
+        The three main aspects of UI testing are:
+        <ul>
+            <li>find the control you will be dealing with</li>
+            <li>simulate user input</li>
+            <li>wait for something to happen</li>
+        </ul>
+
+        <h2><a href="../org/jemmy/lookup/package-summary.html">Lookup</a></h2>
+
+        <b>Jemmy2</b> So, in Jemmy2, the lookup functionality was implemented through "operator"'s constructor and also not-so-convenient static methods. This (the constructors) is acceptable and proven to be good approach for every particular UI component library. It is possible to implement the lookup functionality in a similar way with Jemmy 3. The "generic" Jemmy 3 approach is quite different, however.<br/><br/>
+
+        So, how do you go about finding a control to deal with. First you have to know some <code><a href="../org/jemmy/interfaces/Parent.html">Parent&lt;SomeControlType&gt;</a></code> which would be some class which is aware of a set of controls of <code>SomeControlType</code> type (for example, <code>javax.swing.JButton</code> in Swing or <code>javafx.scene.control.Button</code> in JavaFX). The set could either be hierarchical, which is typically the case - take AWT or Scenegraph or just about anything, or a plain structure - it does not matter from the usage point of view, because <code>Parent</code> instance knows what is it dealing with.<br/><br/>
+
+        Such <code>Parents</code> could be (TBD throw in some examples)<br/><br/>
+
+        Having the <code>Parent</code>, you could proceed to getting <code><a href="../org/jemmy/lookup/Lookup.html">Lookup&lt;SomeControlType&gt;</a></code> instance by calling <code>lookup(<a href="../org/jemmy/lookup/LookupCriteria.html">LookupCriteria&lt;SomeControlType&gt;</a>)</code> method.
+        <pre>
+        someParent.lookup(new SomeLookupCriteria&lt;SomeControlType&gt;())// this gives an instance of Lookup&lt;SomeControlType&gt;
+        </pre>
+
+        <b>Jemmy2</b> <code>LookupCriteria</code> used  to be called <code>ComponentChooser</code>.<br/><br/>
+
+        So, out of those components which <code>someParent</code> is aware about, you, so far picked those which pass the <code>SomeLookupCriteria</code>. Similarly, you could narrow the search with a <code>LookupCriteria</code> and the control type:
+        <pre>
+        someParent.lookup(Class&lt;SomeControlSubType&gt;new SomeLookupCriteria&lt;SomeControlSubType&gt;())// this gives an instance of Lookup&lt;SomeControlSubType&gt;
+        </pre>
+        where <code>SomeControlSubType</code> extends <code>SomeControlType</code> <br/><br/>
+
+        <code>Lookup&lt;SomeControlType&gt;</code> represents a set of controls, so you could proceed directly to examining one of those by index. You could use <code>get(int)</code> method to get one of this. It is important to notice that the <code>get(int)</code> method returns an instance of <code>SomeControlType</code>, so you do not need to cast it.<br/><br/>
+
+        You could also check how many are there (<code>size()</code>) or ask the lookup to wait for at least a certain number of them (<code>wait(int)</code>). <br/><br/>
+
+        You could also get the control wrapped for you (<code>wrap(int)</code>) so that you could use some test logic of dealing with the control. The wrapping will be described in details later in the tutorial.<br/><br/>
+
+        Perhaps, the most important feature of <code>Lookup</code> is that it itself is a <code>Parent&lt;SomeControlType&gt;</code> (or <code>Parent&lt;SomeControlSubType&gt;</code>). Thus, you could proceed with narrowing down the search further with <code>lookup(LookupCriteria)</code> method (or <code>lookup(Class, LookupCriteria))</code>.<br/><br/>
+
+        So, finally, looking up for a control gets to ...
+        <pre>
+        someParent.lookup([Class, ]LookupCriteria)[.lookup([Class, ]LookupCriteria) ...].(get(int)|wrap()|size()|wait(int))
+        </pre>
+
+        It is also worthy to note that, if the default abstract Jemmy Core's implementation of <code>Lookup</code> is used, the actual component hierarchy is not examined up to the moment it has to be. That is, <code>lookup(...)</code> methods itself do not go through the list of controls trying to apply the criteria, when they called. It is only when one of the <code>get(int)|wrap()|size()|wait(int)</code> methods called, the hierarchy is explored. Hence, there is neither memory spend for creating intermediate lists nor performance is wasted. For more info, check the Jemmy developers tutorial.<br/><br/>
+
+        <h2>Wrapping</h2>
+
+        Now, finding out the control is a necessary step to do. However, in order to deal with the control - to simulate user input, such as text typing, mouse pressing whatnot some code must be used, which is implemented in some other Java class. The most natural way, perhaps, is to "wrap" the actual control which some class which knows how to perform operations on the control type.<br/><br/>
+
+        <b>Jemmy2</b> Such classes were the "operators". Wrapping happened naturally as the lookup was implemented through the operator constructors.<br/><br/>
+
+        In Jemmy 3, the wrapping happens when you call the <code>wrap(int)</code> methods of a lookup. Naturally, the wrappers are UI library specific, so, Jemmy Core could not possible be aware about them. The library specific Jemmy Core extension is taking care about supplying them. For more info, check the Jemmy developers tutorial (TBD).<br/><br/>
+
+        All of the wrapper classes extend <code><a href="../org/jemmy/control/Wrap.html">Wrap&lt;CONTROL&gt;</a></code> class, which, itself, provides core functionality to perform mouse and keyboard operations on the control.<br/><br/>
+
+        <h2>Interfaces</h2>
+
+        Mouse and keyboard operations are only the basis for user interaction simulation. It is also the only functionality which is applicable to every control, independently of its type. There is much more to user input than this. Good example is text typing. The test developer would expect something in a way of <code>type(String)</code> method for a text field of any kind. Naturally, <code>Wrap</code> class itself does not have anything like this.<br/><br/>
+
+        That's where the <code><a href="../org/jemmy/interfaces/ControlInterface.html">ControlInterface</a></code> concept comes to the game. Having had a wrapper, gotten by <code>wrap(int)</code> method, you could proceed to treating is as <code>MyInterface</code> (which should be a class/interface implementing/extending <code>ControlInterface</code> - just to have some control over it):
+        <pre>
+        myWrappedControl.as(MyInterface.class) /// this would be an instance of MyInterface
+        </pre>
+
+        Please consult Jemmy developers tutorial (TBD) on the ways to implement as method.<br/><br/>
+
+        You could verify in the test code if the wrapper actually could be used as <code>MyInterface</code> by calling <code>myWrappedControl.is(MyInterface.class)</code>, however generally it is up to Jemmy Core extension developer which interfaces the wrapper implements.<br/><br/>
+
+        Getting back to our example of the text typing, the test developer would be able to use code like this:
+        <pre>
+        myWrappedControl.as(Text.class).type("some new text");
+        </pre>
+
+        One side effect of the interfaces is that the implementations of wrappers could be private or package private, as the wrapper classes are not accessed directly from the test.<br/><br/>
+
+        <h3>Parameterised interfaces</h3>
+
+        Some interfaces could itself be parameterised by a type. One example of such is <code>Parent&lt;CONTROL&gt;</code> which is itself an interface.<br/><br/>
+
+        To decrease amount of necessary casting you could use <code>is(Class interfaceClass, Class parameterClass)</code> and <code>as(Class interfaceClass, Class parameterClass)</code> methods. It could look like this:
+        <pre>
+        someParent.lookup(new SomeCriteria&lt;SomeControlType&gt;()).wrap(0).as(Parent.class, SomeOtherControlType.class).lookup(new SomeOtherCriteria&lt;SomeOtherControlType&gt;).get(0) // this would give an instance of SomeOtherControlType which leaves within some instance of SomeControlType.
+        </pre>
+
+        <h2>Waiting and timing</h2>
+
+        It is important to understand that just about any call in Jemmy involves some time checking. When you call <code>wait(int)</code> on a lookup, it waits for a given number of controls to exist which pass the criteria, when you call <code>get(int)</code> or <code>wrap(int)</code>, it first calls <code>wait(int)</code> method to ensure that big enough number of controls are there.<br/><br/>
+
+        In addition, when you call just about any operation on a control, it has its own time limit to be completed within.<br/><br/>
+
+        Should you need to implement your own waiting or time check of any kind, it is a good idea to use <code><a href="../org/jemmy/timing/Waiter.html">Waiter</a></code> supplied by Jemmy.<br/><br/>
+
+        If the time expires, <code><a href="../org/jemmy/TimeoutExpiredException.html">TimeoutExpiredException</a></code> is thrown. That allows not to worry about time checking within the test itself. If something goes wrong, test will simply fail with the exception. It also allows to check the negative scenarios by catching the exception.<br/><br/>
+
+        All the timeouts are specified through <code><a href="../org/jemmy/env/Environment.html">Environment</a></code> instance.<br/><br/>
+
+        <h2>Environment</h2>
+
+        Any <code>Parent</code> or <code>Lookup</code> always have an instance of <code>Environment</code> associated with it. Whenever <code>Wrap</code> is created, <code>Environment</code> is cloned (i.e. child <code>Environment</code> is created) and assigned to the <code>Wrap</code>.<br/><br/>
+
+        Environment hierarchy is build the way that you could always change an environment instance not worrying about other parts of the test behaving differently. All the child environments for the one you are changing will behave differently, which gives you the power to customise behaviour of single <code>Wrap</code> (by changing its environment) or the while hierarchy (by changing <code>Environment</code> associated with a <code>Parent</code>). <br/><br/>
+
+
+    </body>
+</html>

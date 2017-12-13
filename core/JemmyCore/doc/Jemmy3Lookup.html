@@ -1,0 +1,153 @@
+<!--
+ * Copyright (c) 2007, 2017 Oracle and/or its affiliates. All rights reserved.
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * This code is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 only, as
+ * published by the Free Software Foundation.
+ *
+ * This code is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ * version 2 for more details (a copy is included in the LICENSE file that
+ * accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version
+ * 2 along with this work; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+ *
+ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
+ * or visit www.oracle.com if you need additional information or have any
+ * questions.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>Jemmy lookup principles</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Unix)">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGEDBY" CONTENT="Alexandre Iline">
+	<META NAME="CHANGED" CONTENT="20090501;17335200">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { size: 8.5in 11in }
+		H2.western { font-family: "Albany", sans-serif; font-size: 14pt; font-style: italic }
+		H2.cjk { font-family: "HG Mincho Light J"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-family: "Arial Unicode MS"; font-size: 14pt; font-style: italic }
+		H3.western { font-family: "Albany", sans-serif }
+		H3.cjk { font-family: "HG Mincho Light J" }
+		H3.ctl { font-family: "Arial Unicode MS" }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<H1>Jemmy lookup principles</H1>
+<P>The document describes principles of Jemmy lookup API. Such
+principles are the same for any extension built on <CODE>JemmyCore</CODE>
+for any particular component library. The idea here is to provide
+searching capabilities so that 
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in">Any possible criteria could be
+	used 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Any number or criteria could be
+	used consequently 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Access both to control instance
+	and a wrapper instance is provided 
+	</P>
+	<LI><P>No costing needed 
+	</P>
+</UL>
+<H2 CLASS="western">Search criteria</H2>
+<P>Search criteria specified by implementing <CODE>LookupCriteria</CODE>
+interface. There are several implementations of the criteria in
+<CODE>JemmyCore</CODE> which are abstract. 
+</P>
+<P><I>Example</I>: 
+</P>
+<PRE>        public class ByTextSearch&lt;T extends JTextComponent&gt; implements LookupCriteria&lt;T&gt; {
+            String text;
+            public ByTextSearch(String text) {
+                this.text = text;
+            }
+            public boolean check(T control) {
+                return control.getText().equals(text);
+            }
+        }
+    </PRE><P>
+Naturally, any kind of custom search criteria could be specified my
+creating an implementation if the interface. 
+</P>
+<H2 CLASS="western">Search functionality</H2>
+<H3 CLASS="western">Parent</H3>
+<P><CODE>Parent</CODE> interface represents the start point for a component
+lookup. Parent could be a</P>
+<UL>
+    <LI><P>root of control hierarchy (<CODE>Stage</CODE> or <CODE>Scene</CODE> in JavaFX)</P>
+    <LI><P>A container in the middle (such as <CODE>Frame</CODE> in AWT)</P>
+</UL>
+<P>from the lookup perspective, parent only is able to get an access
+to a <CODE>Lookup</CODE> imstance.</P>
+<H3 CLASS="western">Lookup</H3>
+<P>The search capabilities are presented by <CODE>Lookup</CODE>
+interface. Most importantly the interface defines methods to narrow
+the search with another search criteria and optionally control type,
+which (the methods) return an instance on the same interface. That
+allows to implement any number of search criteria. 
+</P>
+<P><I>Example:</I> 
+</P>
+<PRE>        button = ... .wrap(0);
+        frame.lookup(CoordinateLookup.leftOf(button)).
+        lookup(JTextField.class, new Any&lt;JTextField&gt;()).
+        ...;
+    </PRE><P>
+Besides that, the interface defines methods to get the control, to
+wrap it, to get the number of controls found, etc. . 
+</P>
+<H3 CLASS="western">AbstractLookup</H3>
+<P>This is an internal yet very important class. It implements
+creating the sub-lookups. This particular implementation does it in a
+way that the actual component hierarchy is not requested up until the
+moment it has to be. It's only when there is a question on the actual
+control list is asked, the hierarchy is explored. 
+</P>
+<P><I>Example.</I> This does not query the AWT hierarchy: 
+</P>
+<PRE>        import org.jemmy.awt.FrameOperator;
+        ...
+        FrameOperator frame = ...
+        Lookup&lt;JTextField&gt; lookup = frame.lookup(JTextField.class, new TrueLookup&lt;JTextField&gt;());
+    </PRE><P>
+These do: 
+</P>
+<PRE>        lookup.get(0);
+        lookup.wrap(0);
+        lookup.size();
+        lookup.wait(2);
+    </PRE><P>
+<CODE>AbstractLookup</CODE> does not implement the functionality of
+getting the control list, which is implemented by next two classes: 
+</P>
+<H3 CLASS="western">HierarchyLookup and PlainLookup</H3>
+<P>As it is clear from the names, these classes provide logic to deal
+with hierarchical control structure and plain control list,
+correspondentelly. Doing so, the implementation rely on two other
+interfaces which specific to the component library: <CODE>ControlHierarchy</CODE>
+and <CODE>ControlLookup</CODE>. 
+</P>
+<H2 CLASS="western">Accessing/wrapping the controls</H2>
+<P>Two methods <CODE>get(int)</CODE> and <CODE>wrap(int)</CODE> return
+the control itself and the wrapper of it. The type of the returned
+control is the <CODE>CONTROL</CODE> type parameter of <CODE>Lookup&lt;CONTROL&gt;</CODE>
+interface. Wrap type is <CODE>Wrap&lt;CONTROL&gt;</CODE>, hence
+there is no need to cast the results to get the control itself. There
+is no need to cast the wrapper either, but this is described in a
+separate document: <A HREF="interfaces.html">Jemmy control interfaces</A>
+</P>
+</BODY>
+</HTML>
+
