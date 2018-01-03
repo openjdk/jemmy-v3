@@ -21,73 +21,20 @@
  or visit www.oracle.com if you need additional information or have any
  questions.
  -->
-<project name="jemmy" default="compile" basedir=".">
-    <property name="src.dir" location="src"/>
-    <property name="test.dir" location="test"/>
-    <property name="build.dir" location="build"/>
-    <property name="build.classes.dir" location="${build.dir}/classes"/>
-    <property name="build.test.dir" location="${build.dir}/test"/>
-    <property name="dist.jar" location="${build.dir}/JemmyCore.jar"/>
-    <property name="test.list" location="${build.dir}/testlist"/>
-    <property name="test.workdir" location="${build.dir}/test_wd"/>
-    <property name="test.report" location="${build.dir}/test_report"/>
+<project name="jemmy-awt-input" default="compile" basedir=".">
+    <import file="${basedir}/../make/build_template.xml"/>
     <property name="core.jar" location="../JemmyCore/build/JemmyCore.jar"/>
-    <target name="timestamp" unless="buildnumber">
-        <tstamp>
-            <format property="buildnumber" pattern="yyyyMMdd"/>
-        </tstamp>
-    </target>
-    <target name="check-core">
+    <property name="version.file" value="org/jemmy/input/jemmy.properties"/>
+    <property name="version.class" value="org.jemmy.input.Version"/>
+    <property name="dependencies.classpath" value="${core.jar}"/>
+    <target name="check-dependecies-impl">
         <available file="${core.jar}" property="dependencies.are.built"/>
     </target>
-    <target name="build-dependencies" depends="check-core" unless="dependencies.are.built">
-        <ant dir="../JemmyCore" target="jar"/>
+    <target name="build-dependecies-impl">
+        <ant dir="${basedir}/../JemmyCore" target="jar" inheritAll="false"/>
     </target>
-    <target name="compile" depends="timestamp,build-dependencies">
-        <mkdir dir="${build.classes.dir}"/>
-        <javac srcdir="${src.dir}" classpath="${core.jar}" destdir="${build.classes.dir}" debug="on" includeantruntime="false"/>
-        <copy file="${src.dir}/org/jemmy/input/jemmy.properties" tofile="${build.classes.dir}/org/jemmy/input/jemmy.properties" filtering="on"/>
-        <echo message="build=${buildnumber}" file="${build.classes.dir}/org/jemmy/input/jemmy.properties" append="true"/>
-    </target>
-    <target name="compile-test" depends="compile">
-        <fail message="Please specify jtreg.home" unless="jtreg.home"/>
-        <mkdir dir="${build.test.dir}"/>
-        <javac srcdir="${test.dir}" destdir="${build.test.dir}" debug="on" includeantruntime="false"
-               classpath="${build.classes.dir}:${core.jar}:${jtreg.home}/lib/testng.jar"/>
-    </target>
-    <target name="find-tests" unless="tests">
-        <fileset id="testset" dir="${test.dir}">
-            <include name="**/*Test.java" />
-        </fileset>
-        <pathconvert pathsep="${line.separator}" property="testlist" refid="testset">
-            <globmapper from="${test.dir}/*" to="*"/>
-        </pathconvert>
-        <echo file="${test.list}">${testlist}</echo>
-        <property name="tests" value="@${test.list}"/>
-    </target>
-    <target name="test" depends="compile-test,find-tests">
-        <exec executable="${jtreg.home}/bin/jtreg">
-            <arg value="-cpa:${build.classes.dir}:${core.jar}"/>
-            <arg value="-w:${test.workdir}"/>
-            <arg value="-r:${test.report}"/>
-            <arg value="-conc:1"/>
-            <arg value="-ovm"/>
-            <arg value="-v:default"/>
-            <arg value="-dir:test"/>
-            <arg value="${tests}"/>
-        </exec>
-    </target>
-    <target name="jar" depends="compile">
-        <mkdir dir="${build.dir}"/>
-        <jar jarfile="${dist.jar}" basedir="${build.classes.dir}">
-            <manifest>
-                <attribute name="Main-Class"
-                    value="org.jemmy.input.Version"/>
-            </manifest>
-        </jar>
-    </target>
-    <target name="clean">
-        <delete dir="${build.dir}"/>
+    <target name="test-dependecies-impl">
+        <ant dir="${basedir}/../JemmyCore" target="test" inheritAll="false"/>
     </target>
 </project>
 

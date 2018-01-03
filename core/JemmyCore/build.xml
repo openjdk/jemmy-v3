@@ -21,67 +21,14 @@
  or visit www.oracle.com if you need additional information or have any
  questions.
  -->
-<project name="jemmy" default="compile" basedir=".">
-    <property name="src.dir" location="src"/>
-    <property name="test.dir" location="test"/>
-    <property name="build.dir" location="build"/>
-    <property name="build.classes.dir" location="${build.dir}/classes"/>
-    <property name="build.test.dir" location="${build.dir}/test"/>
-    <property name="dist.jar" location="${build.dir}/JemmyCore.jar"/>
-    <property name="test.list" location="${build.dir}/testlist"/>
-    <property name="test.workdir" location="${build.dir}/test_wd"/>
-    <property name="test.report" location="${build.dir}/test_report"/>
-    <target name="timestamp" unless="buildnumber">
-        <tstamp>
-            <format property="buildnumber" pattern="yyyyMMdd"/>
-        </tstamp>
-    </target>
-    <target name="compile" depends="timestamp">
-        <mkdir dir="${build.classes.dir}"/>
-        <javac srcdir="${src.dir}" destdir="${build.classes.dir}" debug="on" includeantruntime="false"/>
-        <copy file="${src.dir}/org/jemmy/jemmy.properties" tofile="${build.classes.dir}/org/jemmy/jemmy.properties" filtering="on"/>
-        <echo message="build=${buildnumber}" file="${build.classes.dir}/org/jemmy/jemmy.properties" append="true"/>
-    </target>
-    <target name="compile-test" depends="compile">
-        <fail message="Please specify jtreg.home" unless="jtreg.home"/>
-        <mkdir dir="${build.test.dir}"/>
-        <javac srcdir="${test.dir}" destdir="${build.test.dir}" debug="on" includeantruntime="false"
-               classpath="${build.classes.dir}:${jtreg.home}/lib/testng.jar"/>
-    </target>
-    <target name="find-tests" unless="tests">
-        <fileset id="testset" dir="${test.dir}">
-            <include name="**/*Test.java" />
-        </fileset>
-        <pathconvert pathsep="${line.separator}" property="testlist" refid="testset">
-            <globmapper from="${test.dir}/*" to="*"/>
-        </pathconvert>
-        <echo file="${test.list}">${testlist}</echo>
-        <property name="tests" value="@${test.list}"/>
-    </target>
-    <target name="test" depends="compile-test,find-tests">
-        <exec executable="${jtreg.home}/bin/jtreg">
-            <arg value="-cpa:${build.classes.dir}"/>
-            <arg value="-w:${test.workdir}"/>
-            <arg value="-r:${test.report}"/>
-            <arg value="-conc:1"/>
-            <arg value="-ovm"/>
-            <arg value="-v:default"/>
-            <arg value="-dir:test"/>
-            <arg value="${tests}"/>
-        </exec>
-    </target>
-    <target name="jar" depends="compile">
-        <mkdir dir="${build.dir}"/>
-        <jar jarfile="${dist.jar}" basedir="${build.classes.dir}">
-            <manifest>
-                <attribute name="Main-Class"
-                    value="org.jemmy.Version"/>
-            </manifest>
-        </jar>
-    </target>
-    <target name="clean">
-        <delete dir="${build.dir}"/>
-    </target>
+<project name="jemmy-core" default="compile" basedir=".">
+    <import file="${basedir}/../make/build_template.xml"/>
+    <property name="version.file" value="org/jemmy/jemmy.properties"/>
+    <property name="version.class" value="org.jemmy.Version"/>
+    <property name="dependencies.classpath" value=""/>
+    <target name="check-dependecies-impl"/>
+    <target name="build-dependecies-impl"/>
+    <target name="test-dependecies-impl"/>
 </project>
 
 
