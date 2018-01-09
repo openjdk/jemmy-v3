@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/awt-input/awt-input.iml" filepath="$PROJECT_DIR$/awt-input/awt-input.iml" />
+      <module fileurl="file://$PROJECT_DIR$/browser/browser.iml" filepath="$PROJECT_DIR$/browser/browser.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
     </modules>
   </component>
