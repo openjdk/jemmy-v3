@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../JemmySWT/src">
+      <sourceFolder url="file://$MODULE_DIR$/../../../JemmySWT/src" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../JemmySWT/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../../JemmySWT/test" isTestSource="true" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="TEST" name="testng" level="application" />
+    <orderEntry type="library" name="JemmyAWTInput" level="project" />
+    <orderEntry type="library" name="JemmyBrowser" level="project" />
+    <orderEntry type="library" name="JemmyCore" level="project" />
+    <orderEntry type="library" name="swt:swt-macosx:3.0m7" level="project" />
+  </component>
+</module>

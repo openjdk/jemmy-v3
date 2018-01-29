@@ -22,7 +22,7 @@
  questions.
  -->
 <project name="jemmy-core" default="compile" basedir=".">
-    <import file="${basedir}/../make/build_template.xml"/>
+    <import file="${basedir}/../../make/build_template.xml"/>
     <property name="version.file" value="org/jemmy/jemmy.properties"/>
     <property name="version.class" value="org.jemmy.Version"/>
     <property name="dependencies.classpath" value=""/>

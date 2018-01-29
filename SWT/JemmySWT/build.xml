@@ -23,18 +23,25 @@
  -->
 <project name="jemmy-browser" default="compile" basedir=".">
     <import file="${basedir}/../../make/build_template.xml"/>
-    <property name="core.jar" location="../JemmyCore/build/JemmyCore.jar"/>
-    <property name="version.file" value="org/jemmy/browser/jemmy.properties"/>
-    <property name="version.class" value="org.jemmy.browser.Version"/>
-    <property name="dependencies.classpath" value="${core.jar}"/>
+    <property name="core.jar" location="../../core/JemmyCore/build/JemmyCore.jar"/>
+    <property name="awt_input.jar" location="../../core/JemmyAWTInput/build/JemmyAWTInput.jar"/>
+    <property name="browser.jar" location="../../core/JemmyBrowser/build/JemmyBrowser.jar"/>
+    <property name="version.file" value="org/jemmy/swt/jemmy.properties"/>
+    <property name="version.class" value="org.jemmy.swt.Version"/>
+    <property name="dependencies.classpath" value="${core.jar}:${browser.jar}:${awt_input.jar}:${swt.jar}"/>
     <target name="check-dependecies-impl">
-        <available file="${core.jar}" property="dependencies.are.built"/>
+        <fail message="Please specify swt.jar" unless="swt.jar"/>
+        <available file="${browser.jar}" property="dependencies.are.built"/>
     </target>
     <target name="build-dependecies-impl">
-        <ant dir="${basedir}/../JemmyCore" target="jar" inheritAll="false"/>
+        <ant dir="${basedir}/../../core/JemmyCore" target="jar" inheritAll="false"/>
+        <ant dir="${basedir}/../../core/JemmyAWTInput" target="jar" inheritAll="false"/>
+        <ant dir="${basedir}/../../core/JemmyBrowser" target="jar" inheritAll="false"/>
     </target>
     <target name="test-dependecies-impl">
-        <ant dir="${basedir}/../JemmyCore" target="test" inheritAll="false"/>
+        <ant dir="${basedir}/../../core/JemmyCore" target="test" inheritAll="false"/>
+        <ant dir="${basedir}/../../core/JemmyAWTInput" target="test" inheritAll="false"/>
+        <ant dir="${basedir}/../../core/JemmyBrowser" target="test" inheritAll="false"/>
     </target>
 </project>
 
