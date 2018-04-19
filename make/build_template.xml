@@ -45,7 +45,7 @@
         <mkdir dir="${build.classes.dir}"/>
         <javac srcdir="${src.dir}" classpath="${dependencies.classpath}" destdir="${build.classes.dir}" debug="on" includeantruntime="false"/>
         <copy file="${src.dir}/${version.file}" tofile="${build.classes.dir}/${version.file}"/>
-        <echo message="build=${buildnumber}" file="${build.classes.dir}/${version.file}" append="true"/>
+        <replaceregexp file="${build.classes.dir}/${version.file}" match="\$\{buildnumber\}" replace="${buildnumber}" byline="true"/>
     </target>
     <target name="compile-test" depends="compile">
         <fail message="Please specify jtreg.home" unless="jtreg.home"/>
