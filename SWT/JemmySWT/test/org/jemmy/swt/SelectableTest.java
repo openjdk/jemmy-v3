@@ -29,6 +29,7 @@ import org.jemmy.interfaces.Selectable;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.Control;
 import org.jemmy.interfaces.Parent;
+import org.jemmy.control.Wrap;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;

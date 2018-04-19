@@ -172,7 +172,7 @@ public class Items {
         btn.addSelectionListener(new SelectionListener() {
 
             public void widgetSelected(SelectionEvent arg0) {
-                lbl.setText("Now type some new text");
+                lbl.setText("Now type some new text, please");
             }
 
             public void widgetDefaultSelected(SelectionEvent arg0) {

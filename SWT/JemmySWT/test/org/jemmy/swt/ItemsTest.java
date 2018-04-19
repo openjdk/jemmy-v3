@@ -36,6 +36,8 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.jemmy.control.Wrap;
 import org.jemmy.interfaces.Keyboard.KeyboardButtons;
 import org.jemmy.interfaces.Parent;
+import org.jemmy.swt.lookup.ByTextItem;
+import org.jemmy.swt.lookup.ByItemLookup;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;

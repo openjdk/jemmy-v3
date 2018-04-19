@@ -33,6 +33,9 @@ import org.jemmy.control.Wrap;
 import org.jemmy.input.SelectionText;
 import org.jemmy.interfaces.Parent;
 import org.jemmy.interfaces.Selectable;
+import org.jemmy.swt.lookup.ByName;
+import org.jemmy.swt.lookup.CoordinateLookup;
+import org.jemmy.swt.lookup.ByTextTextLookup;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -84,25 +87,25 @@ public class PushButtonTest {
     @Test
     public void push() throws InterruptedException {
         Wrap<? extends Text> field = buttonsParent.
-                lookup(Text.class, new ByTextTextLookup<Text>("button")).
+                lookup(Text.class, new ByTextTextLookup<Text>("please")).
                 wrap();
         buttonsParent.lookup().
                 lookup(Button.class).
                 wrap().mouse().click();
         field.getEnvironment().setTimeout(Wrap.WAIT_STATE_TIMEOUT, 20000);
-        field.waitProperty(Wrap.TEXT_PROP_NAME, "Now type some new text");
+        field.waitProperty(Wrap.TEXT_PROP_NAME, "Now type some new text, please");
     }
 
     @Test
     public void type() throws InterruptedException {
         Wrap<? extends Text> field = buttonsParent.
-                lookup(Text.class, new ByTextTextLookup<Text>("click the button")).
+                lookup(Text.class, new ByTextTextLookup<Text>("please")).
                 wrap();
         SelectionText text = field.as(SelectionText.class);
         text.clear();
         text.type("Now press the field");
         text.select("field");
-        text.type("button again");
+        text.type("button again, please");
         assertTrue(field.as(org.jemmy.interfaces.Text.class).text().
                 contains("again"));
     }
@@ -129,7 +132,7 @@ public class PushButtonTest {
     public void coordinatesLookup() throws InterruptedException {
         Wrap<? extends Button> btt = buttonsParent.lookup(Button.class).wrap();
         //find text field to the left
-        buttonsParent.lookup(Text.class, new CoordinateLookup<Text>(btt, false, -1, 0)).wait(1);
+        buttonsParent.lookup(Text.class, new CoordinateLookup<Text>(btt, true, -1, 0)).wait(1);
         //find combo to the right
         buttonsParent.lookup(Combo.class, new CoordinateLookup<Combo>(btt, false , 1, 0)).wait(1);
         //find list
