@@ -43,18 +43,10 @@ public abstract class Screen extends ScreenRectangle {
      */
     public static Screen SCREEN = null;
 
-    /**
-     *
-     * @param SCREEN
-     */
     public static void setSCREEN(Screen SCREEN) {
         Screen.SCREEN = SCREEN;
     }
 
-    /**
-     *
-     * @param env
-     */
     protected Screen(Environment env) {
         super(env, null);
     }

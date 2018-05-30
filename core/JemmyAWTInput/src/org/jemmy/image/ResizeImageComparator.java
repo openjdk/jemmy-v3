@@ -37,31 +37,40 @@ import org.jemmy.image.pixel.ResizeComparator;
  * Comparator that makes image sizes equal to compare them with other comparator
  * most of them work only for the images with equal dimensions.
  *
- * It is controlled by three parameters: <li>Resize Mode - defines way of
- * resizing images that are being compared. One of the following constants: <ul> <li>{@linkplain ResizeMode#NO_RESIZE NO_RESIZE},</li> <li>{@linkplain ResizeMode#PROPORTIONAL_RESIZE PROPORTIONAL_RESIZE},</li> <li>{@linkplain ResizeMode#ARBITRARY_RESIZE ARBITRARY_RESIZE}.</li></ul>
- * Default value is {@linkplain ResizeMode#PROPORTIONAL_RESIZE}.</li> <li>Resize
- * Hint - defines the way of images scaling that is specified when {@linkplain java.awt.Image#getScaledInstance(int, int, int)
- * Image.getScaledInstance()} method is invoked. One of the Image.SCALE_XXX is
- * expected. Default value is
- * {@linkplain java.awt.Image#SCALE_DEFAULT SCALE_DEFAULT}.</li> <li>Proportion
- * Distortion Threshold - defines maximum proportion distortion that is used in {@linkplain ResizeMode#PROPORTIONAL_RESIZE
- * PROPORTIONAL_RESIZE} mode to deal with cases when rounding and other problems
- * could cause sizes to be not ideally proportional.<p/>
+ * It is controlled by three parameters:
+ * <p>
+ * Resize Mode - defines way of resizing images that are being compared. One of the following constants:
+ * <ul>
+*     <li>{@linkplain ResizeMode#NO_RESIZE NO_RESIZE},</li>
+*     <li>{@linkplain ResizeMode#PROPORTIONAL_RESIZE PROPORTIONAL_RESIZE},</li>
+*     <li>{@linkplain ResizeMode#ARBITRARY_RESIZE ARBITRARY_RESIZE}.</li>
+ * </ul>
+ *
+ * Default value is {@linkplain ResizeMode#PROPORTIONAL_RESIZE}.
+ * <ul>
+ * <li>Resize Hint - defines the way of images scaling that is specified when
+ * {@linkplain java.awt.Image#getScaledInstance(int, int, int) Image.getScaledInstance()} method is invoked.
+ * One of the Image.SCALE_XXX is expected. Default value is {@linkplain java.awt.Image#SCALE_DEFAULT SCALE_DEFAULT}.</li>
+ * <li>Proportion Distortion Threshold - defines maximum proportion distortion that is used in
+ * {@linkplain ResizeMode#PROPORTIONAL_RESIZE PROPORTIONAL_RESIZE} mode to deal with cases when rounding and other
+ * problems could cause sizes to be not ideally proportional.
+ * <p>
  * Threshold value is applied in the following way: {@code Math.abs(image.getSize() * scale
  * - size) / image.getSize() > PROPORTION_DISTORTION_THRESHOLD}, where {@code image.getSize()}
  * is both image dimensions and {@code size} is target width and height (which
  * is defined as mininum of sizes of two images) and scale is the scale factor
  * that scales the particular image to fit the width and height.
- * <p/>
+ * <p>
  * Default value is 0.02 so as much as 2% of width/height could differ (around 5
  * in 0-255 color component values).</li>
+ * </ul>
  *
  * @author mrkam
  */
 public class ResizeImageComparator extends ResizeComparator {
 
     /**
-     * Indentifies output where resize details are printed. Output is disabled
+     * Identifies output where resize details are printed. Output is disabled
      * by default.
      *
      * @see Environment#getOutput(java.lang.String)
@@ -79,12 +88,8 @@ public class ResizeImageComparator extends ResizeComparator {
     /**
      * Resize Modes
      *
-     * @see
-     * #ResizeImageComparator(org.jemmy.image.ResizeImageComparator.ResizeMode,
-     * org.jemmy.image.ImageComparator)
-     * @see
-     * #ResizeImageComparator(org.jemmy.image.ResizeImageComparator.ResizeMode,
-     * int, double, org.jemmy.image.ImageComparator)
+     * @see ResizeImageComparator#ResizeImageComparator(ResizeMode, ImageComparator)
+     * @see ResizeImageComparator#ResizeImageComparator(ResizeMode, double, int, ImageComparator)
      */
     public static enum ResizeMode {
 
@@ -98,9 +103,7 @@ public class ResizeImageComparator extends ResizeComparator {
          * If images have different proportions no resize is done and original
          * images are compared.
          *
-         * @see
-         * #ResizeImageComparator(org.jemmy.image.ResizeImageComparator.ResizeMode,
-         * int, double, org.jemmy.image.ImageComparator)
+         * @see ResizeImageComparator#ResizeImageComparator(ResizeMode, ImageComparator)
          */
         PROPORTIONAL_RESIZE,
         /**
@@ -111,9 +114,12 @@ public class ResizeImageComparator extends ResizeComparator {
     }
 
     /**
-     * Creates ResizeImageComparator with default resize settings: <li>resize
-     * mode: {@linkplain ResizeMode#PROPORTIONAL_RESIZE ResizeMode.PROPORTIONAL_RESIZE}.</li>
-     * <li>proportion distortion threshold: 0.02.</li> <li>resize hint: {@linkplain java.awt.Image#SCALE_DEFAULT Image.SCALE_DEFAULT}.</li>
+     * Creates ResizeImageComparator with default resize settings:
+     * <ul>
+     * <li>resize mode: {@linkplain ResizeMode#PROPORTIONAL_RESIZE ResizeMode.PROPORTIONAL_RESIZE}.</li>
+     * <li>proportion distortion threshold: 0.02.</li>
+     * <li>resize hint: {@linkplain java.awt.Image#SCALE_DEFAULT Image.SCALE_DEFAULT}.</li>
+     * </ul>
      *
      * @param subComparator comparator to compare images after resize.
      * @see java.awt.Image#getScaledInstance(int, int, int)
@@ -129,8 +135,11 @@ public class ResizeImageComparator extends ResizeComparator {
 
     /**
      * Creates ResizeImageComparator with the specified resize mode and default
-     * settings for other parameters: <li>proportion distortion threshold:
-     * 0.02.</li> <li>resize hint: {@linkplain java.awt.Image#SCALE_DEFAULT Image.SCALE_DEFAULT}.</li>
+     * settings for other parameters:
+     * <ul>
+     * <li>proportion distortion threshold: 0.02.</li>
+     * <li>resize hint: {@linkplain java.awt.Image#SCALE_DEFAULT Image.SCALE_DEFAULT}.</li>
+     * </ul>
      *
      * @param resizeMode resize mode for this comparator.
      * @param subComparator comparator to compare images after resize.
@@ -144,9 +153,12 @@ public class ResizeImageComparator extends ResizeComparator {
     }
 
     /**
-     * Creates ResizeImageComparator with the following settings: <li>resize
-     * mode: {@linkplain ResizeMode#PROPORTIONAL_RESIZE ResizeMode.PROPORTIONAL_RESIZE}.</li>
-     * <li>specified proportion distortion threshold.</li> <li>resize hint: {@linkplain java.awt.Image#SCALE_DEFAULT Image.SCALE_DEFAULT}.</li>
+     * Creates ResizeImageComparator with the following settings:
+     * <ul>
+     * <li>resize mode: {@linkplain ResizeMode#PROPORTIONAL_RESIZE ResizeMode.PROPORTIONAL_RESIZE}.</li>
+     * <li>specified proportion distortion threshold.</li>
+     * <li>resize hint: {@linkplain java.awt.Image#SCALE_DEFAULT Image.SCALE_DEFAULT}.</li>
+     * </ul>
      *
      * @param propDistThreshold proportion distortion threshold.
      * @param subComparator comparator to compare images after resize.

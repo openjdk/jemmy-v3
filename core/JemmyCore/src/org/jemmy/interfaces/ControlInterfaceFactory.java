@@ -47,7 +47,7 @@ public interface ControlInterfaceFactory {
     /**
      *
      * Instantiates interface.
-     * @param <TYPE>
+     * @param <TYPE> todo document
      * @param <INTERFACE> ControlInterface type
      * @param control control to provide the interface for
      * @param interfaceClass ControlInterface type

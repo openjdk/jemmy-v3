@@ -28,7 +28,7 @@ package org.jemmy.image;
 /**
  * Interface for all classes performing image comparison.
  *
- * @author Alexandre Iline (alexandre.iline@sun.com)
+ * @author shura
  */
 public interface ImageComparator {
 
@@ -43,7 +43,7 @@ public interface ImageComparator {
     /**
      * A string qualifying an image comparison algorithm. To be used in logs and
      * tools.
-     * @return
+     * @return todo document
      */
     public String getID();
 }

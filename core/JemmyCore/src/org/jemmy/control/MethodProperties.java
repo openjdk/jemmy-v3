@@ -45,16 +45,16 @@ import java.lang.annotation.Target;
 @Documented
 public @interface MethodProperties {
     /**
-     * List of method names
+     * @return list of method names
      */
     String[] value();
     /**
-     * List of field types. In case this list is shorter, all the unmatched ones
+     * @return list of field types. In case this list is shorter, all the unmatched ones
      * from <code>value</code> are considered to be of type <code>Object</code>.
      */
     Class[] types() default {};
     /**
-     * Are the properties worth a waiter.
+     * @return are the properties worth a waiter.
      */
     boolean[] waitable() default {};
 }

@@ -31,8 +31,6 @@ import org.jemmy.env.Environment;
 import org.jemmy.interfaces.Parent;
 
 /**
- *
- * @param <T>
  * @author shura
  */
 public class ParentImpl<T> extends AbstractParent<T> {
@@ -43,22 +41,10 @@ public class ParentImpl<T> extends AbstractParent<T> {
     private Environment env;
     private Wrapper wrapper;
 
-    /**
-     *
-     * @param env
-     * @param type
-     * @param ch
-     */
     public ParentImpl(Environment env, Class<T> type, ControlHierarchy ch) {
         this(env, type, ch, Wrap.getWrapper());
     }
-    /**
-     *
-     * @param env
-     * @param type
-     * @param ch
-     * @param wrapper
-     */
+
     public ParentImpl(Environment env, Class<T> type, ControlHierarchy ch, Wrapper wrapper) {
         this.type = type;
         this.ch = ch;
@@ -66,22 +52,10 @@ public class ParentImpl<T> extends AbstractParent<T> {
         this.wrapper = wrapper;
     }
 
-    /**
-     *
-     * @param env
-     * @param type
-     * @param cl
-     */
     public ParentImpl(Environment env, Class<T> type, ControlList cl) {
         this(env, type, cl, Wrap.getWrapper());
     }
-    /**
-     *
-     * @param env
-     * @param type
-     * @param cl
-     * @param wrapper
-     */
+
     public ParentImpl(Environment env, Class<T> type, ControlList cl, Wrapper wrapper) {
         this.type = type;
         this.cl = cl;

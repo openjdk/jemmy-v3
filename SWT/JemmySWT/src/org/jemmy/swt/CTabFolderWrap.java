@@ -42,8 +42,8 @@ import org.jemmy.lookup.Lookup;
 
 /**
  *
- * @author shura, erikgreijus
- * @param <T>
+ * @author shura
+ * @author erikgreijus
  */
 @ControlType(CTabFolder.class)
 public class CTabFolderWrap<T extends CTabFolder> extends ControlWrap<T> implements Selectable<String> {

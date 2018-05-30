@@ -32,21 +32,11 @@ import org.jemmy.Dimension;
  */
 public class AverageDistanceComparator extends ThresholdComparator {
 
-    /**
-     *
-     * @param threshold
-     */
     public AverageDistanceComparator(double threshold) {
         super(0, Math.sqrt(3));
         setThreshold(threshold);
     }
 
-    /**
-     *
-     * @param image1
-     * @param image2
-     * @return
-     */
     public boolean compare(Raster image1, Raster image2) {
         Dimension size = PixelImageComparator.computeDiffSize(image1, image2);
         if (size == null) {
@@ -69,6 +59,7 @@ public class AverageDistanceComparator extends ThresholdComparator {
     public static final Raster.Component[] DISTANCE_COMPONENTS = {
         Raster.Component.RED, Raster.Component.BLUE, Raster.Component.GREEN
     };
+
     static double distance(Raster.Component[] comps1, double[] colors1, Raster.Component[] comps2, double[] colors2) {
         double res = 0;
         double diff;
@@ -80,10 +71,6 @@ public class AverageDistanceComparator extends ThresholdComparator {
         return Math.sqrt(res);
     }
 
-    /**
-     *
-     * @return
-     */
     public String getID() {
         return AverageDistanceComparator.class.getName() + ":" + getThreshold();
     }

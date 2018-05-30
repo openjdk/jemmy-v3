@@ -59,9 +59,6 @@ public abstract class AbstractExecutor implements ActionExecutor {
     public static final String QUEUE_ACTION_OUTPUT = "org.jemmy.action.AbstractExecutor.QUEUE_ACTION_OUTPUT";
     private ActionQueue queue;
 
-    /**
-     *
-     */
     public AbstractExecutor() {
         queue = new ActionQueue();
     }
@@ -72,21 +69,18 @@ public abstract class AbstractExecutor implements ActionExecutor {
         Environment.getEnvironment().initOutput(NON_QUEUE_ACTION_OUTPUT, TestOut.getNullOutput());
     }
 
-    /**
-     *
-     * @return
-     */
     protected int actionsInQueue() {
         return queue.actionsInQueue();
     }
 
     /**
      * {@inheritDoc }
+     *
      * Prints out what action is executed into output
      * specified by either NON_QUEUE_ACTION_OUTPUT or QUEUE_ACTION_OUTPUT
      * depending whether the action is called on queue or not. No output provided for
      * nested actions - only the top level ones are printed.
-     * @see TestOut#getOutput(java.lang.String)
+     * @see TestOut#getOutput()
      */
     public final void execute(Environment env, boolean dispatch, final Action action, Object... parameters) {
         printStrace(env, "Action: ", action);
@@ -104,11 +98,12 @@ public abstract class AbstractExecutor implements ActionExecutor {
 
     /**
      * {@inheritDoc }
+     *
      * Prints out what action is executed into output
      * specified by either NON_QUEUE_ACTION_OUTPUT or QUEUE_ACTION_OUTPUT
      * depending whether the action is called on queue or not. No output provided for
      * nested actions - only the top level ones are printed.
-     * @see TestOut#getOutput(java.lang.String)
+     * @see TestOut#getOutput()
      */
     public final void executeDetached(Environment env, boolean dispatch, final Action action, final Object... parameters) {
         printStrace(env, "Action detached: ", action);

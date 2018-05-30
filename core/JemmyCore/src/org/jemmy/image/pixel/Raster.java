@@ -32,47 +32,27 @@ import org.jemmy.Dimension;
  */
 public interface Raster {
 
-    /**
-     *
-     */
     public enum Component {
-
-        /**
-         *
-         */
         RED,
-        /**
-         *
-         */
         GREEN,
-        /**
-         *
-         */
         BLUE,
-        /**
-         *
-         */
         ALPHA;
     };
 
-    /**
-     *
-     * @return
-     */
     public Dimension getSize();
 
     /**
      * Supposed to write pixel component value in the RGBA order.
-     * @param x
-     * @param y
-     * @param colors
+     * @param x todo document
+     * @param y todo document
+     * @param colors todo document
      */
     public void getColors(int x, int y, double[] colors);
 
     /**
      * Returns a list of supported components.
      *
-     * @return
+     * @return todo document
      */
     public Component[] getSupported();
 

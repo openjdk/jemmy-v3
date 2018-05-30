@@ -37,14 +37,9 @@ public interface ControlHierarchy extends ControlList {
      * List could contain any type of objects - not just <code>CONTROL</code>.
      * @param subParent - one of the elements in the hierarchy reflected by this lookup.
      * If null passed - first level children are expected.
-     * @return
+     * @return list of child control objects
      */
     public List<?> getChildren(Object subParent);
 
-    /**
-     *
-     * @param child
-     * @return
-     */
     public Object getParent(Object child);
 }

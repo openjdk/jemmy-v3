@@ -29,27 +29,14 @@ import org.jemmy.image.Image;
 import org.jemmy.image.pixel.Raster.Component;
 
 /**
- *
  * @author shura
  */
 public class PixelEqualityRasterComparator extends BaseCountingRasterComparator {
 
-    /**
-     *
-     * @param treshold
-     */
     public PixelEqualityRasterComparator(double treshold) {
         super(treshold);
     }
 
-    /**
-     *
-     * @param comps1
-     * @param colors1
-     * @param comps2
-     * @param colors2
-     * @return
-     */
     @Override
     protected boolean compare(Raster.Component[] comps1, double[] colors1,
             Raster.Component[] comps2, double[] colors2) {
@@ -65,10 +52,6 @@ public class PixelEqualityRasterComparator extends BaseCountingRasterComparator 
         }
     }
 
-    /**
-     *
-     * @return
-     */
     public String getID() {
         return PixelEqualityRasterComparator.class.getName() + ":" + getThreshold();
     }

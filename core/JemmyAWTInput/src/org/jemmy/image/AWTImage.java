@@ -36,14 +36,10 @@ import org.jemmy.image.pixel.*;
 
 
 /**
- *
  * @author shura
  */
 public class AWTImage implements Image, WriteableRaster {
 
-    /**
-     *
-     */
     public static final String OUTPUT = AWTImage.class.getName() + ".OUTPUT";
     public static final String PNG_FILE = ".png";
 
@@ -89,7 +85,7 @@ public class AWTImage implements Image, WriteableRaster {
      * @see Wrap#waitImage(org.jemmy.image.Image, java.lang.String,
      * java.lang.String)
      * @see ImageComparator
-     * @param comparator
+     * @param comparator todo document
      */
     public static void setComparator(ImageComparator comparator) {
         Environment.getEnvironment().setProperty(ImageComparator.class, comparator);
@@ -103,11 +99,6 @@ public class AWTImage implements Image, WriteableRaster {
 
     private BufferedImage image;
 
-    /**
-     * Creates an instance
-     *
-     * @param img
-     */
     public AWTImage(BufferedImage img) {
         this.image = img;
     }
@@ -120,7 +111,7 @@ public class AWTImage implements Image, WriteableRaster {
      * Compares using current comparator.
      *
      * @see AWTImage#getComparator()
-     * @param img
+     * @param img todo document
      * @return diff image.
      */
     public Image compareTo(Image img) {

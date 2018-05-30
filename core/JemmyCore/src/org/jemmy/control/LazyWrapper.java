@@ -40,22 +40,13 @@ public class LazyWrapper extends AbstractWrapper {
 
     private final HashMap<String, String> theWrappers = new HashMap<String, String>();
     private final ClassLoader loader;
-    /**
-     *
-     * @param env
-     */
-    @SuppressWarnings("unchecked")
+
     public LazyWrapper(ClassLoader loader, Environment env) {
         super(env);
         this.loader = loader;
     }
 
-    /**
-     *
-     * @param <P>
-     * @param controlClass
-     * @param wrapperClass
-     */
+
     public <P> void add(String controlClass, String wrapperClass) {
         theWrappers.put(controlClass, wrapperClass);
     }

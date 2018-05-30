@@ -32,33 +32,18 @@ import org.jemmy.env.Environment;
 
 /**
  * TODO: JavaDoc, class rename, arguments rename
- * @param <CONTROL>
+ *
  * @author shura
  */
 public class PlainLookup<CONTROL> extends AbstractLookup<CONTROL> {
 
     ControlList hierarchy;
 
-    /**
-     *
-     * @param env
-     * @param hierarchy
-     * @param wrapper
-     * @param controlClass
-     * @param criteria
-     */
     public PlainLookup(Environment env, ControlList hierarchy, Wrapper wrapper, Class<CONTROL> controlClass, LookupCriteria<CONTROL> criteria) {
         super(env, controlClass, criteria, wrapper);
         this.hierarchy = hierarchy;
     }
 
-    /**
-     *
-     * @param env
-     * @param hierarchy
-     * @param controlClass
-     * @param criteria
-     */
     public PlainLookup(Environment env, ControlList hierarchy, Class<CONTROL> controlClass, LookupCriteria<CONTROL> criteria) {
         this(env, hierarchy, Wrap.getWrapper(), controlClass, criteria);
     }
@@ -72,11 +57,6 @@ public class PlainLookup<CONTROL> extends AbstractLookup<CONTROL> {
         }
     }
 
-    /**
-     *
-     * @param out
-     * @param lookup
-     */
     @Override
     protected void dump(PrintStream out, Lookup<? extends CONTROL> lookup) {
         for (int i = 0; i < lookup.size(); i++) {

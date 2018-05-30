@@ -30,6 +30,8 @@ import org.jemmy.interfaces.Focus;
 
 /**
  * Simple Focus implementation which clicks on a control to give focus.
+ * @param <CONTROL> the control type
+ *
  * @author shura
  */
 public class ClickFocus<CONTROL> implements Focus {
@@ -38,10 +40,10 @@ public class ClickFocus<CONTROL> implements Focus {
     Point clickPoint;
 
     /**
-     *
      * @param topControl a control to click on. Node that this could be
      * a control itself (the one we're giving the focus to) or a subcontrol
      * of it.
+     * @param  clickPoint the point to click
      */
     public ClickFocus(Wrap<? extends CONTROL> topControl, Point clickPoint) {
         this.topControl = topControl;
@@ -57,7 +59,7 @@ public class ClickFocus<CONTROL> implements Focus {
     }
 
     /**
-     * @{@inheritDoc}
+     * {@inheritDoc}
      */
     public void focus() {
         if (clickPoint == null) {

@@ -36,7 +36,7 @@ public interface Label extends ControlInterface {
     /**
      * Returns the currently displayed text.
      * TODO: Wrap.waitText
-     * @return
+     * @return the currently displayed text
      */
     @Property(Wrap.TEXT_PROP_NAME)
     public String text();

@@ -37,19 +37,10 @@ import org.jemmy.env.Environment;
  */
 public class ScreenRectangle extends Wrap<Rectangle> {
 
-    /**
-     *
-     * @param env
-     * @param rect
-     */
     public ScreenRectangle(Environment env, Rectangle rect) {
         super(env, rect);
     }
 
-    /**
-     *
-     * @return
-     */
     public Rectangle getScreenBounds() {
         return getControl();
     }

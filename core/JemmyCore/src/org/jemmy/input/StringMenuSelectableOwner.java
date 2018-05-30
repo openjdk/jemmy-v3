@@ -31,7 +31,7 @@ import org.jemmy.lookup.LookupCriteria;
 /**
  *
  * @author erikgreijus
- * @param <T>
+ * @param <T> todo document
  */
 public abstract class StringMenuSelectableOwner<T> extends StringMenuOwner<T> implements MenuSelectableOwner<T> {
 

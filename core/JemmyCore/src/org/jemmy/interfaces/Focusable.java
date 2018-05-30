@@ -32,10 +32,7 @@ import org.jemmy.dock.Shortcut;
  * @author shura
  */
 public interface Focusable extends ControlInterface {
-    /**
-     *
-     * @return
-     */
+
     @Shortcut
     public Focus focuser();
 }

@@ -30,7 +30,7 @@ import org.jemmy.lookup.LookupCriteria;
 /**
  * Represents a hierarchical structure (hence extending TreeSelector) in which
  * elements not only could be selected but also "pushes", which is an action
- * typically performed with menu.<br/>
+ * typically performed with menu.
  * @author shura
  * @see MenuOwner
  */

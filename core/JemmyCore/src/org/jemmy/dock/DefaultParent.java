@@ -42,7 +42,7 @@ import org.jemmy.interfaces.Parent;
 @Documented
 public @interface DefaultParent {
     /**
-     * Description of a parent represented by the annotated method.
+     * @return description of a parent represented by the annotated method.
      */
     String value();
 }

@@ -45,7 +45,7 @@ public @interface As {
      * This should point out what is the encapsulated type for
      * <code>TypeControlInterface</code>
      * @see TypeControlInterface
-     * @return
+     * @return todo document
      */
     Class value() default Void.class;
 }

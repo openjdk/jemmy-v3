@@ -109,10 +109,6 @@ public class Timeout extends Object implements Cloneable {
         }
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         return "Timeout [" + name + ", " + value + "]";

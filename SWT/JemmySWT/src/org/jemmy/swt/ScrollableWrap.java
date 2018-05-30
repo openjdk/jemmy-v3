@@ -34,7 +34,6 @@ import org.jemmy.env.Environment;
  * Base wrapper for scrollable controls such as Table and Tree
  *
  * @author erikgreijus
- * @param <T>
  */
 @ControlType(Scrollable.class)
 public class ScrollableWrap<T extends Scrollable> extends ControlWrap<T> {

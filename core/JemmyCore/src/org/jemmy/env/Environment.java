@@ -43,14 +43,9 @@ import org.jemmy.interfaces.ControlInterfaceFactory;
 import org.jemmy.timing.Waiter;
 
 /**
- *
  * @author shura, mrkam, erikgreijus
  */
 public class Environment {
-
-    /**
-     *
-     */
     public static final String JEMMY_PROPERTIES_FILE_PROPERTY = "jemmy.properties";
     public static final String TIMEOUTS_FILE_PROPERTY = "timeouts";
     /**
@@ -59,10 +54,6 @@ public class Environment {
     public static final String OUTPUT = Environment.class.getName() + ".OUTPUT";
     private final static Environment env = new Environment(null);
 
-    /**
-     *
-     * @return
-     */
     public static Environment getEnvironment() {
         return env;
     }
@@ -74,10 +65,6 @@ public class Environment {
     private HashMap<PropertyKey, Object> environment = new HashMap<PropertyKey, Object>();
     private Environment parent;
 
-    /**
-     *
-     * @param parent
-     */
     public Environment(Environment parent) {
         this.parent = parent;
         environment = new HashMap<PropertyKey, Object>();
@@ -86,25 +73,14 @@ public class Environment {
         }
     }
 
-    /**
-     *
-     */
     public Environment() {
         this(getEnvironment());
     }
 
-    /**
-     *
-     * @return
-     */
     public Environment getParentEnvironment() {
         return parent;
     }
 
-    /**
-     *
-     * @param parent
-     */
     public void setParentEnvironment(Environment parent) {
         this.parent = parent;
     }
@@ -151,11 +127,6 @@ public class Environment {
         }
     }
 
-    /**
-     *
-     * @param cls
-     * @return
-     */
     public List<?> get(Class cls) {
         Set<PropertyKey> all = environment.keySet();
         ArrayList<Object> result = new ArrayList<Object>();
@@ -167,19 +138,10 @@ public class Environment {
         return result;
     }
 
-    /**
-     *
-     * @param defaultExecutor
-     * @return
-     */
     public ActionExecutor setExecutor(ActionExecutor defaultExecutor) {
         return (ActionExecutor) setProperty(ActionExecutor.class, defaultExecutor);
     }
 
-    /**
-     *
-     * @return
-     */
     public ActionExecutor getExecutor() {
         ActionExecutor res = (ActionExecutor) getProperty(ActionExecutor.class);
         if (res == null) {
@@ -225,72 +187,46 @@ public class Environment {
     }
 
     /**
-     *
-     * @param <T>
-     * @param cls
+     * @param <T> todo document
+     * @param cls todo document
      * @param obj if null then property is removed
-     * @return
+     * @return todo document
      */
     public <T> T setProperty(Class<T> cls, T obj) {
         return setProperty(cls, null, obj);
     }
 
     /**
-     *
-     * @param <T>
-     * @param cls
+     * @param <T> todo document
+     * @param cls todo document
      * @param obj if null then property is removed
-     * @return
+     * @return todo document
      */
     public <T> T setPropertyIfNotSet(Class<T> cls, T obj) {
         return setPropertyIfNotSet(cls, null, obj);
     }
 
-    /**
-     *
-     * @param <T>
-     * @param cls
-     * @return
-     */
     public <T> T getProperty(Class<T> cls) {
         return getProperty(cls, null);
     }
 
     /**
-     *
-     * @param name
+     * @param name todo document
      * @param obj if null then property is removed
-     * @return
+     * @return todo document
      */
     public Object setProperty(String name, Object obj) {
         return setProperty(Object.class, name, obj);
     }
 
-    /**
-     *
-     * @param name
-     * @param obj
-     * @return
-     */
     public Object setPropertyIfNotSet(String name, Object obj) {
         return setPropertyIfNotSet(Object.class, name, obj);
     }
 
-    /**
-     *
-     * @param name
-     * @return
-     */
     public Object getProperty(String name) {
         return getProperty(Object.class, name);
     }
 
-    /**
-     *
-     * @param name
-     * @param defaultValue
-     * @return
-     */
     public Object getProperty(String name, Object defaultValue) {
         return getProperty(Environment.class, name, defaultValue);
     }
@@ -322,19 +258,10 @@ public class Environment {
         return environment.get(key);
     }
 
-    /**
-     *
-     * @param out
-     * @return
-     */
     public TestOut setOutput(TestOut out) {
         return (TestOut) setProperty(TestOut.class, out);
     }
 
-    /**
-     *
-     * @return
-     */
     public TestOut getOutput() {
         return (TestOut) getProperty(TestOut.class);
     }
@@ -344,9 +271,9 @@ public class Environment {
      * some specific outputs. Please consult javadoc for a class in question.
      * Use <code>null</code> to unset the property.
      *
-     * @param outputName
-     * @param out
-     * @return
+     * @param outputName todo document
+     * @param out todo document
+     * @return todo document
      */
     public TestOut setOutput(String outputName, TestOut out) {
         return (TestOut) setProperty(TestOut.class, outputName, out);
@@ -355,9 +282,9 @@ public class Environment {
     /**
      * Initializes some specific output only if it is not yet set.
      *
-     * @param outputName
-     * @param out
-     * @return
+     * @param outputName todo document
+     * @param out todo document
+     * @return todo document
      */
     public TestOut initOutput(String outputName, TestOut out) {
         TestOut res = (TestOut) getProperty(TestOut.class, outputName);
@@ -372,46 +299,26 @@ public class Environment {
      * Get's a specific output. If nothing assigned, returns
      * <code>getOutput()</code>
      *
-     * @param outputName
-     * @return
+     * @param outputName todo document
+     * @return todo document
      */
     public TestOut getOutput(String outputName) {
         TestOut res = (TestOut) getProperty(TestOut.class, outputName);
         return (res != null) ? res : getOutput();
     }
 
-    /**
-     *
-     * @param timeout
-     * @return
-     */
     public Waiter getWaiter(Timeout timeout) {
         return getWaiter(timeout.getName());
     }
 
-    /**
-     *
-     * @param timeoutName
-     * @return
-     */
     public Waiter getWaiter(String timeoutName) {
         return new Waiter(getTimeout(timeoutName));
     }
 
-    /**
-     *
-     * @param timeout
-     * @return
-     */
     public Timeout getTimeout(Timeout timeout) {
         return getTimeout(timeout.getName());
     }
 
-    /**
-     *
-     * @param name
-     * @return
-     */
     public Timeout getTimeout(String name) {
         return (Timeout) getProperty(Timeout.class, name);
     }
@@ -462,27 +369,14 @@ public class Environment {
         return setTimeout(new Timeout(name, value));
     }
 
-    /**
-     *
-     * @return
-     */
     public CharBindingMap getBindingMap() {
         return (CharBindingMap) getProperty(CharBindingMap.class);
     }
 
-    /**
-     *
-     * @param map
-     * @return
-     */
     public CharBindingMap setBindingMap(CharBindingMap map) {
         return (CharBindingMap) setProperty(CharBindingMap.class, map);
     }
 
-    /**
-     *
-     * @return
-     */
     public ImageLoader getImageLoader() {
         ImageLoader res = (ImageLoader) getProperty(ImageLoader.class);
         if (res == null) {
@@ -504,10 +398,6 @@ public class Environment {
         return res;
     }
 
-    /**
-     *
-     * @return
-     */
     public ImageCapturer getImageCapturer() {
         ImageCapturer res = (ImageCapturer) getProperty(ImageCapturer.class);
         if (res == null) {
@@ -529,29 +419,15 @@ public class Environment {
         return res;
     }
 
-    /**
-     *
-     * @param imageLoader
-     * @return
-     */
     public ImageLoader setImageLoader(ImageLoader imageLoader) {
         return (ImageLoader) setProperty(ImageLoader.class, imageLoader);
     }
 
-    /**
-     *
-     * @param imageCapturer
-     * @return
-     */
     public ImageCapturer setImageCapturer(ImageCapturer imageCapturer) {
         getOutput(OUTPUT).println("ImageCapturer set to " + imageCapturer);
         return (ImageCapturer) setProperty(ImageCapturer.class, imageCapturer);
     }
 
-    /**
-     *
-     * @return
-     */
     public ControlInterfaceFactory getInputFactory() {
         ControlInterfaceFactory res = (ControlInterfaceFactory) getProperty(ControlInterfaceFactory.class);
         if (res == null) {
@@ -572,11 +448,6 @@ public class Environment {
         return res;
     }
 
-    /**
-     *
-     * @param factory
-     * @return
-     */
     public ControlInterfaceFactory setInputFactory(ControlInterfaceFactory factory) {
         getOutput(OUTPUT).println("Input factory set to " + factory);
         return (ControlInterfaceFactory) setProperty(ControlInterfaceFactory.class, factory);

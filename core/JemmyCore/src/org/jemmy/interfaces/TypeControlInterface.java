@@ -28,13 +28,11 @@ import org.jemmy.dock.Shortcut;
 
 /**
  * TODO: JavaDoc
- * @param <T>
  * @author shura
  */
 public interface TypeControlInterface<T> extends ControlInterface {
     /**
-     *
-     * @return
+     * @return todo document
      */
     public Class<T> getType();
 }

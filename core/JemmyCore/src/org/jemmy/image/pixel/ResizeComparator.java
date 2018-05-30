@@ -29,7 +29,6 @@ import org.jemmy.image.Image;
 import org.jemmy.image.ImageComparator;
 
 /**
- *
  * @author shura
  */
 public abstract class ResizeComparator implements ImageComparator {
@@ -37,65 +36,29 @@ public abstract class ResizeComparator implements ImageComparator {
     private ImageComparator subComparator;
     private Mode mode;
 
-    /**
-     *
-     */
     public enum Mode {
-
-        /**
-         *
-         */
         LEFT,
-        /**
-         *
-         */
         RIGTH,
-        /**
-         *
-         */
         MAX
     };
 
-    /**
-     *
-     * @param subComparator
-     * @param mode
-     */
     public ResizeComparator(ImageComparator subComparator, Mode mode) {
         this.subComparator = subComparator;
         this.mode = mode;
     }
 
-    /**
-     *
-     * @param subComparator
-     */
     public ResizeComparator(ImageComparator subComparator) {
         this(subComparator, Mode.MAX);
     }
 
-    /**
-     *
-     * @return
-     */
     public ImageComparator getSubComparator() {
         return subComparator;
     }
 
-    /**
-     *
-     * @param subComparator
-     */
     public void setSubComparator(ImageComparator subComparator) {
         this.subComparator = subComparator;
     }
 
-    /**
-     *
-     * @param image1
-     * @param image2
-     * @return
-     */
     public Image compare(Image image1, Image image2) {
         if(image1 == null || image2 == null) {
             return (image1 == null) ? image2 : image1;
@@ -128,25 +91,10 @@ public abstract class ResizeComparator implements ImageComparator {
         return subComparator.compare(r1, r2);
     }
 
-    /**
-     *
-     * @param image
-     * @param size
-     * @return
-     */
     abstract public Image resize(Image image, Dimension size);
 
-    /**
-     *
-     * @param image
-     * @return
-     */
     abstract public Dimension getSize(Image image);
 
-    /**
-     *
-     * @return
-     */
     public String getID() {
         return ResizeComparator.class.getName() + "(" + subComparator.getID() + ")";
     }

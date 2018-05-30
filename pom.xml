@@ -25,10 +25,30 @@
  questions.
     -->
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.jemmy.v3</groupId>
-    <artifactId>Jemmy</artifactId>
-    <version>1.0</version>
+    <groupId>org.adoptopenjdk</groupId>
+    <artifactId>jemmy</artifactId>
+    <version>${revision}</version>
     <packaging>pom</packaging>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>UI test automation library</description>
+    <url>http://openjdk.java.net/projects/code-tools</url>
+    <licenses>
+        <license>
+            <name>GNU General Public License</name>
+            <url>http://www.gnu.org/licenses/gpl2.html</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <organization>Oracle</organization>
+            <organizationUrl>http://www.oracle.com</organizationUrl>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:hg:http://hg.openjdk.java.net/code-tools/jemmy/v3</connection>
+        <developerConnection>scm:hg:http://hg.openjdk.java.net/code-tools/jemmy/v3</developerConnection>
+        <url>http://hg.openjdk.java.net/code-tools/jemmy/v3</url>
+    </scm>
     <modules>
         <module>./core/JemmyCore</module>
         <module>./core/JemmyAWTInput</module>
@@ -36,6 +56,7 @@
         <module>./SWT/JemmySWT</module>
     </modules>
     <properties>
+        <revision>1.0.0</revision>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -65,6 +86,16 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <distributionManagement>
+      <snapshotRepository>
+        <id>ossrh</id>
+        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      </snapshotRepository>
+      <repository>
+        <id>ossrh</id>
+        <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+      </repository>
+    </distributionManagement>
     <build>
         <sourceDirectory>./src</sourceDirectory>
         <testSourceDirectory>./test</testSourceDirectory>
@@ -100,13 +131,53 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>${version.class}</mainClass>
+                            <mainClass>${project.version.class}</mainClass>
                         </manifest>
                     </archive>
                     <excludes>
                     	<exclude>**/*.java</exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-source-plugin</artifactId>
+              <version>2.2.1</version>
+              <executions>
+                <execution>
+                  <id>attach-sources</id>
+                  <goals>
+                    <goal>jar-no-fork</goal>
+                  </goals>
+                </execution>
+              </executions>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-javadoc-plugin</artifactId>
+              <version>2.9.1</version>
+              <executions>
+                <execution>
+                  <id>attach-javadocs</id>
+                  <goals>
+                    <goal>jar</goal>
+                  </goals>
+                </execution>
+              </executions>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-gpg-plugin</artifactId>
+              <version>1.5</version>
+              <executions>
+                <execution>
+                  <id>sign-artifacts</id>
+                  <phase>verify</phase>
+                  <goals>
+                    <goal>sign</goal>
+                  </goals>
+                </execution>
+              </executions>
             </plugin>
         </plugins>
     </build>

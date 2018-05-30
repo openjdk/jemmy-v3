@@ -84,10 +84,6 @@ public abstract class AbstractCaretOwner implements CaretOwner {
             return caret;
         }
 
-        /**
-         *
-         * @return
-         */
         protected double position() {
             return value;
         }

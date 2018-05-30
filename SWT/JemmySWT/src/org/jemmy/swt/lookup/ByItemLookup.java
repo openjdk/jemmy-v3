@@ -35,9 +35,8 @@ import org.eclipse.swt.widgets.Tree;
 import org.jemmy.resources.StringComparePolicy;
 
 /**
- *
- * @param <T>
- * @author klara, erikgreijus
+ * @author shura
+ * @author erikgreijus
  */
 public class ByItemLookup<T extends Composite> extends QueueLookup<T> {
 

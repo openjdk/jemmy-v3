@@ -34,7 +34,7 @@ import org.jemmy.env.Timeout;
 
 /**
  * A searcheable container of a set on UI controls.
- * @param <CONTROL>
+ *
  * @author shura
  */
 public interface Lookup<CONTROL> extends Parent<CONTROL> {
@@ -47,89 +47,81 @@ public interface Lookup<CONTROL> extends Parent<CONTROL> {
     /**
      * Reruns the search until the number of found components is equal or greater
      * than required.
-     * @param count
+     * @param count todo document
      * @return this or another Lookup instance.
      */
     public Lookup<? extends CONTROL> wait(int count);
     /**
      * Creates an instance of the Wrap class for one of the found UI controls.
      * @see Wrap
-     * @param index
-     * @return
+     * @param index todo document
+     * @return todo document
      */
     public Wrap<? extends CONTROL> wrap(int index);
     /**
      * Same as <code>wrap(0)</code>
      * @see #wrap(int)
-     * @return
+     * @return todo document
      */
     public Wrap<? extends CONTROL> wrap();
 
     /**
      * Returns one of the found UI controls itself.
-     * @param index
-     * @return
+     * @param index todo document
+     * @return todo document
      */
     public CONTROL get(int index);
     /**
      * Same as <code>get(0)</code>
      * @see #get(int)
-     * @return
+     * @return todo document
      */
     public CONTROL get();
 
     /**
      * Same as <code>wrap(index).as(interfaceClass)</code>
-     * @param <INTERFACE>
-     * @param index
-     * @param interfaceClass
-     * @return
+     * @param <INTERFACE> todo document
+     * @param index todo document
+     * @param interfaceClass todo document
+     * @return todo document
      * @see #wrap(int)
      * @see Wrap#as(java.lang.Class)
      */
     public <INTERFACE extends ControlInterface> INTERFACE as(int index, Class<INTERFACE> interfaceClass);
     /**
      * Same as <code>wrap().as(interfaceClass)</code>
-     * @param <INTERFACE>
-     * @param interfaceClass
-     * @return
+     * @param <INTERFACE> todo document
+     * @param interfaceClass todo document
+     * @return todo document
      * @see #wrap()
      * @see Wrap#as(java.lang.Class)
      */
     public <INTERFACE extends ControlInterface> INTERFACE as(Class<INTERFACE> interfaceClass);
     /**
      * Same as <code>wrap(index).as(interfaceClass, type)</code>
-     * @param <TYPE>
-     * @param <INTERFACE>
-     * @param index
-     * @param interfaceClass
-     * @param type
-     * @return
+     * @param <TYPE> todo document
+     * @param <INTERFACE> todo document
+     * @param index todo document
+     * @param interfaceClass todo document
+     * @param type todo document
+     * @return todo document
      * @see #wrap(int)
      * @see Wrap#as(java.lang.Class, java.lang.Class)
      */
     public <TYPE, INTERFACE extends TypeControlInterface<TYPE>> INTERFACE as(int index, Class<INTERFACE> interfaceClass, Class<TYPE> type);
     /**
      * Same as <code>wrap().as(interfaceClass, type)</code>
-     * @param <TYPE>
-     * @param <INTERFACE>
-     * @param interfaceClass
-     * @param type
-     * @return
+     * @param <TYPE> todo document
+     * @param <INTERFACE> todo document
+     * @param interfaceClass todo document
+     * @param type todo document
+     * @return todo document
      * @see #wrap(int)
      * @see Wrap#as(java.lang.Class, java.lang.Class)
      */
     public <TYPE, INTERFACE extends TypeControlInterface<TYPE>> INTERFACE as(Class<INTERFACE> interfaceClass, Class<TYPE> type);
 
-    /**
-     *
-     * @return
-     */
     public int size();
 
-    /**
-     *
-     * @param out
-     */
     public void dump(PrintStream out);
 }

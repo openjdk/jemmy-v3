@@ -48,6 +48,7 @@ public @interface ControlInterfaces {
     /**
      * List of interfaces supported by this wrap.
      * @see ControlInterface
+     * @return todo document
      */
     Class<? extends ControlInterface>[] value();
     /**
@@ -57,11 +58,13 @@ public @interface ControlInterfaces {
      * provide anything for a <code>ControlInterface</code> which is not a
      * <code>TypeControlInterface</code>
      * @see TypeControlInterface
+     * @return todo document
      */
     Class[] encapsulates() default {};
     /**
      * This provides names for the dock methods which would be generated. If the array
      * does not have enough elements, the method would be named as <code>"as" + value[i].getName()</code>.
+     * @return todo document
      */
     String[] name() default {};
 }

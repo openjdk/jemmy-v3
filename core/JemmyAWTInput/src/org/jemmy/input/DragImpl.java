@@ -40,14 +40,10 @@ import org.jemmy.interfaces.Showable;
 
 
 /**
- *
  * @author shura
  */
 public class DragImpl implements Drag {
 
-    /**
-     *
-     */
     public static final int DND_POINTS = 10;
 
     static {
@@ -58,60 +54,26 @@ public class DragImpl implements Drag {
 
     private Wrap<?> source;
 
-    /**
-     *
-     * @param source
-     */
     public DragImpl(Wrap<?> source) {
         this.source = source;
     }
 
-    /**
-     *
-     * @param targetPoint
-     */
     public void dnd(Point targetPoint) {
         dnd(source, targetPoint);
     }
 
-    /**
-     *
-     * @param target
-     * @param targetPoint
-     */
     public void dnd(Wrap target, Point targetPoint) {
         dnd(source.getClickPoint(), target, targetPoint);
     }
 
-    /**
-     *
-     * @param point
-     * @param target
-     * @param targetPoint
-     */
     public void dnd(Point point, Wrap target, Point targetPoint) {
         dnd(point, target, targetPoint, MouseButtons.BUTTON1);
     }
 
-    /**
-     *
-     * @param point
-     * @param target
-     * @param targetPoint
-     * @param button
-     */
     public void dnd(Point point, Wrap target, Point targetPoint, MouseButton button) {
         dnd(point, target, targetPoint, button, new Modifier[]{});
     }
 
-    /**
-     *
-     * @param point
-     * @param target
-     * @param targetPoint
-     * @param button
-     * @param modifiers
-     */
     public void dnd(Point pointParam, final Wrap target, final Point targetPoint, final MouseButton button, final Modifier... modifiers) {
         final Point point = pointParam == null ? source.getClickPoint() : pointParam;
         source.getEnvironment().getExecutor().execute(target.getEnvironment(), false, new Action() {

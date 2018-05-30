@@ -36,9 +36,6 @@ import org.jemmy.interfaces.Text;
  */
 public class RegexCaretDirection extends CaretImpl.DirectionToPosition {
 
-    /**
-     *
-     */
     public static final String REGEX_FLAGS = "";
 
     String regex;
@@ -47,15 +44,6 @@ public class RegexCaretDirection extends CaretImpl.DirectionToPosition {
     Text text;
     int flags;
 
-    /**
-     *
-     * @param text
-     * @param caretOwner
-     * @param regex
-     * @param flags
-     * @param front
-     * @param index
-     */
     public RegexCaretDirection(Text text, CaretOwner caretOwner, String regex, int flags, boolean front, int index) {
         super(caretOwner, 0);
         this.text = text;
@@ -68,24 +56,11 @@ public class RegexCaretDirection extends CaretImpl.DirectionToPosition {
         }
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     protected double position() {
         return position(text, regex, flags, front, index);
     }
 
-    /**
-     *
-     * @param text
-     * @param regex
-     * @param flags
-     * @param front
-     * @param index
-     * @return
-     */
     public static int position(Text text, String regex, int flags, boolean front, int index) {
         Matcher matcher = Pattern.compile(regex, flags).matcher(text.text());
         for (int i = 0; i <= index; i++) {

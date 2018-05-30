@@ -52,11 +52,6 @@ public class PNGSaver {
     CRC32 crc;
     byte mode;
 
-    /**
-     *
-     * @param file
-     * @throws java.io.FileNotFoundException
-     */
     public PNGSaver(File file) throws FileNotFoundException {
         this(new FileOutputStream(file));
     }

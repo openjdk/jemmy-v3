@@ -30,12 +30,6 @@ package org.jemmy.control;
  * @author shura
  */
 public interface Wrapper {
-    /**
-     *
-     * @param <T>
-     * @param controlClass
-     * @param control
-     * @return Wrap
-     */
+
     public <T> Wrap<? extends T> wrap(Class<T> controlClass, T control);
 }

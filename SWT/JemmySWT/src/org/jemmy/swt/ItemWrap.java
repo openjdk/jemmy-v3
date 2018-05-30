@@ -36,8 +36,8 @@ import org.jemmy.env.Environment;
 
 /**
  *
- * @author shura, erikgreijus
- * @param <T>
+ * @author shura
+ * @author erikgreijus
  */
 public class ItemWrap<T extends Item> extends Wrap<T> {
 

@@ -46,10 +46,7 @@ public class KeyboardImpl implements Keyboard {
     Wrap<?> target;
     RobotDriver robotDriver;
     private boolean detached;
-    /**
-     * Constructs a KeyRobotDriver object.
-     * @param target
-     */
+
     public KeyboardImpl(Wrap<?> target) {
         //TODO: super(target.getEnvironment().getTimeout(RobotDriver.ROBOT_DELAY_TIMEOUT_NAME));
         robotDriver = new RobotDriver(target.getEnvironment());
@@ -72,20 +69,10 @@ public class KeyboardImpl implements Keyboard {
         }
     }
 
-    /**
-     *
-     * @return Environment
-     */
     public Environment getEnvironment() {
         return env;
     }
 
-    /**
-     *
-     * @param kbdButton
-     * @param modifiers
-     * @param pushTime
-     */
     public void pushKey(final KeyboardButton kbdButton, final Modifier modifiers[], final Timeout pushTime) {
         runAction(new Action() {
             public void run(Object... parameters) {
@@ -101,11 +88,6 @@ public class KeyboardImpl implements Keyboard {
         });
     }
 
-    /**
-     *
-     * @param keyChar
-     * @param pushTime
-     */
     @Override
     public void typeChar(char keyChar, Timeout pushTime) {
         pushKey(pushTime, map.getCharKey(keyChar), map.getCharModifiers(keyChar));
@@ -151,47 +133,28 @@ public class KeyboardImpl implements Keyboard {
         });
     }
 
-    /**
-     *
-     * @param kbdButton
-     */
     @Override
     public void pressKey(KeyboardButton kbdButton) {
         pressKey(kbdButton, new Modifier[]{});
     }
 
-    /**
-     *
-     * @param kbdButton
-     */
+
     @Override
     public void releaseKey(KeyboardButton kbdButton) {
         releaseKey(kbdButton, new Modifier[]{});
     }
 
-    /**
-     *
-     * @param kbdButton
-     * @param modifiers
-     */
+
     @Override
     public void pushKey(KeyboardButton kbdButton, Modifier... modifiers) {
         pushKey(kbdButton, modifiers, getEnvironment().getTimeout(PUSH.getName()));
     }
 
-    /**
-     *
-     * @param kbdButton
-     */
     @Override
     public void pushKey(KeyboardButton kbdButton) {
         pushKey(kbdButton, new Modifier[]{});
     }
 
-    /**
-     *
-     * @param keyChar
-     */
     @Override
     public void typeChar(char keyChar) {
         typeChar(keyChar, getEnvironment().getTimeout(PUSH.getName()));

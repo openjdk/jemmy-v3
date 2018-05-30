@@ -38,22 +38,11 @@ public class WrapperImpl extends AbstractWrapper {
 
     private HashMap<Class, Class<Wrap>> theWrappers;
 
-    /**
-     *
-     * @param env
-     */
-    @SuppressWarnings("unchecked")
     public WrapperImpl(Environment env) {
         super(env);
         theWrappers = new HashMap<Class, Class<Wrap>>();
     }
 
-    /**
-     *
-     * @param <P>
-     * @param controlClass
-     * @param wrapperClass
-     */
     public <P> void add(Class controlClass, Class<Wrap> wrapperClass) {
         theWrappers.put(controlClass, wrapperClass);
         // TODO: Improve output

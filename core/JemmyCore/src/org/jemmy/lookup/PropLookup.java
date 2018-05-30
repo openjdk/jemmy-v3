@@ -29,8 +29,6 @@ import org.jemmy.control.Wrap;
 import org.jemmy.control.Wrapper;
 
 /**
- *
- * @param <CONTROL>
  * @author shura
  */
 public class PropLookup<CONTROL> implements LookupCriteria<CONTROL> {
@@ -39,20 +37,10 @@ public class PropLookup<CONTROL> implements LookupCriteria<CONTROL> {
     Wrapper wrapper;
     Object value;
 
-    /**
-     *
-     * @param propName
-     * @param value
-     */
     public PropLookup(String propName, Object value) {
         this(Wrap.getWrapper(), propName, value);
     }
-    /**
-     *
-     * @param wrapper
-     * @param propName
-     * @param value
-     */
+
     public PropLookup(Wrapper wrapper, String propName, Object value) {
         this.propName = propName;
         this.wrapper = wrapper;

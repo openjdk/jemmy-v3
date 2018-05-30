@@ -34,25 +34,11 @@ import org.jemmy.control.Wrap;
  */
 public class InterfaceException extends JemmyException {
 
-    /**
-     *
-     * @param <T>
-     * @param object
-     * @param interfaceClass
-     */
     public <T extends ControlInterface> InterfaceException(Wrap object, Class<T> interfaceClass) {
         super(interfaceClass.getName() + " is not implemented for " + object.getControl().getClass().getName() +
                 " by " + object.getClass().getName(), object.getControl());
     }
 
-    /**
-     *
-     * @param <CT>
-     * @param <T>
-     * @param object
-     * @param interfaceClass
-     * @param type
-     */
     public <CT, T extends TypeControlInterface<CT>> InterfaceException(Wrap object, Class<T> interfaceClass, Class<CT> type) {
         super(interfaceClass.getName() + " is not implemented for " + object.getControl().getClass().getName() +
                 " by " + object.getClass().getName() +

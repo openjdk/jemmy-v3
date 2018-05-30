@@ -49,7 +49,7 @@ public @interface Property {
      */
     String value();
     /**
-     * Are the properties worth a waiter.
+     * @return are the properties worth a waiter.
      */
     boolean waitable() default false;
 }

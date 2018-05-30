@@ -26,15 +26,10 @@
 package org.jemmy.timing;
 
 /**
- *
- * @param <T>
  * @author shura
  */
 public interface State<T> {
-    /**
-     *
-     * @return
-     */
+
     public T reached();
 
     // TODO: Provide a way to report problems during trying to reach the state

@@ -43,7 +43,7 @@ import org.jemmy.interfaces.Mouse.MouseModifiers;
 
 /**
  * Converts
- * @author Alexander Kouznetsov <mrkam@mail.ru>
+ * @author mrkam
  */
 public class AWTMap {
 
@@ -129,7 +129,7 @@ public class AWTMap {
 
     /**
      * TODO Provide javadoc
-     * @param button
+     * @param button todo document
      * @return One of InputEvent.VK_* constants
      * @see InputEvent
      */
@@ -141,11 +141,6 @@ public class AWTMap {
         }
     }
 
-    /**
-     * TODO Provide javadoc
-     * @param modifiers
-     * @return
-     */
     public int convert(Modifier... modifiers) {
         int result = 0;
         for (Modifier modifier : modifiers) {
@@ -158,11 +153,6 @@ public class AWTMap {
         return result;
     }
 
-    /**
-     * TODO Provide javadoc
-     * @param button
-     * @return
-     */
     public int convert(MouseButton button) {
         try {
             return button2int.get(button);
@@ -171,11 +161,6 @@ public class AWTMap {
         }
     }
 
-    /**
-     * TODO Provide javadoc
-     * @param key
-     * @return
-     */
     public KeyboardButton convertKeyboardButton(int key) {
         KeyboardButton res = int2key.get(key);
         if (res == null) {
@@ -184,11 +169,6 @@ public class AWTMap {
         return res;
     }
 
-    /**
-     * TODO Provide javadoc
-     * @param modifiers
-     * @return
-     */
     public Modifier[] convertModifiers(int modifiers) {
         List<Modifier> result = new ArrayList<Modifier>();
         for (int key : int2modifier.keySet()) {
@@ -203,11 +183,6 @@ public class AWTMap {
         return result.toArray(new Modifier[result.size()]);
     }
 
-    /**
-     * TODO Provide javadoc
-     * @param button
-     * @return
-     */
     public MouseButton convertMouseButton(int button) {
         MouseButton res = int2button.get(button);
         if (res == null) {

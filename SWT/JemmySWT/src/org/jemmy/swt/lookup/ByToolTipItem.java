@@ -30,9 +30,8 @@ import org.eclipse.swt.widgets.Item;
 import org.jemmy.resources.StringComparePolicy;
 
 /**
- *
- * @author klara, erikgreijus
- * @param <T>
+ * @author klara
+ * @author erikgreijus
  */
 public class ByToolTipItem<T extends Item> extends ByStringQueueLookup<T> {
 

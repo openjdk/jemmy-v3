@@ -49,11 +49,6 @@ public abstract class KnobDragScrollerImpl implements Caret {
     float dragDelta = 1;
     boolean reverse;
 
-    /**
-     *
-     * @param wrap
-     * @param scroll
-     */
     public KnobDragScrollerImpl(Wrap<?> wrap, Scroll scroll) {
         this.wrap = wrap;
         this.scroll = scroll;
@@ -64,24 +59,12 @@ public abstract class KnobDragScrollerImpl implements Caret {
         this.reverse = reverse;
     }
 
-    /**
-     *
-     * @return
-     */
     public Wrap<?> getWrap() {
         return wrap;
     }
 
-    /**
-     *
-     * @return
-     */
     public abstract Vector getScrollVector();
 
-    /**
-     *
-     * @param dragDelta
-     */
     public void setDragDelta(float dragDelta) {
         this.dragDelta = dragDelta;
     }
@@ -166,9 +149,6 @@ public abstract class KnobDragScrollerImpl implements Caret {
     }
      *
      */
-    /**
-     *
-     * @return
-     */
+
     protected abstract Wrap<?> getKnob();
 }

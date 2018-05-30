@@ -35,39 +35,16 @@ import org.jemmy.dock.Shortcut;
  */
 public interface Window extends ControlInterface {
 
-    /**
-     *
-     */
     public enum Direction {
-
-        /**
-         *
-         */
         NORTHEAST,
-        /**
-         *
-         */
         SOUTHEAST,
-        /**
-         *
-         */
         SOUTHWEST,
-        /**
-         *
-         */
         NORTHWEST
     };
-    /**
-     *
-     * @param dest
-     */
+
     @Shortcut
     public void move(Point dest);
-    /**
-     *
-     * @param size
-     * @param direction
-     */
+
     @Shortcut
     public void resize(Dimension size, Direction direction);
 }

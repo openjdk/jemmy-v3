@@ -35,28 +35,14 @@ import org.jemmy.control.Wrap;
  * @author shura
  */
 public interface Scroll extends CaretOwner {
-    /**
-     *
-     */
+
     public static final String VERTICAL_PROP_NAME = "vertical";
-    /**
-     *
-     */
     public static final String MAXIMUM_PROP_NAME = "maximum";
-    /**
-     *
-     */
     public static final String MINIMUM_PROP_NAME = "minimum";
-    /**
-     * TODO javadoc
-     * @return
-     */
+
     @Property(MAXIMUM_PROP_NAME)
     public double maximum();
-    /**
-     *
-     * @return
-     */
+
     @Property(MINIMUM_PROP_NAME)
     public double minimum();
 }

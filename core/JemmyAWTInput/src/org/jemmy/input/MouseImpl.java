@@ -52,10 +52,6 @@ public class MouseImpl implements Mouse {
         }
     }
 
-    /**
-     *
-     * @param target
-     */
     public MouseImpl(Wrap<?> target) {
         this.target = target;
         this.robotDriver = new RobotDriver(new Timeout("", 10));
@@ -74,28 +70,16 @@ public class MouseImpl implements Mouse {
         }
     }
 
-    /**
-     *
-     */
     @Override
     public void press() {
         press(MouseButtons.BUTTON1);
     }
 
-    /**
-     *
-     * @param button
-     */
     @Override
     public void press(MouseButton button) {
         press(button, new Modifier[]{});
     }
 
-     /**
-     *
-     * @param button
-     * @param modifiers
-     */
     @Override
     public void press(final MouseButton button, final Modifier... modifiers) {
         runAction(new Action() {
@@ -111,27 +95,15 @@ public class MouseImpl implements Mouse {
         });
     }
 
-    /**
-     *
-     */
     public void release() {
         release(MouseButtons.BUTTON1);
     }
 
-    /**
-     *
-     * @param button
-     */
     @Override
     public void release(MouseButton button) {
         release(button, new Modifier[]{});
     }
 
-    /**
-     *
-     * @param button
-     * @param modifiers
-     */
     @Override
     public void release(final MouseButton button, final Modifier... modifiers) {
         runAction(new Action() {
@@ -147,17 +119,10 @@ public class MouseImpl implements Mouse {
         });
     }
 
-    /**
-     *
-     */
     public void move() {
         move(target.getClickPoint());
     }
 
-    /**
-     *
-     * @param p
-     */
     public void move(final Point p) {
         runAction(new Action() {
 
@@ -172,24 +137,16 @@ public class MouseImpl implements Mouse {
         });
     }
 
-    /**
-     *
-     */
     public void click() {
         this.click(1);
     }
 
-    /**
-     *
-     * @param count
-     */
     public void click(int count) {
         this.click(count, null);
     }
 
     /**
-     *
-     * @param count
+     * @param count todo document
      * @param p Point to click, if null {@linkplain Wrap#getClickPoint()
      * Wrap.getClickPoint()} method is invoked to get the point to click.
      */
@@ -199,10 +156,10 @@ public class MouseImpl implements Mouse {
 
     /**
      *
-     * @param count
+     * @param count todo document
      * @param p Point to click, if null {@linkplain Wrap#getClickPoint()
      * Wrap.getClickPoint()} method is invoked to get the point to click.
-     * @param button
+     * @param button todo document
      */
     @Override
     public void click(int count, Point p, MouseButton button) {
@@ -211,11 +168,11 @@ public class MouseImpl implements Mouse {
 
     /**
      *
-     * @param count
+     * @param count todo document
      * @param p Point to click, if null {@linkplain Wrap#getClickPoint()
      * Wrap.getClickPoint()} method is invoked to get the point to click.
-     * @param button
-     * @param modifiers
+     * @param button todo document
+     * @param modifiers todo document
      */
     @Override
     public void click(final int count, final Point p, final MouseButton button, final Modifier... modifiers) {

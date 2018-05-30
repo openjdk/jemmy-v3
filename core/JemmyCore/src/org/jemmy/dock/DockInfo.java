@@ -43,6 +43,7 @@ public @interface DockInfo {
      * Desired name of the dock class, should one be generated.
      * Usually empty ("", as nulls are not allowed) in which case the calculated value
      * is taken whatever logic annotation processor decides to use.
+     * @return todo document
      */
     String name() default "";
 
@@ -50,19 +51,22 @@ public @interface DockInfo {
      * Should there be extra constructors which take another lookup criteria - a class
      * of a desired control? That class must be a subtype of the one wrapped by the wrap
      * class annotated with this annotation.
+     * @return todo document
      */
     boolean generateSubtypeLookups() default false;
 
     /**
      * Should generated <code>wrap()</code> method return this class or
-     * <code>Wrap<? extends ...></code> and also should there be a constructor with
+     * <code>Wrap&lt;? extends ...&gt;</code> and also should there be a constructor with
      * one parameter - the wrap.
+     * @return todo document
      */
     boolean anonymous() default false;
 
     /**
      * Should the lookup constructors have <code>LookupCriteria&lt;Type&gt;...</code>
      * parameter or the <code>LookupCriteria&lt;Type&gt;</code> parameter.
+     * @return todo document
      */
     boolean multipleCriteria() default true;
 }

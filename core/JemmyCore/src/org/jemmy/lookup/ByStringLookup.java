@@ -29,7 +29,7 @@ import org.jemmy.resources.StringComparePolicy;
 
 /**
  * Default comparison policy is StringComparePolicy.SUBSTRING
- * @param <T>
+ * @param <T> todo document
  * @author shura
  */
 public abstract  class ByStringLookup<T> implements LookupCriteria<T> {
@@ -39,34 +39,19 @@ public abstract  class ByStringLookup<T> implements LookupCriteria<T> {
 
     /**
      * Default comparison policy is StringComparePolicy.SUBSTRING
-     * @param text
+     * @param text todo document
      */
     protected ByStringLookup(String text) {
         this(text, StringComparePolicy.SUBSTRING);
     }
 
-    /**
-     *
-     * @param text
-     * @param policy
-     */
     protected ByStringLookup(String text, StringComparePolicy policy) {
         this.policy = policy;
         this.text = text;
     }
 
-    /**
-     *
-     * @param control
-     * @return
-     */
     public abstract String getText(T control);
 
-    /**
-     *
-     * @param control
-     * @return
-     */
     public boolean check(T control) {
         return policy.compare(text, getText(control));
     }

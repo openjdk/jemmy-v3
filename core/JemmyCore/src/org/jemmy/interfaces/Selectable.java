@@ -31,14 +31,11 @@ import org.jemmy.dock.Shortcut;
 
 /**
  * Interface for a control with one selected state among the number of them.
- * @param <STATE>
- * @author shura, KAM
+ * @author shura
+ * @author mrkam
  */
 public interface Selectable<STATE> extends TypeControlInterface<STATE> {
 
-    /**
-     *
-     */
     public static final String STATES_PROP_NAME = "states";
     public static final String STATE_PROP_NAME = "state";
 

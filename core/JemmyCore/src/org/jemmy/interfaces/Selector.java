@@ -26,14 +26,11 @@
 package org.jemmy.interfaces;
 
 /**
- *
- * @param <STATE>
  * @author shura
  */
 public interface Selector<STATE> {
     /**
-     *
-     * @param state
+     * @param state todo document
      */
     public void select(STATE state);
 }

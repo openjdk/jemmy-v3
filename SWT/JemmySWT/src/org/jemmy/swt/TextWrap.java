@@ -37,8 +37,8 @@ import org.jemmy.interfaces.Focusable;
 
 /**
  *
- * @author shura, erikgreijus
- * @param <T>
+ * @author shura
+ * @author erikgreijus
  */
 @ControlType(Text.class)
 public class TextWrap<T extends Text> extends ControlWrap<T> implements Focusable {

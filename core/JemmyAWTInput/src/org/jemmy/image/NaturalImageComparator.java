@@ -55,9 +55,7 @@ public class NaturalImageComparator extends BufferedImageComparator {
      * Meaningful values are between 0 and approx 1.733. 0 means colors should
      * be equal to pass the comparison, 1.733 (which is more than square root
      * of 3) means that comparison will be passed even if the colors are
-     * completely different. You could also use {@linkplain
-     * #findSensitivity(java.awt.image.BufferedImage, java.awt.image.BufferedImage)
-     * findSensitivity()} method to obtain necessary sensitivity value.
+     * completely different.
      */
     public NaturalImageComparator(double sensitivity) {
         super(new MaxDistanceComparator(sensitivity));

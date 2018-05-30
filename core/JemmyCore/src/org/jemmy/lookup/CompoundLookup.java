@@ -26,27 +26,16 @@
 package org.jemmy.lookup;
 
 /**
- *
- * @param <CONTROL>
  * @author shura
  */
 public class CompoundLookup<CONTROL> implements LookupCriteria<CONTROL>{
 
     LookupCriteria<CONTROL>[] lookups;
 
-    /**
-     *
-     * @param subLookup
-     */
     public CompoundLookup(LookupCriteria<CONTROL>... subLookup) {
         this.lookups = subLookup;
     }
 
-    /**
-     *
-     * @param arg0
-     * @return
-     */
     public boolean check(CONTROL arg0) {
         for(LookupCriteria<CONTROL> lu : lookups) {
             if(!lu.check(arg0)) {
@@ -55,11 +44,5 @@ public class CompoundLookup<CONTROL> implements LookupCriteria<CONTROL>{
         }
         return true;
     }
-
-    /*
-    public Class<CONTROL> type() {
-        return lookups[0].type();
-    }
-     */
 
 }

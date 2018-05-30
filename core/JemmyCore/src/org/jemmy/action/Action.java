@@ -28,7 +28,6 @@ import org.jemmy.JemmyException;
 
 
 /**
- *
  * @author shura, KAM
  */
 public abstract class Action {
@@ -41,8 +40,7 @@ public abstract class Action {
      * Executes {@linkplain #run(java.lang.Object[]) run()} method of this
      * Action, saving the duration of its execution and storing any
      * RuntimeException and Error which may occur during its work.
-     * @param parameters Parameters to pass to {@linkplain
-     * #run(java.lang.Object[]) run()} method
+     * @param parameters Parameters to pass to {@linkplain #run(java.lang.Object[]) run()} method
      * @see #getThrowable()
      * @see #failed()
      */
@@ -64,24 +62,16 @@ public abstract class Action {
         }
     }
 
-    /**
-     *
-     * @return
-     */
     public long getEndTime() {
         return endTime;
     }
 
-    /**
-     *
-     * @return
-     */
     public long getStartTime() {
         return startTime;
     }
 
     /**
-     * Should be used from {@linkplain #run(java.lang.Object[]) run()) method
+     * Should be used from {@linkplain #run(java.lang.Object[]) run()} method
      * to check whether execution time is withing allowed time
      * @return true if difference between current time and start time is less
      * then allowed time; false otherwice
@@ -90,39 +80,20 @@ public abstract class Action {
         return System.currentTimeMillis() - startTime < allowedTime;
     }
 
-    /**
-     *
-     * @return
-     */
     public long getAllowedTime() {
         return allowedTime;
     }
 
-    /**
-     *
-     * @param allowedTime
-     */
     public void setAllowedTime(long allowedTime) {
         this.allowedTime = allowedTime;
     }
 
-    /**
-     *
-     * @param parameters
-     */
     public abstract void run(Object... parameters) throws Exception;
 
-    /**
-     *
-     * @return
-     */
     public boolean isInterrupted() {
         return interrupted;
     }
 
-    /**
-     *
-     */
     public void interrupt() {
         this.interrupted = true;
     }

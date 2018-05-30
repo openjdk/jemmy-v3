@@ -30,7 +30,7 @@ import java.awt.image.BufferedImage;
 /**
  * Performs "rough" image search.
  *
- * @author Alexandre Iline (alexandre.iline@sun.com)
+ * @author shura
  */
 public class RoughImageFinder implements ImageFinder {
     double roughness = .0;
@@ -60,7 +60,7 @@ public class RoughImageFinder implements ImageFinder {
      * @param image an image to search.
      * @param index an ordinal image location index.
      * @return Point where number of unmatching pixels less or equal to
-     * <code>image1.getWidth() * image1.getHeight() * roughness<code>
+     * <code>image1.getWidth() * image1.getHeight() * roughness</code>
      */
     public Point findImage(BufferedImage image, int index) {
         int smallWidth  = image.getWidth();

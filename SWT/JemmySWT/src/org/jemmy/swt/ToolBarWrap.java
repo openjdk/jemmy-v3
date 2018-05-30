@@ -41,8 +41,8 @@ import org.jemmy.lookup.Lookup;
 
 /**
  *
- * @author shura, erikgreijus
- * @param <T>
+ * @author shura
+ * @author erikgreijus
  */
 @ControlType(ToolBar.class)
 public class ToolBarWrap<T extends ToolBar> extends ControlWrap<T> implements Selectable<String> {

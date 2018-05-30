@@ -45,8 +45,8 @@ import org.jemmy.interfaces.PopupOwner;
 
 /**
  *
- * @author shura, erikgreijus
- * @param <T>
+ * @author shura
+ * @author erikgreijus
  */
 @ControlType(org.eclipse.swt.widgets.Control.class)
 public class ControlWrap<T extends org.eclipse.swt.widgets.Control> extends Wrap<T> implements Focusable {

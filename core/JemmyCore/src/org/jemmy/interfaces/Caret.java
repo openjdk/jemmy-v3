@@ -31,25 +31,15 @@ package org.jemmy.interfaces;
  * @author shura
  */
 public interface Caret {
-    /**
-     * @deprecated this is moved to CaretOwner
-     * @param value
-     */
+
+    @Deprecated
     public void to(double value);
 
-    /**
-     *
-     * @param condition
-     */
     public void to(Direction condition);
 
-    /**
-     *
-     */
     public interface Direction {
         /**
-         * @return < 0 to scroll toward decreasing value, > 0 - vice versa
-         * 0 to stop scrolling
+         * @return &lt; 0 to scroll toward decreasing value, &gt; 0 - vice versa 0 to stop scrolling
          */
         public int to();
     }

@@ -32,14 +32,8 @@ import org.jemmy.control.Property;
  * @author shura
  */
 public interface IntervalSelectable extends CaretOwner {
-    /**
-     *
-     */
     public static final String SELECTION_ANCHOR_PROP_NAME="selection.anchor";
-    /**
-     *
-     * @return
-     */
+
     @Property(SELECTION_ANCHOR_PROP_NAME)
     public double anchor();
     public IntervalSelector caret();

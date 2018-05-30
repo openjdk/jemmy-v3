@@ -30,33 +30,17 @@ package org.jemmy.resources;
  */
 public interface StringComparePolicy {
 
-    /**
-     *
-     */
     public static final StringComparePolicy EXACT = new ComparePolicy(true, true);
-    /**
-     *
-     */
     public static final StringComparePolicy SUBSTRING = new ComparePolicy(false, true);
 
-    /**
-     *
-     * @param golden
-     * @param value
-     * @return
-     */
     public boolean compare(String golden, String value);
 
-    /**
-     *
-     */
     static class ComparePolicy implements StringComparePolicy {
 
         boolean ce;
         boolean cc;
 
         /**
-         *
          * @param ce if true then entire strings are compared, if false golden
          * could be a substring of a value
          * @param cc case sensitive comparison policy
@@ -66,12 +50,6 @@ public interface StringComparePolicy {
             this.ce = ce;
         }
 
-        /**
-         *
-         * @param golden
-         * @param value
-         * @return
-         */
         public boolean compare(String golden, String value) {
             if (value == null) {
                 return golden == null;

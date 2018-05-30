@@ -31,34 +31,17 @@ import org.jemmy.control.Wrapper;
 import org.jemmy.env.Environment;
 
 /**
- *
- * @param <CONTROL>
  * @author shura
  */
 public class HierarchyLookup<CONTROL> extends AbstractLookup<CONTROL> {
 
     ControlHierarchy hierarchy;
 
-    /**
-     *
-     * @param env
-     * @param hierarchy
-     * @param wrapper
-     * @param controlClass
-     * @param criteria
-     */
     public HierarchyLookup(Environment env, ControlHierarchy hierarchy, Wrapper wrapper, Class<CONTROL> controlClass, LookupCriteria<CONTROL> criteria) {
         super(env, controlClass, criteria, wrapper);
         this.hierarchy = hierarchy;
     }
 
-    /**
-     *
-     * @param env
-     * @param hierarchy
-     * @param controlClass
-     * @param criteria
-     */
     public HierarchyLookup(Environment env, ControlHierarchy hierarchy, Class<CONTROL> controlClass, LookupCriteria<CONTROL> criteria) {
         this(env, hierarchy, Wrap.getWrapper(), controlClass, criteria);
     }
@@ -72,11 +55,6 @@ public class HierarchyLookup<CONTROL> extends AbstractLookup<CONTROL> {
         }
     }
 
-    /**
-     *
-     * @param out
-     * @param lookup
-     */
     @Override
     protected void dump(PrintStream out, Lookup<? extends CONTROL> lookup) {
         int size = lookup.size();

@@ -46,7 +46,7 @@ public abstract class StringMenuOwner<T> extends StringCriteriaList<T>
     /**
      * Pushes the menu using one string for one level of the menu. Comparison
      * is done according to the policy.
-     * @param texts
+     * @param texts todo document
      * @see #getPolicy()
      */
     public void push(String... texts) {
@@ -57,10 +57,10 @@ public abstract class StringMenuOwner<T> extends StringCriteriaList<T>
     }
 
     /**
-     * A shortcut to <code>menu().push(LookupCriteria<T> ...)</code>
+     * A shortcut to <code>menu().push(LookupCriteria ...)</code>
      * @see #menu()
-     * @see Menu#push(org.jemmy.lookup.LookupCriteria<T>[])
-     * @param criteria
+     * @see Menu#push(LookupCriteria[])
+     * @param criteria the lookup criteria
      */
     public void push(LookupCriteria<T>... criteria) {
         menu().push(criteria);
@@ -69,7 +69,7 @@ public abstract class StringMenuOwner<T> extends StringCriteriaList<T>
     /**
      * Select a menu item using one string for one level of the menu. Comparison
      * is done according to the policy.
-     * @param texts
+     * @param texts todo document
      * @return wrap for the last selected item
      * @see #getPolicy()
      */
@@ -81,10 +81,11 @@ public abstract class StringMenuOwner<T> extends StringCriteriaList<T>
     }
 
     /**
-     * A shortcut to <code>menu().select(LookupCriteria<T> ...)</code>
+     * A shortcut to <code>menu().select(LookupCriteria ...)</code>
      * @see #menu()
-     * @see Menu#select(org.jemmy.lookup.LookupCriteria<T>[])
-     * @param criteria
+     * @see Menu#select(LookupCriteria[])
+     * @param criteria the lookup criteria
+     * @return todo document
      */
     public Wrap<? extends T> select(LookupCriteria<T>... criteria) {
         return menu().select(criteria);

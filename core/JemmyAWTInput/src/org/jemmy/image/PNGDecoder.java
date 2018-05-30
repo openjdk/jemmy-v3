@@ -95,7 +95,7 @@ public class PNGDecoder extends Object {
     /**
      * Decodes image from an input stream passed into constructor.
      * @return a BufferedImage object
-     * @throws IOException
+     * @throws IOException todo document
      */
     public BufferedImage decode() throws IOException {
         return decode(true);
@@ -105,7 +105,7 @@ public class PNGDecoder extends Object {
      * Decodes image from an input stream passed into constructor.
      * @return a BufferedImage object
      * @param closeStream requests method to close the stream after the image is read
-     * @throws IOException
+     * @throws IOException todo document
      */
     public BufferedImage decode(boolean closeStream) throws IOException {
 

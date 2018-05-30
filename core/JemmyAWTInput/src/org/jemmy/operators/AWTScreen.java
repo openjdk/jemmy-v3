@@ -30,22 +30,14 @@ import org.jemmy.Rectangle;
 import org.jemmy.env.Environment;
 
 /**
- *
  * @author shura
  */
 public class AWTScreen extends Screen {
 
-    /**
-     *
-     */
     public AWTScreen() {
         this(Environment.getEnvironment());
     }
 
-    /**
-     *
-     * @param env
-     */
     public AWTScreen(Environment env) {
         super(env);
     }

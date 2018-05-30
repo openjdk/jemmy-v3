@@ -33,7 +33,7 @@ public interface Image {
     /**
      * Compares the image with the other one.
      *
-     * @param img
+     * @param img todo document
      * @return difference of the images, null if identical
      */
     public Image compareTo(Image img);

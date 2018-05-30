@@ -32,9 +32,7 @@ import org.eclipse.swt.widgets.Item;
 import org.jemmy.resources.StringComparePolicy;
 
 /**
- *
  * @author erikgreijus
- * @param <T>
  */
 public class ByItemStringsLookup<T extends Item> extends QueueLookup<T> {
 

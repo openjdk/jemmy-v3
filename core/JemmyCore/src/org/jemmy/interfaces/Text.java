@@ -34,7 +34,8 @@ import org.jemmy.dock.Shortcut;
 public interface Text extends Label {
     /**
      * Supposed to type a new value from current position.
-     * @param newText
+     *
+     * @param newText the text to be set
      */
     @Shortcut
     public void type(String newText);

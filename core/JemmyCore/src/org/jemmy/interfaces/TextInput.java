@@ -30,13 +30,8 @@ package org.jemmy.interfaces;
  * @author shura
  */
 public interface TextInput {
-    /**
-     *
-     */
+
     public void clear();
-    /**
-     *
-     * @param text
-     */
+
     public void type(String text);
 }

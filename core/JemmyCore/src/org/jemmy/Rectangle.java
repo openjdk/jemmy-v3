@@ -31,7 +31,7 @@ import java.io.Serializable;
 
 /**
  * Replacement for java.awt.Rectangle
- * @author Alexander Kouznetsov <mrkam@mail.ru>
+ * @author mrkam
  */
 public class Rectangle implements Serializable {
 
@@ -898,7 +898,6 @@ public class Rectangle implements Serializable {
 
     /**
      * {@inheritDoc}
-     * @return
      */
     public boolean isEmpty() {
         return (width <= 0) || (height <= 0);
@@ -930,7 +929,6 @@ public class Rectangle implements Serializable {
 
     /**
      * {@inheritDoc }
-     * @return
      */
     @Override
     public int hashCode() {

@@ -30,7 +30,7 @@ import org.jemmy.env.Environment;
 
 /**
  * An action to get some value.
- * @param <T>
+ *
  * @author shura
  */
 public abstract class GetAction<T> extends Action {
@@ -38,32 +38,17 @@ public abstract class GetAction<T> extends Action {
     private boolean finished = false;
     private T result = null;
 
-    /**
-     *
-     */
     public GetAction() {
     }
 
-    /**
-     *
-     * @return
-     */
     public boolean isFinished() {
         return finished;
     }
 
-    /**
-     *
-     * @return
-     */
     public T getResult() {
         return result;
     }
 
-    /**
-     *
-     * @param result
-     */
     protected void setResult(T result) {
         this.result = result;
         finished = true;

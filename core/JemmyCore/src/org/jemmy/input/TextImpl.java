@@ -45,28 +45,15 @@ public abstract class TextImpl implements Text {
     private int selectAllClickCount = DEFAULT_SELECT_ALL_CLICK_COUNT;
     boolean keyboardSelection;
 
-    /**
-     *
-     * @param target
-     * @param keyboardSelection
-     */
     protected TextImpl(Wrap<?> target, boolean keyboardSelection) {
         this.target = target;
         this.keyboardSelection = keyboardSelection;
     }
 
-    /**
-     *
-     * @param target
-     */
     protected TextImpl(Wrap<?> target) {
         this(target, false);
     }
 
-    /**
-     *
-     * @return
-     */
     public Wrap<?> getWrap() {
         return target;
     }
@@ -75,7 +62,7 @@ public abstract class TextImpl implements Text {
      * Types text into the control. Wrap may implement Focusable.
      *
      * @see Focusable
-     * @param newText
+     * @param newText the new text
      */
     public void type(final String newText) {
         target.getEnvironment().getExecutor().execute(target.getEnvironment(), false, new Action() {

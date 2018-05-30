@@ -38,16 +38,10 @@ import org.jemmy.dock.Shortcut;
  * @author shura
  */
 public interface CaretOwner extends ControlInterface {
-    /**
-     *
-     * @return
-     */
+
     @Property(Wrap.VALUE_PROP_NAME)
     public double position();
-    /**
-     *
-     * @return
-     */
+
     @Shortcut
     public Caret caret();
 
@@ -55,7 +49,7 @@ public interface CaretOwner extends ControlInterface {
      * Utility method that invokes caret().to(Direction) with correct
      * direction.
      * TODO: Remove this method.
-     * @param position
+     * @param position the position
      */
     @Shortcut
     public void to(double position);

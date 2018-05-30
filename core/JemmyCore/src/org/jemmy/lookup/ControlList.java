@@ -32,9 +32,6 @@ import java.util.List;
  * @author shura
  */
 public interface ControlList {
-    /**
-     *
-     * @return
-     */
+
     public List<?> getControls();
 }

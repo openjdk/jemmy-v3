@@ -128,7 +128,7 @@ public class TestOut {
     /**
      * Read one byte from input.
      * @return an int from input stream.
-     * @exception IOException
+     * @exception IOException todo document
      */
     public int read() throws IOException {
         if (input != null) {
@@ -141,7 +141,7 @@ public class TestOut {
     /**
      * Read a line from input.
      * @return a line from input stream.
-     * @exception IOException
+     * @exception IOException todo document
      */
     public String readln() throws IOException {
         if (buffInput != null) {

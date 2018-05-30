@@ -28,8 +28,6 @@ import org.jemmy.Rectangle;
 import org.jemmy.control.Wrap;
 
 /**
- *
- * @param <CONTROL>
  * @author shura
  */
 public abstract class RelativeCoordinateLookup<CONTROL> extends CoordinateLookup<CONTROL> {
@@ -41,13 +39,6 @@ public abstract class RelativeCoordinateLookup<CONTROL> extends CoordinateLookup
     private int hr;
     private int vr;
 
-    /**
-     *
-     * @param wrap
-     * @param includeControl
-     * @param hr
-     * @param vr
-     */
     public RelativeCoordinateLookup(Wrap wrap, boolean includeControl, int hr, int vr) {
         super(wrap.getScreenBounds());
         this.wrap = wrap;
@@ -56,10 +47,6 @@ public abstract class RelativeCoordinateLookup<CONTROL> extends CoordinateLookup
         this.vr = vr;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     protected Rectangle getArea() {
         return constructArea(wrap, includeControl, hr, vr);

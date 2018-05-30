@@ -32,16 +32,10 @@ public class Version extends org.jemmy.Version {
 
     public static final Version VERSION = new Version();
 
-    /**
-     *
-     */
     public Version() {
         super(Version.class.getPackage().getName());
     }
-    /**
-     *
-     * @param args
-     */
+
     public static void main(String[] args) {
         System.out.println("JemmySWT version: " + VERSION.getVersion());
     }

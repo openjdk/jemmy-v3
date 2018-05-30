@@ -27,26 +27,15 @@ package org.jemmy.image.pixel;
 import org.jemmy.Dimension;
 
 /**
- *
  * @author shura
  */
 public class MaxDistanceComparator extends ThresholdComparator{
 
-    /**
-     *
-     * @param threshold
-     */
     public MaxDistanceComparator(double threshold) {
         super(0, Math.sqrt(3));
         setThreshold(threshold);
     }
 
-    /**
-     *
-     * @param image1
-     * @param image2
-     * @return
-     */
     public boolean compare(Raster image1, Raster image2) {
         Dimension size = PixelImageComparator.computeDiffSize(image1, image2);
         if (size == null) {
@@ -65,10 +54,6 @@ public class MaxDistanceComparator extends ThresholdComparator{
         return distance <= getThreshold();
     }
 
-    /**
-     *
-     * @return
-     */
     public String getID() {
         return MaxDistanceComparator.class.getName() + ":" + getThreshold();
     }

@@ -43,8 +43,8 @@ import org.jemmy.lookup.LookupCriteria;
 
 /**
  *
- * @author shura, erikgreijus
- * @param <T>
+ * @author shura
+ * @author erikgreijus
  */
 @ControlType(Composite.class)
 public class CompositeWrap<T extends Composite> extends ControlWrap<T> implements Parent<Control> {

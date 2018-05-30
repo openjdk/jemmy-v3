@@ -35,8 +35,8 @@ public interface ImageLoader {
      * Loads image by ID. Depending on an implementation, ID could be file name,
      * class name, image name, etc.
      * @see Image#save(java.lang.String)
-     * @param ID
-     * @return
+     * @param ID todo document
+     * @return todo document
      */
     Image load(String ID);
 

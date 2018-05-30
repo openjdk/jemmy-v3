@@ -32,10 +32,7 @@ import org.jemmy.dock.Shortcut;
  * @author shura
  */
 public interface Showable extends ControlInterface {
-    /**
-     *
-     * @return
-     */
+
     @Shortcut
     public Show shower();
 }

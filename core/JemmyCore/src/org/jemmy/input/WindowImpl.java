@@ -39,31 +39,17 @@ public class WindowImpl implements Window {
     private Wrap control;
     private int offset;
 
-    /**
-     *
-     * @param control
-     * @param offset
-     */
     public WindowImpl(Wrap control, int offset) {
         this.control = control;
         this.offset = offset;
     }
 
-    /**
-     *
-     * @param dest
-     */
     public void move(Point dest) {
         Point start = control.getClickPoint();
         Point target = new Point(start.x + dest.x, start.y + dest.y);
         control.drag().dnd(start, control, target);
     }
 
-    /**
-     *
-     * @param size
-     * @param direction
-     */
     public void resize(Dimension size, Direction direction) {
         Point start = null, target = null;
         Dimension sizeDiff = new Dimension(size.width - control.getScreenBounds().width, size.height - control.getScreenBounds().height);

@@ -65,12 +65,12 @@ public class Dock {
     /**
      * Method which at the end actually get called from all dock lookup
      * constructors.
-     * @param <T>
-     * @param parent
-     * @param controlType
-     * @param index
-     * @param criteria
-     * @return
+     * @param <T> todo document
+     * @param parent todo document
+     * @param controlType todo document
+     * @param index todo document
+     * @param criteria todo document
+     * @return todo document
      */
     protected static <T> Wrap<? extends T> lookup(Parent<? super T> parent, Class<T> controlType, int index, LookupCriteria<T>... criteria) {
         Lookup<T> lookup;
@@ -94,7 +94,6 @@ public class Dock {
     }
 
     /**
-     *
      * @return Wrap instance obtainer through lookup
      */
     public Object control() {
@@ -102,28 +101,28 @@ public class Dock {
     }
 
     /**
-     * Shortcut to <code>wrap().mouse()</code>
+     * @return Shortcut to <code>wrap().mouse()</code>
      */
     public Mouse mouse() {
         return wrap.mouse();
     }
 
     /**
-     * Shortcut to <code>wrap().keyboard()</code>
+     * @return Shortcut to <code>wrap().keyboard()</code>
      */
     public Keyboard keyboard() {
         return wrap.keyboard();
     }
 
     /**
-     * Shortcut to <code>wrap().drag()</code>
+     * @return Shortcut to <code>wrap().drag()</code>
      */
     public Drag drag() {
         return wrap.drag();
     }
 
     /**
-     * Shortcut to <code>wrap().getScreenBounds()</code>
+     * @return Shortcut to <code>wrap().getScreenBounds()</code>
      */
     public Rectangle bounds() {
         return wrap.getScreenBounds();
@@ -135,7 +134,6 @@ public class Dock {
     }
 
     /**
-     *
      * @return <code>wrap().getEnvironment()</code>.
      */
     public Environment environment() {
@@ -145,6 +143,10 @@ public class Dock {
     /**
      * Loads image with <code>goldenId</code> id waits for the control to match it.
      * @see Wrap#waitImage(org.jemmy.image.Image, org.jemmy.Rectangle, java.lang.String, java.lang.String)
+     * @param goldenId todo document
+     * @param rect todo document
+     * @param resID todo document
+     * @param diffID todo document
      */
     public void waitImage(String goldenId, Rectangle rect, String resID, String diffID) {
         wrap.waitImage(environment().getImageLoader().load(goldenId), rect, resID, diffID);
@@ -158,6 +160,8 @@ public class Dock {
      * @see #waitImage(java.lang.String, org.jemmy.Rectangle, java.lang.String, java.lang.String)
      * @see #DEFAULT_DIFF_IMAGE_SUFFIX
      * @see #DEFAULT_RESULT_IMAGE_SUFFIX
+     * @param goldenId todo document
+     * @param rect todo document
      */
     public void waitImage(String goldenId, Rectangle rect) {
         waitImage(goldenId,
@@ -169,6 +173,9 @@ public class Dock {
     /**
      * Loads image with <code>goldenId</code> id waits for the control to match it.
      * @see Wrap#waitImage(org.jemmy.image.Image, java.lang.String, java.lang.String)
+     * @param goldenId todo document
+     * @param resID todo document
+     * @param diffID todo document
      */
     public void waitImage(String goldenId, String resID, String diffID) {
         wrap.waitImage(environment().getImageLoader().load(goldenId), resID, diffID);
@@ -182,6 +189,7 @@ public class Dock {
      * @see #waitImage(java.lang.String, java.lang.String, java.lang.String)
      * @see #DEFAULT_DIFF_IMAGE_SUFFIX
      * @see #DEFAULT_RESULT_IMAGE_SUFFIX
+     * @param goldenId todo document
      */
     public void waitImage(String goldenId) {
         waitImage(goldenId,

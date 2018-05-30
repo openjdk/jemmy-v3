@@ -26,12 +26,12 @@
     -->
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.jemmy.v3</groupId>
-        <artifactId>Jemmy</artifactId>
-        <version>1.0</version>
+        <groupId>org.adoptopenjdk</groupId>
+        <artifactId>jemmy</artifactId>
+        <version>${revision}</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
-    <artifactId>JemmySWT</artifactId>
+    <artifactId>jemmy-swt</artifactId>
     <packaging>jar</packaging>
     <properties>
         <swt.version>4.3</swt.version>
@@ -81,19 +81,19 @@
             <version>${swt.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jemmy.v3</groupId>
-            <artifactId>JemmyCore</artifactId>
-            <version>1.0</version>
+            <groupId>org.adoptopenjdk</groupId>
+            <artifactId>jemmy-core</artifactId>
+            <version>${revision}</version>
         </dependency>
         <dependency>
-            <groupId>org.jemmy.v3</groupId>
-            <artifactId>JemmyBrowser</artifactId>
-            <version>1.0</version>
+            <groupId>org.adoptopenjdk</groupId>
+            <artifactId>jemmy-browser</artifactId>
+            <version>${revision}</version>
         </dependency>
         <dependency>
-            <groupId>org.jemmy.v3</groupId>
-            <artifactId>JemmyAWTInput</artifactId>
-            <version>1.0</version>
+            <groupId>org.adoptopenjdk</groupId>
+            <artifactId>jemmy-awt-input</artifactId>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>

@@ -44,12 +44,14 @@ import java.util.zip.Deflater;
 import java.util.zip.DeflaterOutputStream;
 import org.jemmy.control.ScreenArea;
 
-/** This class allows to encode BufferedImage into B/W, greyscale or true color PNG
+/**
+ * This class allows to encode BufferedImage into B/W, greyscale or true color PNG
  * image format with maximum compression.<br>
  * It also provides complete functionality for capturing full screen, part of
  * screen or single component, encoding and saving captured image info PNG file.
  * @author Adam Sotona
- * @version 1.0 */
+ * @version 1.0
+ */
 public class PNGEncoder extends Object {
 
     /** black and white image mode. */
@@ -63,11 +65,6 @@ public class PNGEncoder extends Object {
     CRC32 crc;
     byte mode;
 
-    /**
-     *
-     * @param file
-     * @throws java.io.FileNotFoundException
-     */
     public PNGEncoder(File file) throws FileNotFoundException {
         this(new FileOutputStream(file));
     }

@@ -32,7 +32,7 @@ import org.jemmy.lookup.LookupCriteria;
 /**
  *
  * @author erikgreijus
- * @param <T>
+ * @param <T> todo document
  */
 public abstract class StringPopupSelectableOwner<T> extends StringPopupOwner<T> implements PopupSelectableOwner<T> {
 

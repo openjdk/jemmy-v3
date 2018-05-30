@@ -47,8 +47,8 @@ import org.jemmy.interfaces.TypeControlInterface;
 
 /**
  *
- * @author shura, erikgreijus
- * @param <T>
+ * @author shura
+ * @author erikgreijus
  */
 @ControlType(Tree.class)
 public class TreeWrap<T extends Tree> extends ScrollableWrap<T> implements KeyboardSelectable<String>, Focusable {

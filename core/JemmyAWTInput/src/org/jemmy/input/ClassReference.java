@@ -55,7 +55,7 @@ public class ClassReference {
      * to access static methods and fields only.
      *
      * @param className name of class
-     * @exception ClassNotFoundException
+     * @throws ClassNotFoundException todo document
      */
     public ClassReference(String className)
             throws ClassNotFoundException {
@@ -69,8 +69,8 @@ public class ClassReference {
      * with a zero-length <code>java.lang.String</code> array
      * as a parameter.
      *
-     * @exception NoSuchMethodException
-     * @exception InvocationTargetException
+     * @throws NoSuchMethodException when the method cannot be found.
+     * @throws InvocationTargetException when the invoked method throws an exception.
      */
     public void startApplication()
             throws InvocationTargetException, NoSuchMethodException {
@@ -83,8 +83,8 @@ public class ClassReference {
      *
      * @param params The <code>java.lang.String</code> array to pass
      * to <code>main(java.lang.String[])</code>.
-     * @exception NoSuchMethodException
-     * @exception InvocationTargetException
+     * @throws NoSuchMethodException when the method cannot be found.
+     * @throws InvocationTargetException when the invoked method throws an exception.
      */
     public void startApplication(String[] params)
             throws InvocationTargetException, NoSuchMethodException {
@@ -111,8 +111,8 @@ public class ClassReference {
      * @param method_name Name of method.
      * @param params Method parameters.
      * @param params_classes Method parameters types.
-     * @return the return value from an invocation of the Method.<BR>
-     * If <code>method_name</code> method is void, <code>null</code> is returned.<BR>
+     * @return the return value from an invocation of the Method.<br>
+     * If <code>method_name</code> method is void, <code>null</code> is returned.<br>
      * If <code>method_name</code> method returns a primitive type, then
      * return wrapper class instance.
      * @throws InvocationTargetException when the invoked method throws an exception.

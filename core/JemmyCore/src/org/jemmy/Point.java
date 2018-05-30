@@ -31,7 +31,7 @@ import java.io.Serializable;
 
 /**
  * Replacement for java.awt.Point
- * @author Alexander Kouznetsov <mrkam@mail.ru>
+ * @author mrkam
  */
 public class Point implements Serializable{
     /**
@@ -101,7 +101,6 @@ public class Point implements Serializable{
 
     /**
      * {@inheritDoc}
-     * @return
      */
     public int getX() {
         return x;
@@ -109,7 +108,6 @@ public class Point implements Serializable{
 
     /**
      * {@inheritDoc}
-     * @return
      */
     public int getY() {
         return y;
@@ -128,7 +126,7 @@ public class Point implements Serializable{
     /**
      * Sets the location of the point to the specified location.
      * @param       p  a point, the new location for this point
-     * @return
+     * @return      self
      * @see         org.jemmy.Point#getLocation
      */
     public Point setLocation(Point p) {
@@ -142,7 +140,7 @@ public class Point implements Serializable{
      * Its behavior is identical with <code>move(int,&nbsp;int)</code>.
      * @param       x the X coordinate of the new location
      * @param       y the Y coordinate of the new location
-     * @return self
+     * @return      self
      * @see         org.jemmy.Point#getLocation
      * @see         org.jemmy.Point#move(int, int)
      */
@@ -203,8 +201,9 @@ public class Point implements Serializable{
     }
 
     /**
+     * Translates the current point according to the given vector.
      *
-     * @param v
+     * @param v vector by which to translate the point
      * @return self
      */
     public Point translate(Vector v) {
@@ -233,7 +232,6 @@ public class Point implements Serializable{
 
     /**
      * {@inheritDoc}
-     * @return
      */
     @Override
     public int hashCode() {

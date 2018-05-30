@@ -30,15 +30,8 @@ package org.jemmy.interfaces;
  * @author shura
  */
 public interface IntervalSelector extends Caret {
-    /**
-     *
-     * @param value
-     */
+
     public void selectTo(double value);
 
-    /**
-     *
-     * @param condition
-     */
     public void selectTo(Caret.Direction condition);
 }

@@ -31,9 +31,8 @@ import org.jemmy.lookup.RelativeCoordinateLookup;
 import org.jemmy.swt.ControlWrap;
 
 /**
- *
- * @author shura, erikgreijus
- * @param <T>
+ * @author shura
+ * @author erikgreijus
  */
 public class CoordinateLookup<T extends Control> extends RelativeCoordinateLookup<T> {
 

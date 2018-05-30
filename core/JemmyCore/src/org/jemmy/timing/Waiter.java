@@ -30,42 +30,24 @@ import org.jemmy.TimeoutExpiredException;
 import org.jemmy.env.Timeout;
 
 /**
- *
  * @author shura
  */
 public class Waiter {
-    /**
-     *
-     */
+
     public static final Timeout DEFAULT_DELTA = new Timeout("default.wait.delta", 100);
     private long waitTime;
     private long delta;
 
-    /**
-     *
-     * @param waitTime
-     * @param delta
-     */
     public Waiter(Timeout waitTime, Timeout delta) {
         this.waitTime = waitTime.getValue();
         this.delta = delta.getValue();
     }
 
-    /**
-     *
-     * @param waitTime
-     */
     public Waiter(Timeout waitTime) {
         this.waitTime = waitTime.getValue();
         this.delta = DEFAULT_DELTA.getValue();
     }
 
-    /**
-     *
-     * @param <T>
-     * @param state
-     * @return
-     */
     public <T> T waitState(State<T> state) {
         long start = System.currentTimeMillis();
         T res;
@@ -83,13 +65,6 @@ public class Waiter {
         return null;
     }
 
-    /**
-     *
-     * @param <T>
-     * @param value
-     * @param state
-     * @return
-     */
     public <T> T waitValue(final T value, final State<T> state) {
         State<T> st = new State<T>() {
             public T reached() {
@@ -104,12 +79,6 @@ public class Waiter {
         return waitState(st);
     }
 
-    /**
-     *
-     * @param <T>
-     * @param state
-     * @return
-     */
     public <T> T ensureState(State<T> state) {
         T res = waitState(state);
         if(res == null) {
@@ -117,13 +86,7 @@ public class Waiter {
         }
         return res;
     }
-    /**
-     *
-     * @param <T>
-     * @param value
-     * @param state
-     * @return
-     */
+
     public <T> T ensureValue(T value, State<T> state) {
         T res = waitValue(value, state);
         if (res == null) {

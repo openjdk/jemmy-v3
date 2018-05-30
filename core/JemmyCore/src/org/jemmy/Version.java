@@ -35,9 +35,6 @@ import java.util.StringTokenizer;
  * @author shura
  */
 public class Version {
-    /**
-     *
-     */
     public static final Version VERSION = new Version();
 
     private int major;
@@ -45,17 +42,10 @@ public class Version {
     private int mini;
     private String build;
 
-    /**
-     *
-     */
     public Version() {
         this(Version.class.getPackage().getName());
     }
 
-    /**
-     *
-     * @param pkg
-     */
     public Version(String pkg) {
         try {
             Properties props = new Properties();
@@ -74,51 +64,27 @@ public class Version {
         }
     }
 
-    /**
-     *
-     * @return
-     */
     public int getMajor() {
         return major;
     }
 
-    /**
-     *
-     * @return
-     */
+
     public int getMini() {
         return mini;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getMinor() {
         return minor;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getVersion() {
         return major + "." + minor + "." + mini;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getBuild() {
         return build;
     }
 
-    /**
-     *
-     * @param old
-     * @return
-     */
     public boolean newer(String old) {
         StringTokenizer tn = new StringTokenizer(old, ".");
         if(major >= Integer.parseInt(tn.nextToken())) {
@@ -131,10 +97,6 @@ public class Version {
         return false;
     }
 
-    /**
-     *
-     * @param args
-     */
     public static void main(String[] args) {
         System.out.println("JemmyCore version: " + VERSION.getVersion() + "." + VERSION.build);
     }

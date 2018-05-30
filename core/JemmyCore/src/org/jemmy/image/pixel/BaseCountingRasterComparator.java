@@ -28,26 +28,15 @@ package org.jemmy.image.pixel;
 import org.jemmy.Dimension;
 
 /**
- *
  * @author shura
  */
 public abstract class BaseCountingRasterComparator extends ThresholdComparator {
 
-    /**
-     *
-     * @param threshold
-     */
     public BaseCountingRasterComparator(double threshold) {
         super(0, 1);
         setThreshold(threshold);
     }
 
-    /**
-     *
-     * @param image1
-     * @param image2
-     * @return
-     */
     public boolean compare(Raster image1, Raster image2) {
         Dimension size = PixelImageComparator.computeDiffSize(image1, image2);
         if(size == null) {
@@ -70,14 +59,6 @@ public abstract class BaseCountingRasterComparator extends ThresholdComparator {
         return (offPixels <= totalPixels * getThreshold());
     }
 
-    /**
-     *
-     * @param comps1
-     * @param colors1
-     * @param comps2
-     * @param colors2
-     * @return
-     */
     protected abstract boolean compare(Raster.Component[] comps1, double[] colors1, Raster.Component[] comps2, double[] colors2);
 
 }

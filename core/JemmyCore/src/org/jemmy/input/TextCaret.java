@@ -38,33 +38,16 @@ import org.jemmy.interfaces.Keyboard.KeyboardModifier;
  */
 public class TextCaret extends CaretImpl implements IntervalSelector {
 
-    /**
-     *
-     * @param wrap
-     * @param scroll
-     */
     public TextCaret(Wrap<?> wrap, CaretOwner scroll) {
         super(wrap, scroll);
         addScrollAction(new KeyboardScrollAction(KeyboardButtons.LEFT, KeyboardButtons.RIGHT));
     }
 
-    /**
-     *
-     * @param down
-     * @param downMods
-     * @param up
-     * @param upMods
-     */
     public void addNavKeys(KeyboardButton down, KeyboardModifier[] downMods,
             KeyboardButton up, KeyboardModifier[] upMods) {
         addScrollAction(new CaretImpl.KeyboardScrollAction(down, downMods, up, upMods));
     }
 
-    /**
-     *
-     * @param down
-     * @param up
-     */
     public void addNavKeys(KeyboardButton down, KeyboardButton up) {
         addNavKeys(down, new KeyboardModifier[0], up, new KeyboardModifier[0]);
     }

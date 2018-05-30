@@ -29,26 +29,26 @@ import org.jemmy.interfaces.Parent;
 
 /**
  * Implements two shortcut methods.
- * @param <CONTROL>
+ * @param <CONTROL> todo document
  * @author shura
  */
 public abstract class AbstractParent<CONTROL> implements Parent<CONTROL> {
 
     /**
-     * Calls <code>lookup(controlClass, new Any<ST>())</code>
+     * Calls <code>lookup(controlClass, new Any())</code>
      * @see Any
-     * @param <ST>
-     * @param controlClass
-     * @return
+     * @param <ST> todo document
+     * @param controlClass todo document
+     * @return todo document
      */
     public <ST extends CONTROL> Lookup<ST> lookup(Class<ST> controlClass) {
         return lookup(controlClass, new Any<ST>());
     }
 
     /**
-     * Calls <code>lookup(new Any<T>())</code>
+     * Calls <code>lookup(new Any())</code>
      * @see Any
-     * @return
+     * @return todo document
      */
     public Lookup<CONTROL> lookup() {
         return lookup(new Any<CONTROL>());

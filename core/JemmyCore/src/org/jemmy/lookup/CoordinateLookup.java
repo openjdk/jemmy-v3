@@ -31,7 +31,7 @@ import org.jemmy.Rectangle;
  * the given rectangle. The way to determine bounds of any control is
  * implemented by the child class in @{@linkplain #getBounds(java.lang.Object)}
  * method.
- * @param <CONTROL>
+ *
  * @author shura
  */
 public abstract class CoordinateLookup<CONTROL> implements LookupCriteria<CONTROL>{
@@ -56,7 +56,7 @@ public abstract class CoordinateLookup<CONTROL> implements LookupCriteria<CONTRO
 
     /**
      *
-     * @param control
+     * @param control todo document
      * @return logical bounds for the control that has to be inside the given
      * rectangle to match the lookup
      */

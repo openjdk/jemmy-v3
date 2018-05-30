@@ -27,9 +27,7 @@ package org.jemmy.interfaces;
 import org.jemmy.Point;
 
 /**
- *
  * @author erikgreijus
- * @param <T>
  */
 public interface PopupSelectableOwner<T> extends PopupOwner<T> {
 

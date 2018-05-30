@@ -25,15 +25,9 @@
 package org.jemmy.image.pixel;
 
 /**
- *
  * @author shura
  */
 public interface WriteableRaster extends Raster {
-    /**
-     *
-     * @param x
-     * @param y
-     * @param values
-     */
+
     public void setColors(int x, int y, double[] values);
 }

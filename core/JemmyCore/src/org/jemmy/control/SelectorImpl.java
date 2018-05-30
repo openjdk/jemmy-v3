@@ -31,9 +31,6 @@ import org.jemmy.interfaces.Showable;
 import org.jemmy.timing.State;
 
 /**
- *
- * @param <CONTROL>
- * @param <STATE>
  * @author shura
  */
 public class SelectorImpl<CONTROL, STATE> implements Selector<STATE> {
@@ -41,21 +38,11 @@ public class SelectorImpl<CONTROL, STATE> implements Selector<STATE> {
     Wrap<? extends CONTROL> target;
     Selectable<STATE> selectable;
 
-    /**
-     *
-     * @param target
-     * @param selectable
-     */
     public SelectorImpl(Wrap<? extends CONTROL> target, Selectable<STATE> selectable) {
         this.target = target;
         this.selectable = selectable;
     }
 
-    /**
-     *
-     * @param state
-     */
-    @SuppressWarnings("unchecked")
     public void select(final STATE state) {
         if (target.is(Showable.class)) {
             target.as(Showable.class).shower().show();

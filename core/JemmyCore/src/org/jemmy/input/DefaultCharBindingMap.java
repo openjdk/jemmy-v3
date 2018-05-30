@@ -38,12 +38,10 @@ import static org.jemmy.interfaces.Keyboard.KeyboardModifiers.*;
 
 
 /**
- *
  * Default implementation of CharBindingMap interface.
  * Provides a mapping for the following symbols:<BR>
- * @see org.jemmy.CharBindingMap
  *
- * @author Alexandre Iline (alexandre.iline@sun.com)
+ * @author shura
  */
 
 public class DefaultCharBindingMap implements CharBindingMap<KeyboardButton, KeyboardModifier> {

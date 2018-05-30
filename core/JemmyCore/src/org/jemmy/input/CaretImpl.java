@@ -58,8 +58,7 @@ public class CaretImpl implements Caret {
     private ArrayList<ScrollAction> actions;
 
     /**
-     *
-     * @param wrap
+     * @param wrap the control wrapper instance
      * @param caretOwner only position() is used
      */
     public CaretImpl(Wrap<?> wrap, CaretOwner caretOwner) {
@@ -68,18 +67,10 @@ public class CaretImpl implements Caret {
         actions = new ArrayList<ScrollAction>();
     }
 
-    /**
-     *
-     * @return
-     */
     public Wrap<?> getWrap() {
         return wrap;
     }
 
-    /**
-     *
-     * @param action
-     */
     protected void addScrollAction(ScrollAction action) {
         actions.add(0, action);
     }
@@ -145,11 +136,6 @@ public class CaretImpl implements Caret {
         private CaretOwner caret;
         private double precision;
 
-        /**
-         *
-         * @param caret
-         * @param value
-         */
         public DirectionToPosition(CaretOwner caret, double value, double precision) {
             this.value = value;
             this.caret = caret;
@@ -165,19 +151,11 @@ public class CaretImpl implements Caret {
             return (diff == 0) ? 0 : ((diff > 0) ? 1 : -1);
         }
 
-        /**
-         *
-         * @return
-         */
         @Override
         public String toString() {
             return "value == " + position();
         }
 
-        /**
-         *
-         * @return
-         */
         protected double position() {
             return value;
         }
@@ -188,28 +166,14 @@ public class CaretImpl implements Caret {
      */
     protected static interface ScrollAction {
 
-        /**
-         *
-         * @param direction
-         */
         public void scrollTo(int direction);
     }
 
-    /**
-     *
-     */
     protected class MouseScrollAction implements ScrollAction {
 
         Point up, down;
         KeyboardModifier[] upMods, downMods;
 
-        /**
-         *
-         * @param down
-         * @param downMods
-         * @param up
-         * @param upMods
-         */
         public MouseScrollAction(Point down, KeyboardModifier[] downMods, Point up, KeyboardModifier[] upMods) {
             this.up = up;
             this.down = down;
@@ -217,40 +181,21 @@ public class CaretImpl implements Caret {
             this.downMods = downMods;
         }
 
-        /**
-         *
-         * @param down
-         * @param up
-         */
         public MouseScrollAction(Point down, Point up) {
             this(up, new KeyboardModifier[0], up, new KeyboardModifier[0]);
         }
 
-        /**
-         *
-         * @param direction
-         */
         public void scrollTo(int direction) {
             wrap.mouse().click(1, (direction > 0) ? up : down, MouseButtons.BUTTON1,
                     (direction > 0) ? upMods : downMods);
         }
     }
 
-    /**
-     *
-     */
     protected class KeyboardScrollAction implements ScrollAction {
 
         KeyboardButton down, up;
         KeyboardModifier[] downMods, upMods;
 
-        /**
-         *
-         * @param down
-         * @param downMods
-         * @param up
-         * @param upMods
-         */
         public KeyboardScrollAction(KeyboardButton down, KeyboardModifier[] downMods, KeyboardButton up, KeyboardModifier[] upMods) {
             this.down = down;
             this.up = up;
@@ -258,19 +203,10 @@ public class CaretImpl implements Caret {
             this.upMods = upMods;
         }
 
-        /**
-         *
-         * @param down
-         * @param up
-         */
         public KeyboardScrollAction(KeyboardButton down, KeyboardButton up) {
             this(down, new KeyboardModifier[0], up, new KeyboardModifier[0]);
         }
 
-        /**
-         *
-         * @param direction
-         */
         public void scrollTo(int direction) {
             wrap.keyboard().pushKey((direction > 0) ? up : down,
                     (direction > 0) ? upMods : downMods);

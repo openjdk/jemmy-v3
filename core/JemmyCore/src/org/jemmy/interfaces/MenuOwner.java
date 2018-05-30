@@ -37,7 +37,7 @@ import org.jemmy.dock.Shortcut;
 public interface MenuOwner<T> extends TypeControlInterface<T> {
     /**
      * Actual menu.
-     * @return
+     * @return the actual menu
      */
     @Shortcut
     public Menu menu();

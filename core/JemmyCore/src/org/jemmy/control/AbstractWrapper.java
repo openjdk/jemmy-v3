@@ -39,32 +39,16 @@ public abstract class AbstractWrapper implements Wrapper {
 
     private Environment env;
 
-    /**
-     *
-     * @param env
-     */
-    @SuppressWarnings("unchecked")
     public AbstractWrapper(Environment env) {
         this.env = env;
     }
 
-    /**
-     *
-     * @return
-     */
     public Environment getEnvironment() {
         return env;
     }
 
     protected abstract Class<Wrap> getWrapClass(Class controlClass);
 
-    /**
-     *
-     * @param <T>
-     * @param controlClass
-     * @param control
-     * @return Wrap
-     */
     public <T> Wrap<? extends T> wrap(Class<T> controlClass, T control) {
         Class cls = control.getClass();
         Class<Wrap> wrp;
@@ -91,20 +75,6 @@ public abstract class AbstractWrapper implements Wrapper {
         throw new WrapperException(control);
     }
 
-    /**
-     *
-     * @param <T>
-     * @param control
-     * @param controlClass
-     * @param wrapperClass
-     * @return Wrap
-     * @throws java.lang.NoSuchMethodException
-     * @throws java.lang.InstantiationException
-     * @throws java.lang.IllegalAccessException
-     * @throws java.lang.IllegalArgumentException
-     * @throws java.lang.reflect.InvocationTargetException
-     */
-    @SuppressWarnings("unchecked")
     protected <T> Wrap<? extends T> doWrap(T control, Class controlClass, Class wrapperClass) throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         Constructor cns = null;
         Class cls = controlClass;

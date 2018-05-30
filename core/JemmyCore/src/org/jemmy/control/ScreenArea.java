@@ -34,9 +34,6 @@ import org.jemmy.Rectangle;
  * @author shura
  */
 public interface ScreenArea {
-    /**
-     *
-     * @return
-     */
+
     public abstract Rectangle getScreenBounds();
 }

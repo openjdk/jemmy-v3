@@ -26,15 +26,9 @@
 package org.jemmy.lookup;
 
 /**
- *
- * @param <CONTROL>
  * @author shura
  */
 public interface LookupCriteria<CONTROL> {
-    /**
-     *
-     * @param control
-     * @return
-     */
+
     public boolean check(CONTROL control);
 }

@@ -29,7 +29,8 @@ import org.jemmy.image.pixel.PixelEqualityRasterComparator;
 /**
  * Compares two images strictly (i.e. all the pixel colors should match).
  *
- * @author Alexandre Iline (alexandre.iline@sun.com), KAM <mrkam@mail.ru>
+ * @author shura
+ * @author mrkam
  */
 public class StrictImageComparator extends BufferedImageComparator {
 

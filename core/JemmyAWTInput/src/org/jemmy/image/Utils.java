@@ -32,60 +32,30 @@ import org.jemmy.Rectangle;
 
 /**
  *
- * @author Alexander Kouznetsov <mrkam@mail.ru>
+ * @author mrkam
  */
 public class Utils {
 
-    /**
-     *
-     * @param r
-     * @return java.awt.Rectangle
-     */
     public static java.awt.Rectangle convert(Rectangle r) {
         return new java.awt.Rectangle(r.x, r.y, r.width, r.height);
     }
 
-    /**
-     *
-     * @param r
-     * @return org.jemmy.Rectangle
-     */
     public static Rectangle convert(java.awt.Rectangle r) {
         return new Rectangle(r.x, r.y, r.width, r.height);
     }
 
-    /**
-     *
-     * @param p
-     * @return java.awt.Point
-     */
     public static java.awt.Point convert(Point p) {
         return new java.awt.Point(p.x, p.y);
     }
 
-    /**
-     *
-     * @param p
-     * @return org.jemmy.Point
-     */
     public static Point convert(java.awt.Point p) {
         return new Point(p.x, p.y);
     }
 
-    /**
-     *
-     * @param d
-     * @return java.awt.Dimension
-     */
     public static java.awt.Dimension convert(Dimension d) {
         return new java.awt.Dimension(d.width, d.height);
     }
 
-    /**
-     *
-     * @param d
-     * @return org.jemmy.Dimension
-     */
     public static Dimension convert(java.awt.Dimension d) {
         return new Dimension(d.width, d.height);
     }

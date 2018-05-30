@@ -26,21 +26,12 @@ package org.jemmy.lookup;
 
 /**
  * @author shura
- * @param <T>
  */
 public class Any<T> implements LookupCriteria<T> {
 
-    /**
-     *
-     */
     public Any() {
     }
 
-    /**
-     *
-     * @param control
-     * @return
-     */
     public boolean check(T control) {
         return true;
     }

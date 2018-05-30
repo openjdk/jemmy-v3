@@ -42,7 +42,7 @@ public class AverageDistanceImageComparator extends BufferedImageComparator {
     /**
      * Creates comparator with the default sensitivity value = 0.02
      * (around 5 in 0-255 color component value).
-     * @see #NaturalImageComparator(double)
+     * @see #AverageDistanceImageComparator(double)
      */
     public AverageDistanceImageComparator() {
         this(0.02);

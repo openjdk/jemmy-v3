@@ -45,10 +45,6 @@ public abstract class CaretText extends AbstractCaretOwner implements Text {
     TextImpl text;
     Wrap<?> wrap;
 
-    /**
-     *
-     * @param wrap
-     */
     public CaretText(Wrap<?> wrap) {
         this.wrap = wrap;
         text = new TextImpl(wrap) {
@@ -69,10 +65,6 @@ public abstract class CaretText extends AbstractCaretOwner implements Text {
         caret = new TextCaret(wrap, this);
     }
 
-    /**
-     *
-     * @return
-     */
     protected int getFlags() {
         return (Integer)wrap.getEnvironment().
                 getProperty(RegexCaretDirection.REGEX_FLAGS, 0);
@@ -88,9 +80,10 @@ public abstract class CaretText extends AbstractCaretOwner implements Text {
 
     /**
      * Moves caret to a beginning/end of an <code>index</code>'th occurance of the regex.
-     * @param regex
-     * @param front
-     * @param index
+     *
+     * @param regex the regular expression to search for
+     * @param front todo document
+     * @param index todo document
      */
     public void to(String regex, boolean front, int index) {
         caret().to(new RegexCaretDirection(this, this, regex, getFlags(), front, index));
@@ -98,8 +91,9 @@ public abstract class CaretText extends AbstractCaretOwner implements Text {
 
     /**
      * Moves caret to a beginning/end of the first occurance of the regex.
-     * @param regex
-     * @param front
+     *
+     * @param regex the regular expression to search for
+     * @param front todo document
      */
     public void to(String regex, boolean front) {
         to(regex, front, 0);
@@ -107,29 +101,18 @@ public abstract class CaretText extends AbstractCaretOwner implements Text {
 
     /**
      * Moves caret to a beginning the first occurance of the regex.
-     * @param regex
+     *
+     * @param regex the regular expression to search for
      */
     public void to(String regex) {
         to(regex, true);
     }
 
-    /**
-     *
-     * @param left
-     * @param leftMods
-     * @param right
-     * @param rightMods
-     */
     public void addNavKeys(KeyboardButton left, KeyboardModifier[] leftMods,
             KeyboardButton right, KeyboardModifier[] rightMods) {
         caret().addNavKeys(left, leftMods, right, rightMods);
     }
 
-    /**
-     *
-     * @param left
-     * @param right
-     */
     public void addNavKeys(KeyboardButton left, KeyboardButton right) {
         addNavKeys(left, new KeyboardModifier[0], right, new KeyboardModifier[0]);
     }

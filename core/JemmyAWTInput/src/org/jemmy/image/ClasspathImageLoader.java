@@ -31,7 +31,8 @@ import org.jemmy.env.Environment;
 /**
  * ImageLoader implementation which is able to load images through
  * a given classloader.
- * @author mrkam, shura
+ * @author mrkam
+ * @author shura
  */
 public class ClasspathImageLoader implements ImageLoader {
 
@@ -67,10 +68,6 @@ public class ClasspathImageLoader implements ImageLoader {
         this.classLoader = classLoader;
     }
 
-    /**
-     * TODO: Add JavaDoc
-     * @param rootPackage
-     */
     public void setRootPackage(Package rootPackage) {
         if (rootPackage != null) {
             this.packagePrefix = rootPackage.getName().replace('.', '/') + "/";

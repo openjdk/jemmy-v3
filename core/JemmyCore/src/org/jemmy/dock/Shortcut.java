@@ -39,7 +39,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.CLASS)
 public @interface Shortcut {
     /**
-     * If name is not specified, then shortcut's name will same as name of interface method
+     * @return if name is not specified, then shortcut's name will same as name of interface method
      */
     String name() default "";
 }

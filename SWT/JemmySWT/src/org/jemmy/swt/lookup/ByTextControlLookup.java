@@ -30,9 +30,8 @@ import org.eclipse.swt.widgets.Control;
 import org.jemmy.resources.StringComparePolicy;
 
 /**
- *
- * @author klara, erikgreijus
- * @param <T>
+ * @author klara
+ * @author erikgreijus
  */
 public class ByTextControlLookup<T extends Control> extends ByStringQueueLookup<T> {
 

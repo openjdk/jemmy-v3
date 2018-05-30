@@ -43,7 +43,7 @@ import org.jemmy.lookup.LookupCriteria;
 @Documented
 public @interface ObjectLookup {
     /**
-     * Description of the method parameters. To be used in the javadoc later.
+     * @return description of the method parameters. To be used in the javadoc later.
      */
     String value();
 }

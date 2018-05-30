@@ -33,32 +33,14 @@ import org.jemmy.JemmyException;
  */
 public class WrapperException extends JemmyException {
 
-    /**
-     *
-     * @param <T>
-     * @param controlClass
-     * @param wrapperClass
-     * @param e
-     */
     public <T extends Wrap> WrapperException(Class controlClass, Class<T> wrapperClass, Exception e) {
         super(controlClass.getName() + " is not accepted by " + wrapperClass.getName(), e);
     }
 
-    /**
-     *
-     * @param <T>
-     * @param controlClass
-     * @param wrapperClass
-     */
     public <T extends Wrap> WrapperException(Class controlClass, Class<T> wrapperClass) {
         super(controlClass.getName() + " is not accepted by " + wrapperClass.getName());
     }
 
-    /**
-     *
-     * @param <T>
-     * @param control
-     */
     public <T extends Wrap> WrapperException(Object control) {
         super("Unable to find a wrapper", control);
     }

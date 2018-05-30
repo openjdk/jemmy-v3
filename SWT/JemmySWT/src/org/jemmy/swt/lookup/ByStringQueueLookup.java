@@ -27,8 +27,6 @@ package org.jemmy.swt.lookup;
 import org.jemmy.resources.StringComparePolicy;
 
 /**
- *
- * @param <T>
  * @author klara
  */
 public abstract class ByStringQueueLookup<T> extends QueueLookup<T> {
@@ -36,36 +34,17 @@ public abstract class ByStringQueueLookup<T> extends QueueLookup<T> {
     private final StringComparePolicy policy;
     private final String text;
 
-    /**
-     *
-     * @param text
-     */
     protected ByStringQueueLookup(String text) {
         this(text, StringComparePolicy.SUBSTRING);
     }
 
-    /**
-     *
-     * @param text
-     * @param policy
-     */
     protected ByStringQueueLookup(String text, StringComparePolicy policy) {
         this.policy = policy;
         this.text = text;
     }
 
-    /**
-     *
-     * @param control
-     * @return
-     */
     public abstract String getText(T control);
 
-    /**
-     *
-     * @param control
-     * @return
-     */
     public boolean doCheck(T control) {
         return policy.compare(text, getText(control));
     }

@@ -25,7 +25,9 @@
 
 package org.jemmy.interfaces;
 
+import org.jemmy.action.Action;
 import org.jemmy.dock.Shortcut;
+import org.jemmy.env.Environment;
 import org.jemmy.env.Timeout;
 
 
@@ -34,79 +36,39 @@ import org.jemmy.env.Timeout;
  */
 public interface Keyboard extends ControlInterface {
 
-    /**
-     *
-     */
     public static final Timeout PUSH = new Timeout("keyboard.push", 100);
 
-    /**
-     *
-     * @param key
-     * @param modifiers
-     */
     @Shortcut
     public void pressKey(KeyboardButton key, Modifier... modifiers);
-    /**
-     *
-     * @param key
-     */
+
     @Shortcut
     public void pressKey(KeyboardButton key);
 
-    /**
-     *
-     * @param key
-     * @param modifiers
-     */
     @Shortcut
     public void releaseKey(KeyboardButton key, Modifier... modifiers);
-    /**
-     *
-     * @param key
-     */
+
     @Shortcut
     public void releaseKey(KeyboardButton key);
 
-    /**
-     *
-     * @param key
-     * @param modifiers
-     * @param pushTime
-     */
     @Shortcut
     public void pushKey(Timeout pushTime, KeyboardButton key, Modifier... modifiers);
-    /**
-     *
-     * @param key
-     * @param modifiers
-     */
+
     @Shortcut
     public void pushKey(KeyboardButton key, Modifier... modifiers);
-    /**
-     *
-     * @param key
-     */
+
     @Shortcut
     public void pushKey(KeyboardButton key);
 
-    /**
-     *
-     * @param keyChar
-     * @param pushTime
-     */
     @Shortcut
     public void typeChar(char keyChar, Timeout pushTime);
-    /**
-     *
-     * @param keyChar
-     */
+
     @Shortcut
     public void typeChar(char keyChar);
 
     /**
      * Detaches the implementation so that all actions of it will be ran detached.
-     * @see org.jemmy.action.ActionExecutor#executeDetached(org.jemmy.env.Environment, org.jemmy.action.Action, java.lang.Object[])
-     * @return
+     * @see org.jemmy.action.ActionExecutor#executeDetached(Environment, boolean, Action, Object...)
+     * @return todo document
      */
     public Keyboard detached();
 
@@ -142,7 +104,6 @@ public interface Keyboard extends ControlInterface {
      * to be used in Keyboard interface methods
      */
     public static enum KeyboardButtons implements KeyboardButton {
-
         /**
          *
          */

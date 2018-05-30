@@ -29,7 +29,6 @@ import org.jemmy.Dimension;
 import org.jemmy.image.pixel.Raster.Component;
 
 /**
- *
  * @author shura
  */
 public abstract class ColorMappingComparator implements RasterComparator {
@@ -38,12 +37,6 @@ public abstract class ColorMappingComparator implements RasterComparator {
     final private ColorMap right;
     private RasterComparator subComparator;
 
-    /**
-     *
-     * @param left
-     * @param right
-     * @param subComparator
-     */
     public ColorMappingComparator(ColorMap left, ColorMap right,
             RasterComparator subComparator) {
         this.subComparator = subComparator;
@@ -51,47 +44,22 @@ public abstract class ColorMappingComparator implements RasterComparator {
         this.right = right;
     }
 
-    /**
-     *
-     * @return
-     */
     public RasterComparator getSubComparator() {
         return subComparator;
     }
 
-    /**
-     *
-     * @param subComparator
-     */
     public void setSubComparator(RasterComparator subComparator) {
         this.subComparator = subComparator;
     }
 
-    /**
-     *
-     * @param both
-     * @param subComparator
-     */
     public ColorMappingComparator(ColorMap both, RasterComparator subComparator) {
         this(both, both, subComparator);
     }
 
-    /**
-     *
-     * @param image1
-     * @param image2
-     * @return
-     */
     public boolean compare(Raster image1, Raster image2) {
         return subComparator.compare(map(image1, left), map(image2, right));
     }
 
-    /**
-     *
-     * @param image
-     * @param map
-     * @return
-     */
     public WriteableRaster map(Raster image, ColorMap map) {
         WriteableRaster res = createView(image.getSize());
         double[] colors = new double[image.getSupported().length];
@@ -106,39 +74,18 @@ public abstract class ColorMappingComparator implements RasterComparator {
         return res;
     }
 
-    /**
-     *
-     * @param size
-     * @return
-     */
     protected abstract WriteableRaster createView(Dimension size);
 
-    /**
-     *
-     * @return
-     */
     public String getID() {
         return ColorMappingComparator.class.getName() + ":" +
                 left.getID() + "," + right.getID() + "(" +
                 subComparator.getID() + ")";
     }
 
-    /**
-     *
-     */
     public interface ColorMap {
 
-        /**
-         *
-         * @param components
-         * @param values
-         * @param newValues
-         */
         public void map(Component[] components, double[] values, double[] newValues);
-        /**
-         *
-         * @return
-         */
+
         public String getID();
     }
 }

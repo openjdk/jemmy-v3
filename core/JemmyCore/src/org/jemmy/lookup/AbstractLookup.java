@@ -41,7 +41,7 @@ import org.jemmy.timing.State;
  * implementation and allow it to handle sub-lookups creation.
  * @see AbstractLookup#lookup(org.jemmy.lookup.LookupCriteria)
  * @see AbstractLookup#lookup(java.lang.Class, org.jemmy.lookup.LookupCriteria)
- * @param <CONTROL>
+ * @param <CONTROL> todo document
  * @author shura
  */
 public abstract class AbstractLookup<CONTROL> extends AbstractParent<CONTROL> implements Lookup<CONTROL> {
@@ -71,10 +71,10 @@ public abstract class AbstractLookup<CONTROL> extends AbstractParent<CONTROL> im
      * This actual lookup logic is delegated to <code>getCildren(java.lang.Object)</code>
      * method
      * @see AbstractLookup#getChildren(java.lang.Object)
-     * @param env
-     * @param controlClass
-     * @param criteria
-     * @param wrapper
+     * @param env todo document
+     * @param controlClass todo document
+     * @param criteria todo document
+     * @param wrapper todo document
      */
     public AbstractLookup(Environment env, Class<CONTROL> controlClass, LookupCriteria<CONTROL> criteria, Wrapper wrapper) {
         this.env = env;
@@ -88,24 +88,15 @@ public abstract class AbstractLookup<CONTROL> extends AbstractParent<CONTROL> im
         return wrapper;
     }
 
-    /**
-     *
-     * @return
-     */
     LookupCriteria<CONTROL> getCriteria() {
         return criteria;
     }
 
-    /**
-     *
-     * @return
-     */
     Environment getEnvironment() {
         return env;
     }
 
     /**
-     *
      * @return The class of the sount controls.
      */
     Class<CONTROL> getControlClass() {
@@ -123,7 +114,7 @@ public abstract class AbstractLookup<CONTROL> extends AbstractParent<CONTROL> im
     /**
      * Waits for certain number of controls to fit criteria.
      * Depending on how outputs set, prints out info about the lookup.
-     * @param count
+     * @param count todo document
      * @return this, after the count of found number of found controls
      * exceeds the required.
      * @see AbstractLookup#OUTPUT
@@ -152,7 +143,7 @@ public abstract class AbstractLookup<CONTROL> extends AbstractParent<CONTROL> im
      * Gets the number of controls which fit criteria.
      * Depending on how outputs set, prints out info about the lookup.
      * @see AbstractLookup#OUTPUT
-     * @return
+     * @return todo document
      */
     public int size() {
         getEnvironment().getOutput(OUTPUT).println("Getting number of controls of " + clss.getName() + " class fitting criteria " + criteria);
@@ -160,9 +151,6 @@ public abstract class AbstractLookup<CONTROL> extends AbstractParent<CONTROL> im
         return found.size();
     }
 
-    /**
-     *
-     */
     void refresh() {
         found.clear();
         List childen = getChildren(null);
@@ -188,55 +176,46 @@ public abstract class AbstractLookup<CONTROL> extends AbstractParent<CONTROL> im
         }
     }
 
-    /**
-     *
-     * @param control
-     * @return
-     */
     protected boolean check(CONTROL control) {
         return control != null && criteria.check(control);
     }
 
     /**
      * Returns Wrap of the control with specified index
-     * @param index
+     * @param index todo document
      * @return Wrap
      */
     public Wrap<? extends CONTROL> wrap(int index) {
         return instantiate(get(index));
     }
 
-    /**
-     *
-     * @return
-     */
     public Wrap<? extends CONTROL> wrap() {
         return wrap(0);
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     public <INTERFACE extends ControlInterface> INTERFACE as(int index, Class<INTERFACE> interfaceClass) {
         return wrap(index).as(interfaceClass);
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     public <INTERFACE extends ControlInterface> INTERFACE as(Class<INTERFACE> interfaceClass) {
         return as(0, interfaceClass);
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     public <TYPE, INTERFACE extends TypeControlInterface<TYPE>> INTERFACE as(int index, Class<INTERFACE> interfaceClass, Class<TYPE> type) {
         return wrap(index).as(interfaceClass, type);
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     public <TYPE, INTERFACE extends TypeControlInterface<TYPE>> INTERFACE as(Class<INTERFACE> interfaceClass, Class<TYPE> type) {
         return as(0, interfaceClass, type);
@@ -248,24 +227,16 @@ public abstract class AbstractLookup<CONTROL> extends AbstractParent<CONTROL> im
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     public CONTROL get() {
         return get(0);
     }
 
-    /**
-     *
-     * @return
-     */
     List<CONTROL> getFound() {
         return found;
     }
 
-    /**
-     *
-     * @return
-     */
     public Class<CONTROL> getType() {
         return getControlClass();
     }
@@ -275,7 +246,7 @@ public abstract class AbstractLookup<CONTROL> extends AbstractParent<CONTROL> im
      * List could contain any type of objects - not just <code>CONTROL</code>.
      * @param subParent - one of the elements in the hierarchy reflected by this lookup.
      * If null passed - first level children are expected.
-     * @return
+     * @return todo document
      */
     abstract List getChildren(Object subParent);
 
@@ -295,19 +266,13 @@ public abstract class AbstractLookup<CONTROL> extends AbstractParent<CONTROL> im
     /**
      * Wraps the control with a <code>Wrap</code> class.
      * @see Wrap
-     * @param wrap
+     * @param control todo document
      * @return Wrap
      */
     private Wrap<? extends CONTROL> instantiate(CONTROL control) {
         return wrapper.wrap(clss, control);
     }
 
-    /**
-     *
-     * @param out
-     * @param obj
-     * @param prefix
-     */
     protected void dumpOne(PrintStream out, CONTROL obj, String prefix) {
         Map<String, Object> data = getWrapper().wrap(getControlClass(), getControlClass().cast(obj)).getPropertiesQiuet();
         out.println(prefix + "+-" + buildClassChain(obj.getClass()));
@@ -321,11 +286,6 @@ public abstract class AbstractLookup<CONTROL> extends AbstractParent<CONTROL> im
         }
     }
 
-    /**
-     *
-     * @param out
-     * @param lookup
-     */
     protected abstract void dump(PrintStream out, Lookup<? extends CONTROL> lookup);
 
     public void dump(PrintStream out) {

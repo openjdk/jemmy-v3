@@ -36,9 +36,9 @@ public interface ImageCapturer {
 
     /**
      * Obtains a screen image for the control.
-     * @param control
+     * @param control todo document
      * @param rect a control area to be captured
-     * @return
+     * @return todo document
      */
     Image capture(Wrap<?> control, Rectangle rect);
 

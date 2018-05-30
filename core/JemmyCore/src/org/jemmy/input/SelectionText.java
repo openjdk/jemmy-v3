@@ -35,18 +35,15 @@ import org.jemmy.interfaces.IntervalSelectable;
  */
 public abstract class SelectionText extends CaretText implements IntervalSelectable {
 
-    /**
-     *
-     * @param wrap
-     */
     public SelectionText(Wrap<?> wrap) {
         super(wrap);
     }
 
     /**
      * Selects <code>index</code>'th occurance of the regex.
-     * @param regex
-     * @param index
+     *
+     * @param regex the regular expression to select
+     * @param index the occurance index
      */
     public void select(String regex, int index) {
         to(regex, true, index);
@@ -55,15 +52,15 @@ public abstract class SelectionText extends CaretText implements IntervalSelecta
 
     /**
      * Selects first occurance of the regex.
-     * @param regex
+     *
+     * @param regex the regular expression to select
      */
     public void select(String regex) {
         select(regex, 0);
     }
 
     /**
-     * Retuns the selection portion of the text.
-     * @return
+     * @return the selection portion of the text.
      */
     public String selection() {
         int a = (int) anchor(); int p = (int) position();

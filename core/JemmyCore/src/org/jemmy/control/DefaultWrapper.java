@@ -27,36 +27,19 @@ package org.jemmy.control;
 import org.jemmy.env.Environment;
 
 /**
- *
  * @author shura
  */
 public class DefaultWrapper extends WrapperImpl {
 
-    /**
-     *
-     * @param env
-     * @param wrapList
-     */
-    @SuppressWarnings("unchecked")
     public DefaultWrapper(Environment env, Class<? extends Wrap>... wrapList) {
         super(env);
         addAnnotated(wrapList);
     }
 
-    /**
-     *
-     * @param env
-     */
-    @SuppressWarnings("unchecked")
     public DefaultWrapper(Environment env) {
         super(env);
     }
 
-    /**
-     *
-     * @param list
-     */
-    @SuppressWarnings("unchecked")
     public final void addAnnotated(Class<? extends Wrap>... list) {
         for (Class cn : list) {
             if (!cn.isAnnotationPresent(ControlType.class)) {

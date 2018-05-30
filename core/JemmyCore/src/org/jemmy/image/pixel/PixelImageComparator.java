@@ -32,7 +32,6 @@ import org.jemmy.image.ImageComparator;
 import org.jemmy.image.pixel.Raster.Component;
 
 /**
- *
  * @author shura
  */
 public abstract class PixelImageComparator implements ImageComparator {
@@ -46,10 +45,6 @@ public abstract class PixelImageComparator implements ImageComparator {
     private RasterComparator comparator = null;
     private Environment env = null;
 
-    /**
-     *
-     * @param comparator
-     */
     public PixelImageComparator(RasterComparator comparator) {
         this.comparator = comparator;
     }
@@ -66,12 +61,6 @@ public abstract class PixelImageComparator implements ImageComparator {
         }
     }
 
-    /**
-     *
-     * @param one
-     * @param two
-     * @return
-     */
     public static Dimension computeDiffSize(Raster one, Raster two) {
         if (one.getSize().equals(two.getSize())) {
             return one.getSize();
@@ -90,12 +79,6 @@ public abstract class PixelImageComparator implements ImageComparator {
         }
     }
 
-    /**
-     *
-     * @param image1
-     * @param image2
-     * @return
-     */
     public WriteableRaster computeDifference(Raster image1, Raster image2) {
         Dimension size = computeDiffSize(image1, image2);
         if (size == null) {
@@ -129,15 +112,7 @@ public abstract class PixelImageComparator implements ImageComparator {
     private static final Component[] diffComponents = {
         Component.RED, Component.BLUE, Component.GREEN
     };
-    /**
-     *
-     * @param comps1
-     * @param colors1
-     * @param comps2
-     * @param colors2
-     * @param compsRes
-     * @param colorsRes
-     */
+
     protected void calcDiffColor(Raster.Component[] comps1, double[] colors1,
             Raster.Component[] comps2, double[] colors2, Raster.Component[] compsRes, double[] colorsRes) {
         double square1, square2;
@@ -158,34 +133,12 @@ public abstract class PixelImageComparator implements ImageComparator {
         return getRasterComparator().getID();
     }
 
-    /**
-     *
-     * @param image
-     * @return
-     */
     protected abstract Image toImage(Raster image);
 
-    /**
-     *
-     * @param image
-     * @return
-     */
     protected abstract Raster toRaster(Image image);
 
-    /**
-     *
-     * @param r1
-     * @param r2
-     * @return
-     */
     protected abstract WriteableRaster createDiffRaster(Raster r1, Raster r2);
 
-    /**
-     *
-     * @param comps
-     * @param comp
-     * @return
-     */
     public static int arrayIndexOf(Raster.Component[] comps, Raster.Component comp) {
         for (int i = 0; i < comps.length; i++) {
             if (comp == comps[i]) {

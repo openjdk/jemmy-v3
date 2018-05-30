@@ -34,7 +34,6 @@ import javax.swing.JTextField;
 public class SearchDialog extends javax.swing.JDialog {
     private boolean doSearch;
 
-    /** Creates new form SearchDialog */
     public SearchDialog(java.awt.Frame parent) {
         super(parent, true);
         initComponents();

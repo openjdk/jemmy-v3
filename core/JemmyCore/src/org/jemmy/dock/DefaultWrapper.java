@@ -34,7 +34,6 @@ import java.lang.annotation.Target;
  * do not take parent as a parameter, taking whatever is coming from this method
  * instead. An annotated method should take one parameter - class of the controls
  * to by looked for and should return parent for that type.
- * @see Parent
  * @author shura
  */
 @Target(ElementType.METHOD)

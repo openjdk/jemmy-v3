@@ -29,10 +29,9 @@ import org.jemmy.lookup.LookupCriteria;
 /**
  * Represents a hierarchical structure in which elements not only could be
  * selected but also "pushes", which is an action typically performed with
- * menu.<br/>
+ * menu.
  *
  * @author erikgreijus
- * @param <T>
  */
 public interface MenuSelectable<T> extends Menu<T> {
 

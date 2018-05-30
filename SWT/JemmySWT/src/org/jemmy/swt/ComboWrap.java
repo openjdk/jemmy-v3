@@ -44,8 +44,8 @@ import org.jemmy.interfaces.Selector;
 
 /**
  *
- * @author shura, erikgreijus
- * @param <T>
+ * @author shura
+ * @author erikgreijus
  */
 @ControlType(Combo.class)
 public class ComboWrap<T extends Combo> extends ControlWrap<T> implements

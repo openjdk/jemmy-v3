@@ -53,65 +53,21 @@ import org.jemmy.timing.State;
 @ControlInterfaces({Mouse.class, Keyboard.class, Drag.class})
 public abstract class Wrap<CONTROL extends Object> {
 
-    /**
-     *
-     */
     public static final String BOUNDS_PROP_NAME = "bounds";
-    /**
-     *
-     */
     public static final String CLICKPOINT_PROP_NAME = "clickPoint";
-    /**
-     *
-     */
     public static final String CONTROL_CLASS_PROP_NAME = "control.class";
-    /**
-     *
-     */
     public static final String CONTROL_PROP_NAME = "control";
-    /**
-     *
-     */
     public static final String INPUT_FACTORY_PROPERTY = "input.control.interface.factory";
-    /**
-     *
-     */
     public static final String IMAGE_LOADER_PROPERTY = "image.loader";
-    /**
-     *
-     */
     public static final String IMAGE_CAPTURER_PROPERTY = "image.capturer";
-    /**
-     *
-     */
     public static final String TEXT_PROP_NAME = "text";
-    /**
-     *
-     */
     public static final String POSITION_PROP_NAME = "position";
-    /**
-     *
-     */
     public static final String VALUE_PROP_NAME = "value";
-    /**
-     *
-     */
     public static final String WRAPPER_CLASS_PROP_NAME = "wrapper.class";
-    /**
-     *
-     */
     public static final String TOOLTIP_PROP_NAME = "tooltip";
-    /**
-     *
-     */
     public static final String NAME_PROP_NAME = "name";
-    /**
-     *
-     */
     public static final Timeout WAIT_STATE_TIMEOUT = new Timeout("wait.state", 1000);
-    /**
-     *
-     */
+
     public static final String OUTPUT = Wrap.class.getName() + ".OUTPUT";
     private static DefaultWrapper theWrapper = new DefaultWrapper(Environment.getEnvironment());
 
@@ -125,10 +81,6 @@ public abstract class Wrap<CONTROL extends Object> {
         Environment.getEnvironment().initTimeout(Keyboard.PUSH);
     }
 
-    /**
-     *
-     * @return
-     */
     public static DefaultWrapper getWrapper() {
         return theWrapper;
     }
@@ -184,7 +136,7 @@ public abstract class Wrap<CONTROL extends Object> {
      * Return default point to click, drag. This implementation returns the
      * center must be overriden if something different is desired.
      *
-     * @return
+     * @return the default click point
      */
     @Property(CLICKPOINT_PROP_NAME)
     public Point getClickPoint() {
@@ -207,8 +159,8 @@ public abstract class Wrap<CONTROL extends Object> {
      * Transforms point in local control coordinate system to screen
      * coordinates.
      *
-     * @param local
-     * @return
+     * @param local the local coordinate
+     * @return a absolute translated point
      * @see #toLocal(org.jemmy.Point)
      */
     public Point toAbsolute(Point local) {
@@ -220,7 +172,7 @@ public abstract class Wrap<CONTROL extends Object> {
      * Transforms point in screen coordinates to local control coordinate
      * system.
      *
-     * @param local
+     * @param local the local coordinate
      * @return coordinates which should be used for mouse operations.
      * @see #toAbsolute(org.jemmy.Point)
      */
@@ -258,7 +210,7 @@ public abstract class Wrap<CONTROL extends Object> {
      * Waits for a portion of image to be exact the same as the parameter.
      *
      * @see Wrap#as(java.lang.Class)
-     * @param golden
+     * @param golden the image to match against
      * @param rect A portion of control to compare.
      * @param resID ID of a result image to save in case of failure. No image
      * saved if null.
@@ -296,7 +248,7 @@ public abstract class Wrap<CONTROL extends Object> {
      * Waits for image to be exact the same as the parameter.
      *
      * @see Wrap#as(java.lang.Class)
-     * @param golden
+     * @param golden the image to match against
      * @param resID ID of a result image to save in case of failure. No image
      * saved if null.
      * @param diffID ID of a diff image to save in case of failure. No image
@@ -310,9 +262,9 @@ public abstract class Wrap<CONTROL extends Object> {
     /**
      * TODO javadoc
      *
-     * @param <V>
-     * @param state
-     * @param value
+     * @param <V> the states type
+     * @param state the state
+     * @param value the state value
      * @return last returned State value
      * @throws TimeoutExpiredException in case the wait is unsuccessful.
      */
@@ -321,10 +273,8 @@ public abstract class Wrap<CONTROL extends Object> {
     }
 
     /**
-     * TODO javadoc
-     *
-     * @param <V>
-     * @param state
+     * @param <V> the states type
+     * @param state the state
      * @return last returned State value
      * @throws TimeoutExpiredException in case the wait is unsuccessful.
      */
@@ -370,9 +320,10 @@ public abstract class Wrap<CONTROL extends Object> {
      * <code>as(java.lang.Class)</code>
      *
      * @see Wrap#is(java.lang.Class)
-     * @param <INTERFACE>
-     * @param interfaceClass
-     * @return
+     * @param <INTERFACE> the control interface
+     * @param interfaceClass the interface class
+     * @return <code>true</code> if the control is an ControlInterface,
+     *         <code>false</code> otherwise
      */
     public <INTERFACE extends ControlInterface> boolean is(Class<INTERFACE> interfaceClass) {
         if (interfaceClass.isInstance(this)) {
@@ -393,11 +344,12 @@ public abstract class Wrap<CONTROL extends Object> {
      * <code>as(java.lang.Class)</code>
      *
      * @see Wrap#is(java.lang.Class)
-     * @param <TYPE>
-     * @param <INTERFACE>
-     * @param interfaceClass
+     * @param <TYPE> the type interface
+     * @param <INTERFACE> the control interface
+     * @param interfaceClass the interface class
      * @param type The parameter class.
-     * @return
+     * @return <code>true</code> if the control is an ControlInterface,
+     *         <code>false</code> otherwise
      */
     public <TYPE, INTERFACE extends TypeControlInterface<TYPE>> boolean is(Class<INTERFACE> interfaceClass, Class<TYPE> type) {
         if (interfaceClass.isInstance(this)) {
@@ -435,9 +387,9 @@ public abstract class Wrap<CONTROL extends Object> {
      * it checks
      *
      * @see Wrap#is(java.lang.Class)
-     * @param <INTERFACE>
-     * @param interfaceClass
-     * @return
+     * @param <INTERFACE> the control interface
+     * @param interfaceClass the interface class
+     * @return the control interface instance
      */
     public <INTERFACE extends ControlInterface> INTERFACE as(Class<INTERFACE> interfaceClass) {
         if (interfaceClass.isInstance(this)) {
@@ -456,11 +408,11 @@ public abstract class Wrap<CONTROL extends Object> {
      * Returns an implementation of interface associated with the object.
      *
      * @see Wrap#is(java.lang.Class)
-     * @param <TYPE>
-     * @param <INTERFACE>
-     * @param interfaceClass
+     * @param <TYPE> the type interface
+     * @param <INTERFACE> the control interface
+     * @param interfaceClass the interface class
      * @param type The parameter class.
-     * @return
+     * @return the type control instance
      */
     public <TYPE, INTERFACE extends TypeControlInterface<TYPE>> INTERFACE as(Class<INTERFACE> interfaceClass, Class<TYPE> type) {
         if (interfaceClass.isInstance(this)) {
@@ -490,10 +442,9 @@ public abstract class Wrap<CONTROL extends Object> {
     private Keyboard keyboard = null;
 
     /**
-     * A shortcut to
-     * <code>as(MouseTarget.class).mouse()</code>
+     * A shortcut to <code>as(MouseTarget.class).mouse()</code>
      *
-     * @return
+     * @return the mouse target
      */
     @As(Mouse.class)
     public Mouse mouse() {
@@ -504,10 +455,9 @@ public abstract class Wrap<CONTROL extends Object> {
     }
 
     /**
-     * A shortcut to
-     * <code>as(MouseTarget.class).drag()</code>
+     * A shortcut to <code>as(MouseTarget.class).drag()</code>
      *
-     * @return
+     * @return the drag target
      */
     @As(Drag.class)
     public Drag drag() {
@@ -518,10 +468,9 @@ public abstract class Wrap<CONTROL extends Object> {
     }
 
     /**
-     * A shortcut to
-     * <code>as(KeyTarget.class).wrap()</code>
+     * A shortcut to <code>as(KeyTarget.class).wrap()</code>
      *
-     * @return
+     * @return the wrap target
      */
     @As(Keyboard.class)
     public Keyboard keyboard() {
@@ -541,10 +490,6 @@ public abstract class Wrap<CONTROL extends Object> {
      */
     private HashMap<String, Object> properties = new HashMap<String, Object>();
 
-    /**
-     *
-     * @return
-     */
     @Property(CONTROL_CLASS_PROP_NAME)
     public Class<?> getControlClass() {
         return getControl().getClass();
@@ -667,13 +612,12 @@ public abstract class Wrap<CONTROL extends Object> {
     }
 
     /**
-     * Get property of the wrapped object. Uses first available from <nl>
-     * <li>methods annotated by
-     * <code>org.jemmy.control.Property</code></li> <li>wrapped object methods
-     * listed in
-     * <code>org.jemmy.control.MethodProperties</code></li> <li>wrapped object
-     * fields listed in
-     * <code>org.jemmy.control.FieldProperties</code></li> </nl>
+     * Get property of the wrapped object. Uses first available from
+     * <ol>
+     * <li>methods annotated by <code>org.jemmy.control.Property</code></li>
+     * <li>wrapped object methods listed in <code>org.jemmy.control.MethodProperties</code></li>
+     * <li>wrapped object fields listed in <code>org.jemmy.control.FieldProperties</code></li>
+     * </ol>
      *
      * @param name property name
      * @throws JemmyException if no property found
@@ -711,10 +655,10 @@ public abstract class Wrap<CONTROL extends Object> {
      * Get property out of the control interface. Refer to the interface doc to
      * find out what properties are provided.
      *
-     * @param <INTERFACE>
-     * @param name
-     * @param intrfc
-     * @return
+     * @param <INTERFACE> the control interface
+     * @param name the property name
+     * @param intrfc the interface class
+     * @return the control property
      */
     public <INTERFACE extends ControlInterface> Object getProperty(String name, Class<INTERFACE> intrfc) {
         return getInterfaceProperty(intrfc, as(intrfc), name);
@@ -724,12 +668,12 @@ public abstract class Wrap<CONTROL extends Object> {
      * Get property out of the control interface. Refer to the interface doc to
      * find out what properties are provided.
      *
-     * @param <TYPE>
-     * @param <INTERFACE>
-     * @param name
-     * @param intrfc
-     * @param type
-     * @return
+     * @param <TYPE> the type interface
+     * @param <INTERFACE> the control interface
+     * @param name the property name
+     * @param intrfc the interface class
+     * @param type The parameter class.
+     * @return the control property
      */
     public <TYPE, INTERFACE extends TypeControlInterface<TYPE>> Object getProperty(String name, Class<INTERFACE> intrfc, Class<TYPE> type) {
         return getInterfaceProperty(intrfc, as(intrfc, type), name);
@@ -762,10 +706,10 @@ public abstract class Wrap<CONTROL extends Object> {
      * <code>property</code> of control interface to get the specified value.
      * <code>WAIT_STATE_TIMOUT</code> timeout is used
      *
-     * @param <INTERFACE>
-     * @param property
-     * @param intrfc
-     * @param value
+     * @param <INTERFACE> the control interface
+     * @param property the property name
+     * @param intrfc the interface class
+     * @param value the new parameter value
      */
     public <INTERFACE extends ControlInterface> void waitProperty(final String property, final Class<INTERFACE> intrfc, final Object value) {
         Object instance = as(intrfc);
@@ -787,12 +731,12 @@ public abstract class Wrap<CONTROL extends Object> {
      * <code>property</code> of control interface to get the specified value.
      * <code>WAIT_STATE_TIMOUT</code> timeout is used
      *
-     * @param <TYPE>
-     * @param <INTERFACE>
-     * @param property
-     * @param intrfc
-     * @param type
-     * @param value
+     * @param <TYPE> the type interface
+     * @param <INTERFACE> the control interface
+     * @param property the property name
+     * @param intrfc the interface class
+     * @param type the parameter class.
+     * @param value the new parameter value
      */
     public <TYPE, INTERFACE extends TypeControlInterface<TYPE>> void waitProperty(final String property, final Class<INTERFACE> intrfc, final Class<TYPE> type, final Object value) {
         getEnvironment().getWaiter(WAIT_STATE_TIMEOUT).ensureValue(value, new State<Object>() {
@@ -808,11 +752,6 @@ public abstract class Wrap<CONTROL extends Object> {
         });
     }
 
-    /**
-     *
-     * @param name
-     * @return
-     */
     public boolean hasFieldProperty(String name) {
         Class<?> cls = getClass();
         do {
@@ -826,11 +765,6 @@ public abstract class Wrap<CONTROL extends Object> {
         return false;
     }
 
-    /**
-     *
-     * @param name
-     * @return
-     */
     public boolean hasMethodProperty(String name) {
         Class<?> cls = getClass();
         do {
@@ -854,11 +788,6 @@ public abstract class Wrap<CONTROL extends Object> {
         return false;
     }
 
-    /**
-     *
-     * @param name
-     * @return
-     */
     public Object getFieldProperty(final String name) {
         if (!hasFieldProperty(name)) {
             throw new JemmyException("No \"" + name + "\" field property specified on " + getClass().getName());
@@ -877,11 +806,6 @@ public abstract class Wrap<CONTROL extends Object> {
         return result;
     }
 
-    /**
-     *
-     * @param name
-     * @return
-     */
     public Object getMethodProperty(final String name) {
         if (!hasMethodProperty(name)) {
             throw new JemmyException("No \"" + name + "\" method property specified on " + getClass().getName());
@@ -905,13 +829,6 @@ public abstract class Wrap<CONTROL extends Object> {
         return result;
     }
 
-    /**
-     *
-     * @param <P>
-     * @param valueClass
-     * @param name
-     * @return
-     */
     public <P> P getProperty(Class<P> valueClass, String name) {
         return valueClass.cast(getProperty(name));
     }
@@ -924,7 +841,7 @@ public abstract class Wrap<CONTROL extends Object> {
      * <code>FieldProperties</code> correspondingly.
      *
      * @return a map of properties
-     * @throws Runtime exception should there be an exception thrown while
+     * @throws RuntimeException should there be an exception thrown while
      * getting a property
      */
     public HashMap<String, Object> getProperties() {

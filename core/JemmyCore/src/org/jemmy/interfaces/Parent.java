@@ -39,17 +39,17 @@ public interface Parent<T> extends TypeControlInterface<T> {
      * the criteria.
      * @see Lookup
      * @see LookupCriteria
-     * @param <ST>
-     * @param controlClass
-     * @param criteria
+     * @param <ST> todo document
+     * @param controlClass todo document
+     * @param criteria todo document
      * @return an instance of Lookup, which holds found controls.
      */
     public <ST extends T> Lookup<ST> lookup(Class<ST> controlClass, LookupCriteria<ST> criteria);
     /**
-     * Same as <code>lookup(controlClass, new Any<ST>())</code>
+     * Same as <code>lookup(controlClass, new Any())</code>
      * @see #lookup(java.lang.Class, org.jemmy.lookup.LookupCriteria)
-     * @param <ST>
-     * @param controlClass
+     * @param <ST> todo document
+     * @param controlClass todo document
      * @return an instance of Lookup, which holds found controls.
      */
     public <ST extends T> Lookup<ST> lookup(Class<ST> controlClass);
@@ -58,12 +58,12 @@ public interface Parent<T> extends TypeControlInterface<T> {
      * the criteria.
      * @see Lookup
      * @see LookupCriteria
-     * @param criteria
+     * @param criteria todo document
      * @return an instance of Lookup, which holds found controls.
      */
     public Lookup<T> lookup(LookupCriteria<T> criteria);
     /**
-     * Same as <code>lookup(new Any<T>())</code>
+     * Same as <code>lookup(new Any())</code>
      * @see #lookup(org.jemmy.lookup.LookupCriteria)
      * @return an instance of Lookup, which holds found controls.
      */

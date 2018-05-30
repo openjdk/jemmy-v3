@@ -27,7 +27,7 @@ package org.jemmy.interfaces;
 
 /**
  *
- * @author Alexander Kouznetsov <mrkam@mail.ru>
+ * @author mrkam
  */
 public interface Modifier extends Button {
 

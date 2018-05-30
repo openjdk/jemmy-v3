@@ -38,28 +38,17 @@ import org.jemmy.interfaces.Mouse.MouseButton;
  * @author shura
  */
 public interface Drag extends ControlInterface {
-    /**
-     *
-     */
     public static final Timeout BEFORE_DRAG_TIMEOUT = new Timeout("Control.before.drag", 500);
-    /**
-     *
-     */
     public static final Timeout BEFORE_DROP_TIMEOUT = new Timeout("Control.after.drag", 500);
-    /**
-     *
-     */
     public static final Timeout IN_DRAG_TIMEOUT = new Timeout("Control.in.drag", 10);
 
     /**
-     *
      * @param targetPoint target point specified in component local coordinates
      */
     @Shortcut
     public void dnd(Point targetPoint);
     /**
-     *
-     * @param target
+     * @param target todo document
      * @param targetPoint target point specified in target component local coordinates
      */
     @Shortcut
@@ -67,7 +56,7 @@ public interface Drag extends ControlInterface {
     /**
      *
      * @param point source point specified in component local coordinates
-     * @param target
+     * @param target todo document
      * @param targetPoint target point specified in target component local coordinates
      */
     @Shortcut
@@ -75,19 +64,19 @@ public interface Drag extends ControlInterface {
     /**
      *
      * @param point source point specified in component local coordinates
-     * @param target
+     * @param target todo document
      * @param targetPoint target point specified in target component local coordinates
-     * @param button
+     * @param button todo document
      */
     @Shortcut
     public void dnd(Point point, Wrap target, Point targetPoint, MouseButton button);
     /**
      *
      * @param point source point specified in component local coordinates
-     * @param target
+     * @param target todo document
      * @param targetPoint target point specified in target component local coordinates
-     * @param button
-     * @param modifiers
+     * @param button todo document
+     * @param modifiers todo document
      */
     @Shortcut
     public void dnd(Point point, Wrap target, Point targetPoint, MouseButton button, Modifier... modifiers);

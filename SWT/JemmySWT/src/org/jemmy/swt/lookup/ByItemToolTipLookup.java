@@ -34,8 +34,6 @@ import org.eclipse.swt.widgets.ToolBar;
 import org.jemmy.resources.StringComparePolicy;
 
 /**
- *
- * @param <T>
  * @author klara
  */
 public class ByItemToolTipLookup<T extends Composite> extends QueueLookup<T> {

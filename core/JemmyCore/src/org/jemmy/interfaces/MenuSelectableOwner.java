@@ -25,9 +25,7 @@
 package org.jemmy.interfaces;
 
 /**
- *
  * @author erikgreijus
- * @param <T>
  */
 public interface MenuSelectableOwner<T> extends MenuOwner<T> {
 

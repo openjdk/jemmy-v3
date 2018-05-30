@@ -45,11 +45,6 @@ public abstract class ScrollerImpl extends CaretImpl {
 
     Scroll scroll;
 
-    /**
-     *
-     * @param target
-     * @param caret
-     */
     public ScrollerImpl(Wrap target, CaretOwner caret) {
         super(target, caret);
         scroll = new CaretScroll(caret);
@@ -62,7 +57,7 @@ public abstract class ScrollerImpl extends CaretImpl {
     }
 
     /**
-     * @param increase
+     * @param increase <code>true</code> to increase, <code>false</code> to decrease the value
      * @return  a point to click in order to decrease/increase the value
      */
     protected abstract Point getScrollClickPoint(boolean increase);
@@ -70,24 +65,16 @@ public abstract class ScrollerImpl extends CaretImpl {
     /**
      * An auxiliary function to calculate click point, on the appropriate side
      * of the control depending on the parameters.
-     * @param c
+     * @param c the control wrapper
      * @param horizontal - horizontal or vertical
      * @param increase - increase or decrease
      * @param offset distance from the border
-     * @return
+     * @return the point instance
      */
     public static Point createScrollPoint(Wrap c, boolean horizontal, boolean increase, int offset) {
         return createScrollPoint(c.getScreenBounds(), horizontal, increase, offset);
     }
 
-    /**
-     *
-     * @param bounds
-     * @param horizontal
-     * @param increase
-     * @param offset
-     * @return
-     */
     public static Point createScrollPoint(Rectangle bounds, boolean horizontal, boolean increase, int offset) {
         if(horizontal) {
             return new Point(increase ? (bounds.width - 1 - offset) : offset, bounds.height / 2);
@@ -96,18 +83,10 @@ public abstract class ScrollerImpl extends CaretImpl {
         }
     }
 
-    //only the value is used from it
-    /**
-     *
-     */
     public static class CaretScroll implements Scroll {
 
         CaretOwner co;
 
-        /**
-         *
-         * @param co
-         */
         public CaretScroll(CaretOwner co) {
             this.co = co;
         }

@@ -27,126 +27,83 @@ package org.jemmy.interfaces;
 
 
 import org.jemmy.Point;
+import org.jemmy.action.Action;
 import org.jemmy.dock.Shortcut;
+import org.jemmy.env.Environment;
 import org.jemmy.env.Timeout;
 
 /**
- *
  * @author shura
  */
 public interface Mouse extends ControlInterface {
-    /**
-     *
-     */
     public static final Timeout CLICK = new Timeout("mouse.click", 100);
-    /**
-     *
-     */
+
     @Shortcut
     public void press();
-    /**
-     *
-     * @param button
-     */
+
     @Shortcut
     public void press(MouseButton button);
-    /**
-     *
-     * @param button
-     * @param modifiers
-     */
+
     @Shortcut
     public void press(MouseButton button, Modifier... modifiers);
-    /**
-     *
-     */
+
     @Shortcut
     public void release();
-    /**
-     *
-     * @param button
-     */
+
     @Shortcut
     public void release(MouseButton button);
-    /**
-     *
-     * @param button
-     * @param modifiers
-     */
+
     @Shortcut
     public void release(MouseButton button, Modifier... modifiers);
-    /**
-     *
-     */
+
     @Shortcut
     public void move();
-    /**
-     *
-     * @param p
-     */
+
     @Shortcut
     public void move(Point p);
-    /**
-     *
-     */
+
     @Shortcut
     public void click();
-    /**
-     *
-     * @param count
-     */
+
     @Shortcut
     public void click(int count);
-    /**
-     *
-     * @param count
-     * @param p
-     */
+
     @Shortcut
     public void click(int count, Point p);
-    /**
-     *
-     * @param count
-     * @param p
-     * @param button
-     */
+
     @Shortcut
     public void click(int count, Point p, MouseButton button);
-    /**
-     *
-     * @param count
-     * @param p
-     * @param button
-     * @param modifiers
-     */
+
     @Shortcut
     public void click(int count, Point p, MouseButton button, Modifier... modifiers);
 
     /*
      * This method turns mouse wheel.
-     * @parem amount Positive or negative
+     * @param amount Positive or negative
      */
     @Shortcut
     public void turnWheel(int amount);
 
     /*
      * This method turns mouse wheel.
-     * @parem amount Positive or negative
+     * @param amount Positive or negative
      */
     @Shortcut
     public void turnWheel(Point point, int amount);
 
     /*
      * This method turns mouse wheel.
-     * @parem amount Positive or negative
+     * @param point todo document
+     * @param amount Positive or negative
+     * @param modifiers todo document
      */
     @Shortcut
     public void turnWheel(Point point, int amount, Modifier... modifiers);
 
     /**
      * Detaches the implementation so that all actions of it will be ran detached.
-     * @see org.jemmy.action.ActionExecutor#executeDetached(org.jemmy.env.Environment, org.jemmy.action.Action, java.lang.Object[])
-     * @return
+     * @see org.jemmy.action.ActionExecutor#executeDetached(Environment, boolean, Action, Object...)
+     * @return todo document
      */
     public Mouse detached();
 
@@ -171,18 +128,8 @@ public interface Mouse extends ControlInterface {
      * to be used in Keyboard interface methods
      */
     public static enum MouseModifiers implements MouseModifier {
-
-        /**
-         *
-         */
         BUTTON1_DOWN_MASK,
-        /**
-         *
-         */
         BUTTON2_DOWN_MASK,
-        /**
-         *
-         */
         BUTTON3_DOWN_MASK
     }
 
@@ -190,17 +137,8 @@ public interface Mouse extends ControlInterface {
      * Mouse Buttons
      */
     public static enum MouseButtons implements MouseButton {
-        /**
-         *
-         */
         BUTTON1,
-        /**
-         *
-         */
         BUTTON2,
-        /**
-         *
-         */
         BUTTON3
     }
 

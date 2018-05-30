@@ -39,10 +39,7 @@ abstract class ThresholdComparator implements RasterComparator {
         this.max = max;
     }
 
-    /**
-     *
-     * @param threshold
-     */
+
     public final void setThreshold(double threshold) {
         if (threshold < min || threshold > max) {
             throw new IllegalArgumentException("Treshold expected to be withing ("

@@ -36,8 +36,8 @@ import org.jemmy.interfaces.Modifier;
  * communicate what modifiers and primary key are required to generate
  * a given symbol.
  *
- * @param <BUTTON>
- * @param <MODIFIER>
+ * @param <BUTTON> the button type
+ * @param <MODIFIER> the modifier type
  * @author Alexandre Iline (alexandre.iline@sun.com)
  */
 

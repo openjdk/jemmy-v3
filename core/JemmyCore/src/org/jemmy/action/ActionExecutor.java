@@ -36,9 +36,6 @@ import org.jemmy.env.Timeout;
  */
 public interface ActionExecutor {
 
-    /**
-     *
-     */
     public static final String ACTION_EXECUTOR_PROPERTY = "action.executor";
 
     /**
@@ -69,7 +66,6 @@ public interface ActionExecutor {
     /**
      * Checks whether the current thread is already performing an action.
      * @return true if the current thread is already performing an action.
-     * @see AbstractExecutor#isDispatchThread()
      */
     public boolean isInAction();
 

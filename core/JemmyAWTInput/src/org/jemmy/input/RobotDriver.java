@@ -44,7 +44,9 @@ import org.jemmy.interfaces.Mouse.MouseModifiers;
 
 
 /**
- * @author Alexandre Iline(alexandre.iline@sun.com), KAM <mrkam@mail.ru>
+ * @author shura
+ * @author mrkam
+ *
  */
 public class RobotDriver {
 
@@ -58,7 +60,7 @@ public class RobotDriver {
                 new Timeout(ROBOT_DELAY_TIMEOUT_NAME, 10));
         Environment.getEnvironment().setPropertyIfNotSet(
                 AWTRobotInputFactory.ROBOT_MOUSE_SMOOTHNESS_PROPERTY,
-                new Integer(Integer.MAX_VALUE).toString());
+                Integer.toString(Integer.MAX_VALUE));
         smoothness =  Integer.parseInt(
                 (String)Environment.getEnvironment().getProperty(
                 AWTRobotInputFactory.ROBOT_MOUSE_SMOOTHNESS_PROPERTY));
@@ -208,9 +210,9 @@ public class RobotDriver {
 
     /**
      * @deprecated Implementation doesn't seem to be correct as it ignores mouseButton and modifiers
-     * @param point
+     * @param point todo document
      * @param mouseButton One of MouseEvent.BUTTON*_MASK
-     * @param modifiers
+     * @param modifiers todo document
      */
     public void dragMouse(Point point, int mouseButton, int modifiers) {
         moveMouse(point);
@@ -263,9 +265,9 @@ public class RobotDriver {
 
     /**
      * Turns the wheel.
-     * @param p
+     * @param p todo document
      * @param amount Either positive or negative
-     * @param modifiers
+     * @param modifiers a combination of <code>InputEvent.*_MASK</code> fields.
      */
     public void turnWheel(Point p, int amount, Modifier... modifiers) {
         pressModifiers(modifiers);

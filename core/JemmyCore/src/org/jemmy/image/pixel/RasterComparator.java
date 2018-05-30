@@ -31,16 +31,8 @@ import java.util.List;
  * @author shura
  */
 public interface RasterComparator {
-    /**
-     *
-     * @param image1
-     * @param image2
-     * @return
-     */
+
     public boolean compare(Raster image1, Raster image2);
-    /**
-     *
-     * @return
-     */
+
     public String getID();
 }

@@ -30,7 +30,7 @@ import java.io.Serializable;
 
 /**
  * Replacement for java.awt.Dimension
- * @author Alexander Kouznetsov <mrkam@mail.ru>
+ * @author mrkam
  */
 public class Dimension implements Serializable {
 
@@ -104,7 +104,6 @@ public class Dimension implements Serializable {
 
     /**
      * {@inheritDoc}
-     * @return
      */
     public double getWidth() {
         return width;
@@ -112,7 +111,6 @@ public class Dimension implements Serializable {
 
     /**
      * {@inheritDoc}
-     * @return
      */
     public double getHeight() {
         return height;
@@ -164,11 +162,6 @@ public class Dimension implements Serializable {
         this.height = height;
     }
 
-    /**
-     * Checks whether two dimension objects have equal values.
-     * @param obj
-     * @return
-     */
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Dimension) {

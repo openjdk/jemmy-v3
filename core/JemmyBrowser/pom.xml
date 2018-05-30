@@ -26,12 +26,12 @@
     -->
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.jemmy.v3</groupId>
-        <artifactId>Jemmy</artifactId>
-        <version>1.0</version>
+        <groupId>org.adoptopenjdk</groupId>
+        <artifactId>jemmy</artifactId>
+        <version>${revision}</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
-    <artifactId>JemmyBrowser</artifactId>
+    <artifactId>jemmy-browser</artifactId>
     <packaging>jar</packaging>
     <properties>
         <version.file>org/jemmy/browser/jemmy.properties</version.file>
@@ -39,9 +39,9 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.jemmy.v3</groupId>
-            <artifactId>JemmyCore</artifactId>
-            <version>1.0</version>
+            <groupId>org.adoptopenjdk</groupId>
+            <artifactId>jemmy-core</artifactId>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>
