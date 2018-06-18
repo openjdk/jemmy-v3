@@ -28,7 +28,7 @@
     <parent>
         <groupId>org.adoptopenjdk</groupId>
         <artifactId>jemmy</artifactId>
-        <version>${revision}</version>
+        <version>1.0.2</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <artifactId>jemmy-browser</artifactId>
@@ -41,7 +41,7 @@
         <dependency>
             <groupId>org.adoptopenjdk</groupId>
             <artifactId>jemmy-core</artifactId>
-            <version>${revision}</version>
+            <version>1.0.2</version>
         </dependency>
     </dependencies>
 </project>
