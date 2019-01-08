@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Copyright (c) 1997, 2017, Oracle and/or its affiliates. All rights reserved.
+ Copyright (c) 1997, 2018, Oracle and/or its affiliates. All rights reserved.
  DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 
  This code is free software; you can redistribute it and/or modify it
@@ -49,11 +49,11 @@
         <copy file="${src.dir}/${version.file}" tofile="${build.classes.dir}/${version.file}"/>
         <replaceregexp file="${build.classes.dir}/${version.file}" match="\$\{buildnumber\}" replace="${buildnumber}" byline="true"/>
     </target>
-    <target name="compile-test" depends="compile">
+    <target name="compile-test" depends="compile,build-test-dependencies">
         <fail message="Please specify jtreg.home" unless="jtreg.home"/>
         <mkdir dir="${build.test.dir}"/>
         <javac srcdir="${test.dir}" destdir="${build.test.dir}" debug="on" includeantruntime="false"
-               classpath="${build.classes.dir}:${dependencies.classpath}:${jtreg.home}/lib/testng.jar"/>
+               classpath="${build.classes.dir}:${dependencies.classpath}:${test.dependencies.classpath}:${jtreg.home}/lib/testng.jar"/>
     </target>
     <target name="find-tests" unless="tests">
         <fileset id="testset" dir="${test.dir}">
@@ -65,7 +65,10 @@
         <echo file="${test.list}">${testlist}</echo>
         <property name="tests" value="@${test.list}"/>
     </target>
-    <target name="test" depends="compile-test,find-tests">
+    <target name="build-test-dependencies" if="test.dependencies.classpath">
+        <antcall target="build-test-dependecies-impl"/>
+    </target>
+    <target name="test" depends="build-test-dependencies,compile-test,find-tests">
         <exec executable="${jtreg.home}/bin/jtreg">
             <arg value="-cpa:${build.classes.dir}:${dependencies.classpath}"/>
             <arg value="-w:${test.workdir}"/>
