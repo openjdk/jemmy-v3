@@ -30,8 +30,8 @@ import org.jemmy.Point;
 import org.jemmy.action.GetAction;
 import org.jemmy.control.ControlType;
 import org.jemmy.env.Environment;
-import org.jemmy.input.KeyboardSelectable;
-import org.jemmy.input.KeyboardSelector;
+import org.jemmy.swt.input.KeyboardSelectable;
+import org.jemmy.swt.input.KeyboardSelector;
 import org.jemmy.interfaces.Focusable;
 import org.jemmy.interfaces.Selector;
 

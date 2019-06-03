@@ -27,7 +27,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.adoptopenjdk</groupId>
     <artifactId>jemmy</artifactId>
-    <version>1.0.2</version>
+    <version>2.0.0</version>
     <packaging>pom</packaging>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>UI test automation library</description>
@@ -131,7 +131,7 @@
                     <archive>
                         <manifestEntries>
                             <Automatic-Module-Name>${project.groupId}.${project.artifactId}</Automatic-Module-Name>
-                            <Main-Class>${version.class}</Main-Class>
+                            <Main-Class>${project.version.class}</Main-Class>
                         </manifestEntries>
                     </archive>
                     <excludes>

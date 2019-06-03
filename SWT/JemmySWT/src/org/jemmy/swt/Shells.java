@@ -32,7 +32,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.jemmy.action.GetAction;
 import org.jemmy.control.DefaultWrapper;
 import org.jemmy.env.Environment;
-import org.jemmy.input.AWTRobotInputFactory;
+import org.jemmy.input.awt.AWTRobotInputFactory;
 import org.jemmy.lookup.AbstractParent;
 import org.jemmy.lookup.ControlHierarchy;
 import org.jemmy.lookup.HierarchyLookup;
