@@ -41,11 +41,15 @@ import java.lang.reflect.Modifier;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+
 import org.jemmy.JemmyException;
 import org.jemmy.Rectangle;
 import org.jemmy.env.Environment;
@@ -254,13 +258,28 @@ class RobotExecutor {
     private void startServer() {
         try {
             prepareProperties();
-            ProcessBuilder pb = new ProcessBuilder("java",
-                    //"-Xrunjdwp:transport=dt_socket,suspend=y,server=y,address=8000",
-                    "-cp", System.getProperty("java.class.path"),
-                    "-D" + Environment.JEMMY_PROPERTIES_FILE_PROPERTY +
-                    "=" + props.getAbsolutePath(),
-                    RobotExecutor.class.getName(),
-                    Integer.toString(connectionPort));
+            //part of the commad to get to the debugger
+            //"-Xrunjdwp:transport=dt_socket,suspend=y,server=y,address=8000",
+            List<String> command = new ArrayList<>();
+            command.add(System.getProperty("java.home") +
+                        File.separator + "bin" + File.separator + "java");
+            String modulePath = System.getProperty("jdk.module.path");
+            if(modulePath != null && !modulePath.isEmpty()) {
+                command.add("--module-path");
+                command.add(modulePath);
+            }
+            String classPath = System.getProperty("java.class.path");
+            if(classPath != null && !classPath.isEmpty()) {
+                command.add("-cp");
+                command.add(classPath);
+            }
+            command.add("-D" + Environment.JEMMY_PROPERTIES_FILE_PROPERTY +
+                    "=" + props.getAbsolutePath());
+            command.add(RobotExecutor.class.getName());
+            command.add(Integer.toString(connectionPort));
+            System.out.println("Robot command:");
+            System.out.println(command.stream().collect(Collectors.joining(" ")));
+            ProcessBuilder pb = new ProcessBuilder(command);
             // TODO: Improve output
 //            System.out.println("Starting server");
 //            System.out.println("Command: " + pb.command());
