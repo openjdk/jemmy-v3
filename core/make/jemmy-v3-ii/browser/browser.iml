@@ -11,6 +11,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="core" />
-    <orderEntry type="library" scope="TEST" name="testng" level="application" />
+    <orderEntry type="library" name="testng" level="project" />
   </component>
 </module>

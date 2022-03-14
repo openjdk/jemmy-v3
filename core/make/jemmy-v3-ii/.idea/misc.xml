@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="JTRegService">
+    <path />
+    <workDir />
+    <jre alt="false" />
+    <options />
+  </component>
   <component name="MavenBuildProjectComponent">
     <option name="mavenExecutable" value="" />
     <option name="Settings File" value="$USER_HOME$/.m2/settings.xml" />
@@ -26,7 +32,7 @@
     <option name="Skip Tests" value="false" />
     <pom-list />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
