@@ -164,7 +164,13 @@ class ActionQueue {
                 started = true;
                 notifyAll();
             }
-            action.execute(parameters);
+            try {
+                action.execute(parameters);
+            } catch (Throwable e) {
+                //this is needed for a case when there is a problem with the
+                //Action code itself, not the nested logic
+                action.setThrowable(e);
+            }
         }
 
         public synchronized void waitCompleted() {

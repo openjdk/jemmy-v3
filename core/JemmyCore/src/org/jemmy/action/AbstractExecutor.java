@@ -24,6 +24,7 @@
  */
 package org.jemmy.action;
 
+import org.jemmy.JemmyException;
 import org.jemmy.env.Environment;
 import org.jemmy.env.TestOut;
 import org.jemmy.env.Timeout;
@@ -87,11 +88,17 @@ public abstract class AbstractExecutor implements ActionExecutor {
         action.setAllowedTime(env.getTimeout(MAX_ACTION_TIME.getName()).getValue());
         if (dispatch) {
             executeQueue(env, action, parameters);
+            if(action.getThrowable() != null)
+                throw new JemmyException("Exception in action " + action,
+                    action.getThrowable());
         } else {
             if (isInAction()) {
                 action.execute(parameters);
             } else {
                 queue.invokeAndWait(action, parameters);
+                if(action.getThrowable() != null)
+                    throw new JemmyException("Exception in action " + action,
+                            action.getThrowable());
             }
         }
     }

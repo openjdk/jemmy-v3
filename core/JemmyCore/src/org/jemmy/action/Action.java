@@ -26,11 +26,31 @@ package org.jemmy.action;
 
 import org.jemmy.JemmyException;
 
+import java.util.function.Consumer;
+
 
 /**
  * @author shura, KAM
  */
 public abstract class Action {
+
+    public static Action instantiate(Runnable r) {
+        return new Action() {
+            @Override
+            public void run(Object... parameters) throws Exception {
+                r.run();
+            }
+        };
+    }
+
+    public static Action instantiate(Consumer<Object[]> c) {
+        return new Action() {
+            @Override
+            public void run(Object... parameters) throws Exception {
+                c.accept(parameters);
+            }
+        };
+    }
 
     private boolean interrupted = false;
     private long startTime = -1, endTime = 0, allowedTime = 0;
@@ -54,7 +74,7 @@ public abstract class Action {
         } catch (RuntimeException e) {
             throwable = e;
             throw e;
-        } catch (Exception e) {
+        } catch (Throwable e) {
             throwable = e;
             throw new JemmyException("Exception in action " + this.toString(), e);
         } finally {
@@ -104,6 +124,10 @@ public abstract class Action {
      */
     public Throwable getThrowable() {
         return throwable;
+    }
+
+    void setThrowable(Throwable throwable) {
+        this.throwable = throwable;
     }
 
     /**

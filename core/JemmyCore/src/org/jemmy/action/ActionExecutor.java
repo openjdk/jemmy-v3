@@ -47,12 +47,14 @@ public interface ActionExecutor {
      * @param action Action to execute.
      * @param parameters Parameters to pass to
      * {@linkplain Action#run(java.lang.Object[]) action.run()} method.
+     * @throws org.jemmy.JemmyException wrapping any exception observed while running the action.
      */
     public void execute(Environment env, boolean dispatch, Action action, Object... parameters);
 
     /**
      * Schedules to execute an action and exits immediately. Used to be called
-     * DoSomethingNoBlock operations in jemmy2.
+     * DoSomethingNoBlock operations in jemmy2. It os a responsibility of the caller to
+     * later check {@linkplain Action#getThrowable()}.
      * @param env Environment.
      * @param dispatch if true the action is executed on UI system dispatch
      * thread. This is usually necessary to invoke methods of the UI to get
