@@ -28,7 +28,7 @@
     <property name="core.jar" location="../JemmyCore/build/JemmyCore.jar"/>
     <property name="version.file" value="org/jemmy/browser/jemmy.properties"/>
     <property name="version.class" value="org.jemmy.browser.Version"/>
-    <property name="dependencies.classpath" value="${core.jar}"/>
+    <property name="dependencies.modulepath" value="${core.jar}"/>
     <target name="check-dependecies-impl">
         <available file="${core.jar}" property="dependencies.are.built"/>
     </target>

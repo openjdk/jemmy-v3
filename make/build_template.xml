@@ -45,7 +45,8 @@
     </target>
     <target name="compile" depends="timestamp,build-dependencies">
         <mkdir dir="${build.classes.dir}"/>
-        <javac srcdir="${src.dir}" classpath="${dependencies.classpath}" destdir="${build.classes.dir}" debug="on" includeantruntime="false"/>
+        <javac srcdir="${src.dir}" modulepath="${dependencies.modulepath}" classpath="${dependencies.classpath}"
+            destdir="${build.classes.dir}" debug="on" includeantruntime="false"/>
         <copy file="${src.dir}/${version.file}" tofile="${build.classes.dir}/${version.file}"/>
         <replaceregexp file="${build.classes.dir}/${version.file}" match="\$\{buildnumber\}" replace="${buildnumber}" byline="true"/>
     </target>
@@ -53,7 +54,7 @@
         <fail message="Please specify jtreg.home" unless="jtreg.home"/>
         <mkdir dir="${build.test.dir}"/>
         <javac srcdir="${test.dir}" destdir="${build.test.dir}" debug="on" includeantruntime="false"
-               classpath="${build.classes.dir}:${dependencies.classpath}:${test.dependencies.classpath}:${jtreg.home}/lib/testng.jar"/>
+               classpath="${build.classes.dir}:${dependencies.modulepath}:${dependencies.classpath}:${test.dependencies.classpath}:${jtreg.home}/lib/testng.jar"/>
     </target>
     <target name="find-tests" unless="tests">
         <fileset id="testset" dir="${test.dir}">
@@ -70,7 +71,7 @@
     </target>
     <target name="test" depends="build-test-dependencies,compile-test,find-tests">
         <exec executable="${jtreg.home}/bin/jtreg">
-            <arg value="-cpa:${build.classes.dir}:${dependencies.classpath}"/>
+            <arg value="-cpa:${build.classes.dir}:${dependencies.modulepath}:${dependencies.classpath}:${test.dependencies.classpath}"/>
             <arg value="-w:${test.workdir}"/>
             <arg value="-r:${test.report}"/>
             <arg value="-conc:1"/>

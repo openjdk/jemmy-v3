@@ -26,7 +26,7 @@
     <property name="core.jar" location="../JemmyCore/build/JemmyCore.jar"/>
     <property name="version.file" value="org/jemmy/support/jemmy.properties"/>
     <property name="version.class" value="org.jemmy.support.Version"/>
-    <property name="dependencies.classpath" value="${core.jar}"/>
+    <property name="dependencies.modulepath" value="${core.jar}"/>
     <property name="test.data.src" location="test_data"/>
     <property name="test.data.docks" location="${build.dir}/test_docks"/>
     <property name="test.data.dest" location="${build.dir}/test_data"/>
