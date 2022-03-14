@@ -30,6 +30,7 @@ import org.jemmy.interfaces.Focusable;
 import org.jemmy.interfaces.Keyboard;
 import org.jemmy.interfaces.Keyboard.KeyboardButtons;
 import org.jemmy.interfaces.Keyboard.KeyboardModifiers;
+import org.jemmy.interfaces.Modifier;
 import org.jemmy.interfaces.Text;
 import org.jemmy.timing.State;
 import static org.jemmy.interfaces.Keyboard.KeyboardButtons.*;
@@ -126,15 +127,17 @@ public abstract class TextImpl implements Text {
                 if (target.is(Focusable.class)) {
                     target.as(Focusable.class).focuser().focus();
                 }
-                String text = text();
-                if (text == null) {
+                if (text() == null) {
                     return;
                 }
-                target.keyboard().pushKey(END);
-                while (!text.isEmpty() && withinAllowedTime()) {
+                String os = System.getProperty("os.name").toLowerCase();
+                if(os.equals("mac os x"))
+                    target.keyboard().pushKey(RIGHT, KeyboardModifiers.META_DOWN_MASK);
+                else
+                    target.keyboard().pushKey(END);
+                while (!text().isEmpty() && withinAllowedTime()) {
+                    System.out.println("text().isEmpty() " + text().isEmpty() + " length = " + text().length());
                     target.keyboard().pushKey(BACK_SPACE);
-                    target.keyboard().pushKey(DELETE);
-                    text = text();
                 }
             }
 
