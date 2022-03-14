@@ -130,6 +130,7 @@ public class CaretImpl implements Caret {
     /**
      * @deprecated Use ApproximateCaretOwner.ToPosition or PreciseCaretOwner.ToPosition
      */
+    @Deprecated
     public static class DirectionToPosition implements Direction {
 
         private double value;

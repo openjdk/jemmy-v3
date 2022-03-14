@@ -212,6 +212,7 @@ public class RobotDriver {
      * @param mouseButton One of MouseEvent.BUTTON*_MASK
      * @param modifiers todo document
      */
+    @Deprecated
     public void dragMouse(Point point, int mouseButton, int modifiers) {
         moveMouse(point);
     }

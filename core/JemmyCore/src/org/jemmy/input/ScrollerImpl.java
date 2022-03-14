@@ -41,6 +41,7 @@ public abstract class ScrollerImpl extends CaretImpl {
     /**
      * @deprecated Use AdvancedScroller.SCROLL_TIMEOUT
      */
+    @Deprecated
     public static final Timeout SCROLL_TIMEOUT = CaretImpl.SCROLL_TIMEOUT;
 
     Scroll scroll;
