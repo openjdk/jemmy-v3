@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jemmy.fx" default="compile">
+    <basename file="${basedir}" property="."/>
+    <property name="build" location="${basedir}/build"/>
+    <target name="compile-project">
+        <ant inheritAll="true" dir="${basedir}/${project}" target="jar"/>
+        <copy file="${basedir}/${project}/build/${project}.jar" todir="${build}"/>
+    </target>
+    <target name="build">
+        <mkdir dir="${build}"/>
+        <antcall target="compile-project">
+            <param name="project" value="JemmyCore"/>
+        </antcall>
+        <antcall target="compile-project">
+            <param name="project" value="JemmyAWTInput"/>
+        </antcall>
+        <antcall target="compile-project">
+            <param name="project" value="JemmyBrowser"/>
+        </antcall>
+        <antcall target="compile-project">
+            <param name="project" value="JemmySupport"/>
+        </antcall>
+        <!--ant inheritAll="true" dir="${basedir}/JemmyCore" target="jar"/>
+        <copy file="${basedir}/JemmyCore/build/JemmyCore.jar" todir="${build}"/-->
+    </target>
+</project>
