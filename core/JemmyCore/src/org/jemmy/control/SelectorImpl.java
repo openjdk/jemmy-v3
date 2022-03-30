@@ -25,6 +25,8 @@
 package org.jemmy.control;
 
 import org.jemmy.JemmyException;
+import org.jemmy.env.Environment;
+import org.jemmy.env.Timeout;
 import org.jemmy.interfaces.Selectable;
 import org.jemmy.interfaces.Selector;
 import org.jemmy.interfaces.Showable;
@@ -34,6 +36,13 @@ import org.jemmy.timing.State;
  * @author shura
  */
 public class SelectorImpl<CONTROL, STATE> implements Selector<STATE> {
+
+
+    public static final Timeout BETWEEN_CLICKS_TIMEOUT = new Timeout("selector,between.clicks", 100);
+
+    static {
+        Environment.getEnvironment().initTimeout(BETWEEN_CLICKS_TIMEOUT);
+    }
 
     Wrap<? extends CONTROL> target;
     Selectable<STATE> selectable;
@@ -63,10 +72,11 @@ public class SelectorImpl<CONTROL, STATE> implements Selector<STATE> {
 
                     @Override
                     public String toString() {
-                        return "selectable state (" + selectable.getState() + ") equals '" + state + "'";
+                        return "selectable state (" + selectable.getState() + ") not equals to '" + state + "'";
                     }
 
                 });
+                target.getEnvironment().getTimeout(BETWEEN_CLICKS_TIMEOUT).sleep();
                 attempts++;
             } while (!selectable.getState().equals(state));
         }
